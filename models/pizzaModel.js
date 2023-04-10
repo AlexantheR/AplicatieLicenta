@@ -6,7 +6,7 @@ const pizzaSchema = mongoose.Schema(
       type: String,
       require,
     },
-    varients: [],
+    variants: [],
     prices: [],
     category: {
       type: String,
