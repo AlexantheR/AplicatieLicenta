@@ -11,7 +11,6 @@ export default function Pizza({ pizza }) {
 
   return (
     <div
-      style={{ margin: "73px" }}
       className="shadow p-3 mb-5 bg-white rounded"
     >
       <div onClick={handleShow}>
