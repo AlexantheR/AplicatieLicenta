@@ -1,10 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../actions/cartActions';
 
 export default function Cartscreen() {
 
     const cartstate = useSelector(state => state.cartReducer)
     const cartItems = cartstate.cartItems
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -20,18 +22,22 @@ export default function Cartscreen() {
                                 <h1>{item.name} [{item.variant}]</h1>
                                 <h1>Price: {item.quantity} * {item.prices[0][item.variant]} = {item.price}</h1>
                                 <h1 style={{ display: 'inline' }}>Quantity: </h1>
-                                <i className="fa-solid fa-plus" aria-hidden='true'></i>
+                                <i className="fa-solid fa-plus" aria-hidden='true' onClick={() => {
+                                    dispatch(addToCart(item, item.quantity + 1, item.variant))
+                                }}></i>
                                 <b>{item.quantity}</b>
-                                <i className="fa-solid fa-minus"></i>
+                                <i className="fa-solid fa-minus" onClick={() => {
+                                    dispatch(addToCart(item, item.quantity - 1, item.variant))
+                                }}></i>
                                 <hr></hr>
                             </div>
 
                             <div className='m-1 w-100'>
-                                <img src={item.image} style={{ height: '80px'}}></img>
+                                <img src={item.image} style={{ height: '80px' }}></img>
                             </div>
 
                             <div className='m-1 w-100'>
-                            <i className="fa-solid fa-trash mt-5"></i>
+                                <i className="fa-solid fa-trash mt-5"></i>
                             </div>
                         </div>
                     }
