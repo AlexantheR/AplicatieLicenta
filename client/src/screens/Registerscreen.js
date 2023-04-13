@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { registerUser } from '../actions/userActions'
 
 export default function Registerscreen() {
 
@@ -7,6 +8,8 @@ export default function Registerscreen() {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
     const [Cpassword, setCpassword] = useState('')
+
+    const dispatch = useDispatch()
 
     function register() {
 
@@ -20,6 +23,7 @@ export default function Registerscreen() {
                 password
             }
             console.log(user)
+            dispatch(registerUser(user))
         }
     }
 
