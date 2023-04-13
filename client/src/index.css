@@ -54,3 +54,13 @@ select{
   color:red;
   margin: 5px;
 }
+
+input{
+  margin-top: 10px !important;
+  box-shadow: none !important;
+}
+
+.btnRegister{
+  background-color:red!important;
+  color:white!important;
+}

@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Homescreen from './screens/Homescreen';
 import { BrowserRouter, Routes, Route, Link, Switch } from 'react-router-dom';
 import Cartscreen from './screens/Cartscreen';
+import Registerscreen from './screens/Registerscreen';
+import Loginscreen from './screens/Loginscreen';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         <Routes>
           <Route path='/' exact Component={Homescreen} />
           <Route path='/cart' exact Component={Cartscreen} />
+          <Route path='/register' exact Component={Registerscreen} />
+          <Route path='/login' exact Component={Loginscreen} />
         </Routes>
 
       </BrowserRouter>
