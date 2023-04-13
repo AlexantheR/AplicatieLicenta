@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap');body {
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap');
+
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -13,54 +15,60 @@ code {
     monospace;
 }
 
-.navbar-brand{
-  color:black !important;
+.navbar-brand {
+  color: black !important;
 }
 
-.nav-link{
-  color:black !important;
+.nav-link {
+  color: black !important;
 }
 
-h1{
-  font-size:20px !important;
+h1 {
+  font-size: 20px !important;
 }
 
-.flex-container{
-  display: flex !important;;
+.flex-container {
+  display: flex !important;
+  ;
 }
 
-.btnAdd{
-  background-color:red!important;
-  color:white!important;
+.btnAdd {
+  background-color: red !important;
+  color: white !important;
 }
 
-select{
+select {
   box-shadow: none !important;
   border-color: black !important;
 }
 
-.fa-plus{
+.fa-plus {
   color: green;
   margin: 5px;
-  
+
 }
 
-.fa-minus{
-  color:red;
+.fa-minus {
+  color: red;
   margin: 5px;
 }
 
-.fa-trash{
-  color:red;
+.fa-trash {
+  color: red;
   margin: 5px;
 }
 
-input{
+input {
   margin-top: 10px !important;
   box-shadow: none !important;
 }
 
-.btnRegister{
-  background-color:red!important;
-  color:white!important;
+.btnRegister {
+  background-color: red !important;
+  color: white !important;
+}
+
+.btnLogin {
+  background-color: red !important;
+  color: white !important;
 }
