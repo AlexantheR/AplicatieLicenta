@@ -19,7 +19,7 @@ export default function Cartscreen() {
                     {cartItems.map(item => {
                         return <div className='flex-container'>
 
-                            <div className='text-start m-1 w-100'>
+                            <div className='text-left m-1 w-100'>
                                 <h1>{item.name} [{item.variant}]</h1>
                                 <h1>Price: {item.quantity} * {item.prices[0][item.variant]} = {item.price}</h1>
                                 <h1 style={{ display: 'inline' }}>Quantity: </h1>
@@ -46,7 +46,7 @@ export default function Cartscreen() {
                     )}
                 </div>
 
-                <div className='col-md-4 text-end'>
+                <div className='col-md-4 text-right'>
                     <h2 style={{ fontSize: '40px' }}>Subtotal: {subtotal} RON </h2>
                     <button className='btnCheckout'>CHECKOUT</button>
                 </div>

@@ -26,7 +26,20 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
 
-            {currentUser ? (<li>{currentUser.name}</li>) : (
+            {currentUser ? (
+
+              <div className="dropdown show mt-2">
+                <a className="dropdown-toggle nav-link" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {currentUser.name}
+                </a>
+
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a className="dropdown-item" href="#">Orders</a>
+                  <a className="dropdown-item" href="#">Logout</a>
+                </div>
+              </div>
+
+            ) : (
               <li className="nav-item">
                 <a className="nav-link" href="/login">
                   Login
