@@ -67,9 +67,16 @@ input {
 .btnRegister {
   background-color: red !important;
   color: white !important;
+  display: flex;
 }
 
 .btnLogin {
   background-color: red !important;
   color: white !important;
+  display: flex;
+}
+
+.registerLoginLink{
+  color: black;
+  display: flex;
 }
