@@ -24,12 +24,14 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ml-auto">
 
             {currentUser ? (
 
               <div className="dropdown show mt-2">
-                <a className="dropdown-toggle nav-link" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a className="dropdown-toggle" type="button" style={{ color: "black" }}
+                  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
                   {currentUser.name}
                 </a>
 
