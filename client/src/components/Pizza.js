@@ -19,13 +19,13 @@ export default function Pizza({ pizza }) {
 
   return (
     <div
-      className="shadow p-3 mb-5 bg-white rounded"
+      className="shadow p-3 mb-5 bg-white rounded" 
     >
       <div onClick={handleShow}>
         <h1>{pizza.name}</h1>
         <img
           src={pizza.image}
-          className="img-fluid"
+          className="img-fluid" 
           style={{ height: "200px", width: "250px" }}
         />
       </div>

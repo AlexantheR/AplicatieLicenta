@@ -76,6 +76,11 @@ input {
   display: flex;
 }
 
+.btnPayNow{
+  background-color: red !important;
+  color: white !important;
+}
+
 .registerLoginLink{
   color: black;
   display: flex;
