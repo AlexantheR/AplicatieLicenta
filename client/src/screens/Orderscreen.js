@@ -4,9 +4,12 @@ import { getUserOrders } from '../actions/orderActions'
 import Loading from '../components/Loading'
 import Success from '../components/Success'
 import Error from '../components/Error'
+import AOS from 'aos'
+import 'aos/dist/aos.css';
 
 export default function Orderscreen() {
 
+  AOS.init()
   const dispatch = useDispatch()
   const orderstate = useSelector(state => state.getUserOrdersReducer)
   const { orders, error, loading } = orderstate

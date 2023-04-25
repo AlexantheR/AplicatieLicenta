@@ -4,11 +4,12 @@ import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
 import Navbar from './components/Navbar';
 import Homescreen from './screens/Homescreen';
-import { BrowserRouter, Routes, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cartscreen from './screens/Cartscreen';
 import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
 import Orderscreen from './screens/Orderscreen';
+import Adminscreen from './screens/Adminscreen'
 
 
 function App() {
@@ -17,15 +18,15 @@ function App() {
       <Navbar />
 
       <BrowserRouter>
-        <Routes>
-          <Route path='/' exact Component={Homescreen} />
-          <Route path='/cart' exact Component={Cartscreen} />
-          <Route path='/register' exact Component={Registerscreen} />
-          <Route path='/login' exact Component={Loginscreen} />
-          <Route path='/orders' exact Component={Orderscreen} />
-        </Routes>
-
-      </BrowserRouter>
+       
+          <Route path="/" exact component={Homescreen} />
+          <Route path="/cart" exact component={Cartscreen}/>
+          <Route path="/register" exact component={Registerscreen}/>
+          <Route path='/login' exact component={Loginscreen}/>
+          <Route path='/orders' exact component={Orderscreen}/>
+          <Route path='/admin' component={Adminscreen}/>
+       
+       </BrowserRouter>
 
     </div>
   );

@@ -15,12 +15,24 @@ code {
     monospace;
 }
 
+.navbar{
+  background-color: #E74646 !important;
+}
+
 .navbar-brand {
-  color: black !important;
+  color: #FFF3E2 !important;
 }
 
 .nav-link {
-  color: black !important;
+  color: #FFF3E2 !important;
+}
+
+.navbar-toggler{
+  color: #FFF3E2 !important;
+}
+
+.dropdown-toggle{
+  color: #FFF3E2 !important;
 }
 
 
@@ -34,7 +46,7 @@ h1 {
 }
 
 .btnAdd {
-  background-color: red !important;
+  background-color: #E74646 !important;
   color: white !important;
 }
 
@@ -50,12 +62,12 @@ select {
 }
 
 .fa-minus {
-  color: red;
+  color: #E74646;
   margin: 5px;
 }
 
 .fa-trash {
-  color: red;
+  color: #E74646;
   margin: 5px;
 }
 
@@ -65,23 +77,69 @@ input {
 }
 
 .btnRegister {
-  background-color: red !important;
+  background-color: #E74646 !important;
   color: white !important;
   display: flex;
 }
 
 .btnLogin {
-  background-color: red !important;
+  background-color: #E74646 !important;
   color: white !important;
   display: flex;
 }
 
-.btnPayNow{
-  background-color: red !important;
+.btnPayNow {
+  background-color: #E74646 !important;
   color: white !important;
 }
 
-.registerLoginLink{
+.btnFilter {
+  background-color: #E74646 !important;
+  color: white !important;
+}
+
+.btnDeliver{
+  background-color: #E74646 !important;
+  color: white !important;
+}
+
+.btnEditPizza{
+  background-color: #E74646 !important;
+  color: white !important;
+}
+
+.registerLoginLink {
   color: black;
   display: flex;
+}
+
+.login{
+  background-image: url('./images/b1.svg');
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  height:90vh;
+}
+.register{
+  background-image: url('./images/b2.svg');
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  height:90vh;
+}
+
+.adminfunctions{
+  padding: 10px;
+  background-color:rgb(1, 1, 77);
+}
+
+.adminfunctions li{
+  list-style-type: none !important; 
+  display: inline !important;
+  color: white !important;
+}
+.adminfunctions li a{
+   color: white !important;
+   padding: 20px;
+}
+td , th , tr{
+  text-align:left;
 }
