@@ -143,3 +143,11 @@ input {
 td , th , tr{
   text-align:left;
 }
+
+.responsiveImg{
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  float: left;
+  margin-left: 200px;
+}

@@ -9,7 +9,9 @@ import Cartscreen from './screens/Cartscreen';
 import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
 import Orderscreen from './screens/Orderscreen';
-import Adminscreen from './screens/Adminscreen'
+import Adminscreen from './screens/Adminscreen';
+import FirstPage from './screens/FirstPage';
+import DrinksMenu from './screens/DrinksMenu';
 
 
 function App() {
@@ -18,15 +20,15 @@ function App() {
       <Navbar />
 
       <BrowserRouter>
-       
-          <Route path="/" exact component={Homescreen} />
-          <Route path="/cart" exact component={Cartscreen}/>
-          <Route path="/register" exact component={Registerscreen}/>
-          <Route path='/login' exact component={Loginscreen}/>
-          <Route path='/orders' exact component={Orderscreen}/>
-          <Route path='/admin' component={Adminscreen}/>
-       
-       </BrowserRouter>
+        <Route path="/" exact component={FirstPage} />
+        <Route path="/homescreen" exact component={Homescreen} />
+        <Route path="/cart" exact component={Cartscreen} />
+        <Route path="/register" exact component={Registerscreen} />
+        <Route path='/login' exact component={Loginscreen} />
+        <Route path='/orders' exact component={Orderscreen} />
+        <Route path='/admin' component={Adminscreen} />
+        <Route path='/drinks' exact component={DrinksMenu} />
+      </BrowserRouter>
 
     </div>
   );

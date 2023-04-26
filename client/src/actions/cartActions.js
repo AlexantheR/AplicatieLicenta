@@ -35,3 +35,41 @@ export const deleteFromCart = (pizza) => (dispatch, getState) => {
     const cartItems = getState().cartReducer.cartItems
     localStorage.setItem('cartItems', JSON.stringify(cartItems))
 }
+
+
+
+
+export const addToDrinksCart = (drink, quantity) => (dispatch, getState) => {
+    
+        var cartItem = {
+            name: drink.name,
+            _id: drink._id,
+            quantity: Number(quantity),
+            price: drink.price * quantity
+        }
+    
+        if (cartItem.quantity > 10) {
+            alert("You can not add more than 10 drinks!")
+        }
+    
+        else {
+            if (cartItem.quantity <= 0) {
+                dispatch({ type: 'DELETE_FROM_CART', payload: drink })
+            }
+            else {
+                dispatch({ type: 'ADD_TO_CART', payload: cartItem })
+            }
+    
+        }
+    
+        const cartItems = getState().cartReducer.cartItems
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    
+    }
+
+    export const deleteDrinkFromCart = (drink) => (dispatch, getState) => {
+
+        dispatch({ type: 'DELETE_FROM_CART', payload: drink })
+        const cartItems = getState().cartReducer.cartItems
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    }
