@@ -48,8 +48,8 @@ export const addToDrinksCart = (drink, quantity) => (dispatch, getState) => {
             price: drink.price * quantity
         }
     
-        if (cartItem.quantity > 10) {
-            alert("You can not add more than 10 drinks!")
+        if (cartItem.quantity > 20) {
+            alert("You can not add more than 20 drinks!")
         }
     
         else {

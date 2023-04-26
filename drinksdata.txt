@@ -5,7 +5,7 @@
  "category":"Racoritoare"
 },{
 
-  "name":"Coca-Cola",
+  "name":"Coca-Cola 330ml",
  "price": 8,
  "category":"Racoritoare"
 },{
