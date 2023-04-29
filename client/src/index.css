@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Raleway', sans-serif !important;
+  overflow-x: hidden ;  
 }
 
 code {
@@ -146,8 +147,9 @@ td , th , tr{
 
 .responsiveImg{
   width: 100%;
-  max-width: 500px;
+  max-width: 30em;
   height: auto;
   float: left;
-  margin-left: 200px;
+  margin-left: 12em;
+  margin-top: 2em;
 }

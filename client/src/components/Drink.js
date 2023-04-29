@@ -4,7 +4,7 @@ import { addToDrinksCart } from "../actions/cartActions";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-export default function Drinks({ drink }) {
+export default function Drink({ drink }) {
     AOS.init({
 
     })

@@ -3,7 +3,7 @@ import './App.css';
 import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
 import Navbar from './components/Navbar';
-import Homescreen from './screens/Homescreen';
+import PizzaMenu from './screens/PizzaMenu';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cartscreen from './screens/Cartscreen';
 import Registerscreen from './screens/Registerscreen';
@@ -21,7 +21,7 @@ function App() {
 
       <BrowserRouter>
         <Route path="/" exact component={FirstPage} />
-        <Route path="/homescreen" exact component={Homescreen} />
+        <Route path="/PizzaMenu" exact component={PizzaMenu} />
         <Route path="/cart" exact component={Cartscreen} />
         <Route path="/register" exact component={Registerscreen} />
         <Route path='/login' exact component={Loginscreen} />

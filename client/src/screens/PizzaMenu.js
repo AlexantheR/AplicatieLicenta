@@ -6,7 +6,7 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import Filter from "../components/Filter";
 
-export default function Homescreen() {
+export default function PizzaMenu() {
 
   const dispatch = useDispatch();
 
