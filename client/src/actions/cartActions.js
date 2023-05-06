@@ -45,7 +45,8 @@ export const addToDrinksCart = (drink, quantity) => (dispatch, getState) => {
             name: drink.name,
             _id: drink._id,
             quantity: Number(quantity),
-            price: drink.price * quantity
+            prices : drink.prices,
+            price: drink.prices[0] * quantity
         }
     
         if (cartItem.quantity > 20) {

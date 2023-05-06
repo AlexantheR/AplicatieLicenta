@@ -5,10 +5,7 @@ const drinkSchema = mongoose.Schema({
         type: String,
         require,
     },
-    price: {
-        type: Number,
-        require,
-    },
+    prices : [],
     category: {
         type: String,
         require,

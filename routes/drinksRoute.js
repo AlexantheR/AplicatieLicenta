@@ -18,8 +18,8 @@ router.post("/adddrink", async (req, res) => {
     try {
         const newdrink = new Drink({
             name: drink.name,
-            price: drink.price,
-            category: drink.category
+            prices: [drink.prices],
+            category: drink.category,
         })
         await newdrink.save()
         res.send('New Drink Added Successfully')
@@ -50,7 +50,7 @@ router.post("/editdrink", async (req, res) => {
         const drink = await Drink.findOne({ _id: editeddrink._id })
 
         drink.name = editeddrink.name,
-            drink.price = editeddrink.price,
+            drink.prices = [editeddrink.prices],
             drink.category = editeddrink.category
 
         await drink.save()

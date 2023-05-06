@@ -51,7 +51,7 @@ export default function Drink({ drink }) {
             <div className="flex-container">
                 <div className="m-1 w-100">
                     <h1 className="mt-1">
-                        Price: {drink.price * quantity} RON
+                        Price: {drink.prices[0] * quantity} RON
                     </h1>
                 </div>
 
