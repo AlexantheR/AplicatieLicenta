@@ -17,24 +17,55 @@ code {
 }
 
 .navbar{
-  background-color: #E74646 !important;
+  width: 100%;
+  background-color: #e74646 !important;
+}
+
+
+
+.navbarButtons{
+  display: flex !important;
+}
+
+.navbarPageLinks{
+  display: inline-flex !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.nav-link {
+  color: #f7d3ae !important;
 }
 
 .navbar-brand {
   color: #FFF3E2 !important;
 }
 
+.dropdown-toggle{
+  color: #f7d3ae !important;
+}
+/* 
+
+
+
+.nav-buttons{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  grid-gap: 20px !important;
+  margin-left:auto;
+  margin-right: auto;
+}
+
 .nav-link {
   color: #FFF3E2 !important;
 }
 
-.navbar-toggler{
+.navbar-toggler-icon{
   color: #FFF3E2 !important;
 }
 
-.dropdown-toggle{
-  color: #FFF3E2 !important;
-}
+
+} */
 
 
 h1 {
@@ -43,12 +74,18 @@ h1 {
 
 .flex-container {
   display: flex !important;
-  ;
+}
+
+.drink-grid-container{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-gap: 20px !important;
 }
 
 .btnAdd {
   background-color: #E74646 !important;
   color: white !important;
+
 }
 
 select {
@@ -141,6 +178,7 @@ input {
    color: white !important;
    padding: 20px;
 }
+
 td , th , tr{
   text-align:left;
 }

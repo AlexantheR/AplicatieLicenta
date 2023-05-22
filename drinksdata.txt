@@ -2,10 +2,30 @@
 
  "name":"Apa plata 330ml",
  "prices": [7],
+ "category":"Apa"
+},{
+
+ "name":"Apa minerala 330ml",
+ "prices": [7],
+ "category":"Apa"
+},{
+
+ "name":"Coca-Cola 330ml",
+ "prices": [8],
  "category":"Racoritoare"
 },{
 
-  "name":"Coca-Cola 330ml",
+ "name":"Coca-Cola Zero 330ml",
+ "prices": [8],
+ "category":"Racoritoare"
+},{
+
+ "name":"Sprite 330ml",
+ "prices": [8],
+ "category":"Racoritoare"
+},{
+
+ "name":"Fanta 330ml",
  "prices": [8],
  "category":"Racoritoare"
 },{
@@ -13,11 +33,6 @@
  "name":"Carlsberg Draught 400ml",
  "prices": [16.9],
  "category":"Bere"
-},{
-
- "name":"Apa minerala 330ml",
- "prices": [7],
- "category":"Racoritoare"
 },{
 
  "name":"Heineken Draught 400ml",
@@ -28,4 +43,10 @@
  "name":"Limonada 300ml",
  "prices": [10],
  "category":"Racoritoare"
-}]
+},{
+ "name":"Limonada cu menta 300ml",
+ "prices": [12],
+ "category":"Racoritoare"
+}
+
+]

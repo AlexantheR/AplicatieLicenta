@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToDrinksCart } from "../actions/cartActions";
 import AOS from 'aos';
@@ -10,10 +10,6 @@ export default function Drink({ drink }) {
     })
 
     const [quantity, setQuantity] = useState(1);
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     const dispatch = useDispatch();
 
@@ -24,16 +20,15 @@ export default function Drink({ drink }) {
     return (
         <div
             data-aos='zoom-in'
-            className="shadow p-3 mb-5 bg-white rounded"
+            className="shadow p-3 mb-4 bg-white rounded"
             key={drink._id}
         >
-            <div onClick={handleShow}>
+            <div>
                 <h1>{drink.name}</h1>
             </div>
 
-            <div className="flex-container">
-                <div className="m-1 w-100">
-                    <p>Quantity</p>
+            <div className="drink-grid-container">
+                <div className="m-1 w-70">
                     <select
                         className="form-control"
                         value={quantity}
@@ -45,18 +40,11 @@ export default function Drink({ drink }) {
                             return <option value={i + 1}>{i + 1}</option>;
                         })}
                     </select>
-                </div>
-            </div>
 
-            <div className="flex-container">
-                <div className="m-1 w-100">
-                    <h1 className="mt-1">
-                        Price: {drink.prices[0] * quantity} RON
-                    </h1>
                 </div>
 
                 <div className="m-1 w-100">
-                    <button onClick={addtodrinkscart} className="btnAdd">Add to cart</button>
+                    <button onClick={addtodrinkscart} className="btnAdd">{drink.prices[0] * quantity} RON</button>
                 </div>
             </div>
         </div>

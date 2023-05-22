@@ -4,7 +4,7 @@ import Drink from "../components/Drink";
 import { getAllDrinks } from "../actions/drinkActions";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import Filter from "../components/Filter";
+import FilterDrinks from "../components/FilterDrinks";
 
 export default function DrinksMenu() {
 
@@ -20,7 +20,7 @@ export default function DrinksMenu() {
 
     return (
         <div>
-            <Filter />
+            <FilterDrinks />
             <div className="row justify-content-center" >
 
                 {loading ? (
