@@ -141,7 +141,7 @@ export default function Editpizza({ match }) {
                             setimage(e.target.value);
                         }}
                     />
-                    <button className="btnEditPizza mt-3" type="submit">
+                    <button className="btnEdit mt-3" type="submit">
                         Edit Pizza
                     </button>
                 </form>

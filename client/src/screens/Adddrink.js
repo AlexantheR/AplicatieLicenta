@@ -1,51 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { addPizza } from "../actions/pizzaActions";
+import { addDrink } from "../actions/drinkActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from '../components/Success'
-export default function Addpizza() {
+
+
+export default function Adddrink() {
     const [name, setname] = useState("");
-    const [smallprice, setsmallprice] = useState();
-    const [mediumprice, setmediumprice] = useState();
-    const [largeprice, setlargeprice] = useState();
+    const [prices, setprices] = useState();
     const [image, setimage] = useState("");
-    const [description, setdescription] = useState("");
     const [category, setcategory] = useState("");
 
     const dispatch = useDispatch()
+    const adddrinkstate = useSelector(state => state.addDrinkReducer)
+    const { success, error, loading } = adddrinkstate
 
-    const addpizzastate = useSelector(state => state.addPizzaReducer)
-    const { success, error, loading } = addpizzastate
     function formHandler(e) {
 
         e.preventDefault();
 
-        const pizza = {
+        const drink = {
             name,
             image,
-            description,
             category,
             prices: {
-                small: smallprice,
-                medium: mediumprice,
-                large: largeprice
+                prices
             }
         }
 
-        console.log(pizza);
-        dispatch(addPizza(pizza));
-
+        console.log(drink);
+        dispatch(addDrink(drink));
     }
 
     return (
         <div>
             <div className='text-left shadow-lg p-3 mb-5 bg-white rounded'>
-                <h1>Add Pizza</h1>
+                <h1>Add Drink</h1>
 
                 {loading && (<Loading />)}
                 {error && (<Error error='Something went wrong' />)}
-                {success && (<Success success='New Pizza added successfully' />)}
+                {success && (<Success success='New Drink added successfully' />)}
 
                 <form onSubmit={formHandler}>
                     <input
@@ -60,28 +55,10 @@ export default function Addpizza() {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="small variant price"
-                        value={smallprice}
+                        placeholder="price"
+                        value={prices}
                         onChange={(e) => {
-                            setsmallprice(e.target.value);
-                        }}
-                    />
-                    <input
-                        className="form-control"
-                        type="text"
-                        placeholder="medium variant price"
-                        value={mediumprice}
-                        onChange={(e) => {
-                            setmediumprice(e.target.value);
-                        }}
-                    />
-                    <input
-                        className="form-control"
-                        type="text"
-                        placeholder="large variant price"
-                        value={largeprice}
-                        onChange={(e) => {
-                            setlargeprice(e.target.value);
+                            setprices(e.target.value);
                         }}
                     />
                     <input
@@ -96,24 +73,15 @@ export default function Addpizza() {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="description"
-                        value={description}
-                        onChange={(e) => {
-                            setdescription(e.target.value);
-                        }}
-                    />
-                    <input
-                        className="form-control"
-                        type="text"
                         placeholder="image url"
                         value={image}
                         onChange={(e) => {
                             setimage(e.target.value);
                         }}
                     />
-                    <button className='btnAdd mt-3' type='submit'>Add Pizza</button>
+                    <button type="submit" className="btnAdd mt-3">Add Drink</button>
                 </form>
             </div>
         </div>
-    );
+    )
 }

@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deletePizza, getAllPizzas } from "../actions/pizzaActions";
+import { deleteDrink, getAllDrinks } from "../actions/drinkActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
-export default function Pizzaslist() {
+
+
+export default function Drinkslist() {
     const dispatch = useDispatch();
 
-    const pizzasstate = useSelector((state) => state.getAllPizzasReducer);
+    const drinksstate = useSelector((state) => state.getAllDrinksReducer);
 
-    const { pizzas, error, loading } = pizzasstate;
+    const { drinks, error, loading } = drinksstate;
     useEffect(() => {
-        dispatch(getAllPizzas());
-    }, []);
+        dispatch(getAllDrinks());
+    }
+        , []);
+
     return <div>
-        <h2>Pizzas List</h2>
+        <h2>Drinks List</h2>
         {loading && (<Loading />)}
         {error && (<Error error='Something went wrong' />)}
 
@@ -29,30 +33,24 @@ export default function Pizzaslist() {
                 </tr>
             </thead>
             <tbody>
-                {pizzas && pizzas.map(pizza => {
+                {drinks && drinks.map(drink => {
 
                     return <tr>
-                        <td>{pizza.name}</td>
+                        <td>{drink.name}</td>
                         <td>
-
-                            Small : {pizza.prices[0]['small']} <br />
-                            Medium : {pizza.prices[0]['medium']} <br />
-                            Large : {pizza.prices[0]['large']}
-
+                            {drink.prices[0]}
                         </td>
-                        <td>{pizza.category}</td>
+                        <td>{drink.category}</td>
                         <td>
-                            <i className='fa fa-trash m-1' onClick={() => { dispatch(deletePizza(pizza._id)) }}></i>
-                            <Link to={`/admin/editpizza/${pizza._id}`}><i className='fa fa-edit m-1'></i></Link>
+                            <i className='fa fa-trash m-1' onClick={() => { dispatch(deleteDrink(drink._id)) }}></i>
+                            <Link to={`/admin/editdrink/${drink._id}`}><i className='fa fa-edit m-1'></i></Link>
                         </td>
 
                     </tr>
 
-                })}
+                }
+                )}
             </tbody>
-
         </table>
-
-
-    </div>;
+    </div>
 }

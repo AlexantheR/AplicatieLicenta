@@ -8,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Raleway', sans-serif !important;
-  overflow-x: hidden ;  
+  overflow-x: hidden ;
 }
 
 code {
@@ -85,7 +85,6 @@ h1 {
 .btnAdd {
   background-color: #E74646 !important;
   color: white !important;
-
 }
 
 select {
@@ -141,10 +140,11 @@ input {
   color: white !important;
 }
 
-.btnEditPizza{
+.btnEdit{
   background-color: #E74646 !important;
   color: white !important;
 }
+
 
 .registerLoginLink {
   color: black;
