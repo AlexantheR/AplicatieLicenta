@@ -24,9 +24,7 @@ export default function Adddrink() {
             name,
             image,
             category,
-            prices: {
-                prices
-            }
+            prices,
         }
 
         console.log(drink);

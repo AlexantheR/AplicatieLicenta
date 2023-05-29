@@ -20,6 +20,7 @@ export default function FilterDrinks() {
                         <option value="all">All</option>
                         <option value="apa">Apa</option>
                         <option value="racoritoare">Racoritoare</option>
+                        <option value="energizant">Energizant</option>
                         <option value="bere">Bere</option>
                     </select>
                 </div>
