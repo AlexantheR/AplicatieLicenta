@@ -1,33 +1,64 @@
 const drinks = [{
 
     name: "Apa plata 330ml",
-    pricess: [7],
-    category: "Racoritoare"
-}, {
-
-    name: "Coca-Cola 330ml",
-    prices: [8],
-    category: "Racoritoare"
-}, {
-
-    name: "Carlsberg Draught 400ml",
-    prices: [16.9],
-    category: "Bere"
+    prices: [7],
+    category: "Apa",
+    image: "https://w7.pngwing.com/pngs/158/660/png-transparent-mineral-water-water-bottles-bottled-water-distilled-water-carbonated-water-water-body-plastic-bottle-drinking-water-pepsi-bottling-group.png"
 }, {
 
     name: "Apa minerala 330ml",
     prices: [7],
-    category: "Racoritoare"
+    category: "Apa",
+    image: "https://w7.pngwing.com/pngs/158/660/png-transparent-mineral-water-water-bottles-bottled-water-distilled-water-carbonated-water-water-body-plastic-bottle-drinking-water-pepsi-bottling-group.png"
+}, {
+
+    name: "Coca-Cola 330ml",
+    prices: [8],
+    category: "Racoritoare",
+    image: "https://p7.hiclipart.com/preview/1019/539/615/coca-cola-zero-soft-drink-diet-coke-coca-cola.jpg"
+}, {
+
+    name: "Coca-Cola Zero 330ml",
+    prices: [8],
+    category: "Racoritoare",
+    image: "https://www.pngfind.com/pngs/m/161-1614737_coca-cola-zero-0-5-coca-cola-zero.png"
+}, {
+
+    name: "Sprite 330ml",
+    prices: [8],
+    category: "Racoritoare",
+    image: "https://toppng.com/uploads/preview/sprite-png-background-image-sprite-2-litros-11563213791va1ufu6ssi.png"
+}, {
+
+    name: "Fanta 330ml",
+    prices: [8],
+    category: "Racoritoare",
+    image: "https://www.vhv.rs/dpng/d/571-5712363_fanta-png-transparent-fanta-bottle-png-png-download.png"
+}, {
+
+    name: "Carlsberg Draught 400ml",
+    prices: [16.9],
+    category: "Bere",
+    image: "https://w7.pngwing.com/pngs/740/273/png-transparent-beer-cocktail-pint-glass-carlsberg-group-lager-carlsberg-glass-j-c-jacobsen-highball-glass.png"
 }, {
 
     name: "Heineken Draught 400ml",
     prices: [17.9],
-    category: "Bere"
+    category: "Bere",
+    image: "https://w7.pngwing.com/pngs/740/273/png-transparent-beer-cocktail-pint-glass-carlsberg-group-lager-carlsberg-glass-j-c-jacobsen-highball-glass.png"
 }, {
 
     name: "Limonada 300ml",
-    prices: 10,
-    category: "Racoritoare"
-}];
+    prices: [10],
+    category: "Racoritoare",
+    image: "https://www.vhv.rs/dpng/d/416-4165725_glass-of-lemonade-png-transparent-png.png"
+}, {
+    name: "Limonada cu menta 300ml",
+    prices: [12],
+    category: "Racoritoare",
+    image: "https://www.pngarts.com/files/4/Lemonade-PNG-Image-Transparent-Background.png"
+}
+
+];
 
 export default drinks;

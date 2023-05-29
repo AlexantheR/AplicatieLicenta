@@ -185,9 +185,11 @@ td , th , tr{
 
 .responsiveImg{
   width: 100%;
-  max-width: 30em;
+  max-width: 500px;
   height: auto;
-  float: left;
-  margin-left: 12em;
   margin-top: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  object-fit: cover;
+  object-position: bottom;
 }

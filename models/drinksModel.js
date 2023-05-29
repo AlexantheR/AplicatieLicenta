@@ -5,11 +5,15 @@ const drinkSchema = mongoose.Schema({
         type: String,
         require,
     },
-    prices : [],
+    prices: [],
     category: {
         type: String,
         require,
-    }
+    },
+    image: {
+        type: String,
+        require,
+    },
 },
     {
         timestamps: true,

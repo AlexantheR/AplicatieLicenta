@@ -2,51 +2,61 @@
 
  "name":"Apa plata 330ml",
  "prices": [7],
- "category":"Apa"
+ "category":"Apa",
+ "image":"https://purepng.com/public/uploads/large/purepng.com-ice-water-bottle-aquafinabottle-water-drink-aquafina-9415246348499t1u0.png"
 },{
 
  "name":"Apa minerala 330ml",
  "prices": [7],
- "category":"Apa"
+ "category":"Apa",
+ "image":"https://purepng.com/public/uploads/large/purepng.com-ice-water-bottle-aquafinabottle-water-drink-aquafina-9415246348499t1u0.png"
 },{
 
  "name":"Coca-Cola 330ml",
  "prices": [8],
- "category":"Racoritoare"
+ "category":"Racoritoare",
+ "image":"https://p7.hiclipart.com/preview/1019/539/615/coca-cola-zero-soft-drink-diet-coke-coca-cola.jpg"
 },{
 
  "name":"Coca-Cola Zero 330ml",
  "prices": [8],
- "category":"Racoritoare"
+ "category":"Racoritoare",
+ "image":"https://www.pngfind.com/pngs/m/161-1614737_coca-cola-zero-0-5-coca-cola-zero.png"
 },{
 
  "name":"Sprite 330ml",
  "prices": [8],
- "category":"Racoritoare"
+ "category":"Racoritoare",
+ "image":"https://toppng.com/uploads/preview/sprite-png-background-image-sprite-2-litros-11563213791va1ufu6ssi.png"
 },{
 
  "name":"Fanta 330ml",
  "prices": [8],
- "category":"Racoritoare"
+ "category":"Racoritoare",
+ "image":"https://www.vhv.rs/dpng/d/571-5712363_fanta-png-transparent-fanta-bottle-png-png-download.png"
 },{
 
  "name":"Carlsberg Draught 400ml",
  "prices": [16.9],
- "category":"Bere"
+ "category":"Bere",
+ "image":"https://w7.pngwing.com/pngs/740/273/png-transparent-beer-cocktail-pint-glass-carlsberg-group-lager-carlsberg-glass-j-c-jacobsen-highball-glass.png"
 },{
 
  "name":"Heineken Draught 400ml",
  "prices": [17.9],
- "category":"Bere"
+ "category":"Bere",
+ "image":"https://w7.pngwing.com/pngs/740/273/png-transparent-beer-cocktail-pint-glass-carlsberg-group-lager-carlsberg-glass-j-c-jacobsen-highball-glass.png"
 },{
 
  "name":"Limonada 300ml",
  "prices": [10],
- "category":"Racoritoare"
+ "category":"Racoritoare",
+ "image":"https://www.vhv.rs/dpng/d/416-4165725_glass-of-lemonade-png-transparent-png.png"
 },{
  "name":"Limonada cu menta 300ml",
  "prices": [12],
- "category":"Racoritoare"
+ "category":"Racoritoare",
+ "image":"https://www.pngarts.com/files/4/Lemonade-PNG-Image-Transparent-Background.png"
 }
 
 ]

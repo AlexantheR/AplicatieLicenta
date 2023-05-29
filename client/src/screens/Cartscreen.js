@@ -21,8 +21,7 @@ export default function Cartscreen() {
                     <h2 style={{ fontSize: '40px' }}>My cart</h2>
 
                     {cartItems.map(item => {
-                        if(!item.name.includes('ml')) 
-                        {
+                        if (!item.name.includes('ml')) {
                             return <div className='flex-container'>
 
                                 <div className='text-left m-1 w-100'>
@@ -50,25 +49,28 @@ export default function Cartscreen() {
                         } else {
                             return <div className='flex-container'>
 
-                            <div className='text-left m-1 w-100'>
-                                <h1>{item.name}</h1>
-                                <h1>Price: {item.quantity} * {item.prices[0]} = {item.price}</h1>
-                                <h1 style={{ display: 'inline' }}>Quantity: </h1>
-                                <i className="fa-solid fa-plus" aria-hidden='true' onClick={() => {
-                                    dispatch(addToDrinksCart(item, item.quantity + 1))
-                                }}></i>
-                                <b>{item.quantity}</b>
-                                <i className="fa-solid fa-minus" onClick={() => {
-                                    dispatch(addToDrinksCart(item, item.quantity - 1))
-                                }}></i>
-                                <hr></hr>
-                            </div>
+                                <div className='text-left m-1 w-100'>
+                                    <h1>{item.name}</h1>
+                                    <h1>Price: {item.quantity} * {item.prices[0]} = {item.price}</h1>
+                                    <h1 style={{ display: 'inline' }}>Quantity: </h1>
+                                    <i className="fa-solid fa-plus" aria-hidden='true' onClick={() => {
+                                        dispatch(addToDrinksCart(item, item.quantity + 1))
+                                    }}></i>
+                                    <b>{item.quantity}</b>
+                                    <i className="fa-solid fa-minus" onClick={() => {
+                                        dispatch(addToDrinksCart(item, item.quantity - 1))
+                                    }}></i>
+                                    <hr></hr>
+                                </div>
 
-
-                            <div className='m-1 w-100'>
-                                <i className="fa-solid fa-trash mt-5" onClick={() => { dispatch(deleteDrinkFromCart(item)) }}></i>
+                                <div className='m-1 w-100'>
+                                    <img src={item.image} style={{ height: '100px' }}></img>
+                                </div>
+                                
+                                <div className='m-1 w-100'>
+                                    <i className="fa-solid fa-trash mt-5" onClick={() => { dispatch(deleteDrinkFromCart(item)) }}></i>
+                                </div>
                             </div>
-                        </div>
                         }
                     }
 

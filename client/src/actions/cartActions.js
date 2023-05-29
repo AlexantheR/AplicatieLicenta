@@ -44,6 +44,7 @@ export const addToDrinksCart = (drink, quantity) => (dispatch, getState) => {
         var cartItem = {
             name: drink.name,
             _id: drink._id,
+            image: drink.image,
             quantity: Number(quantity),
             prices : drink.prices,
             price: drink.prices[0] * quantity

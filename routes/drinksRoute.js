@@ -18,6 +18,7 @@ router.post("/adddrink", async (req, res) => {
     try {
         const newdrink = new Drink({
             name: drink.name,
+            image: drink.image,
             prices: [drink.prices],
             category: drink.category,
         })
@@ -51,6 +52,7 @@ router.post("/editdrink", async (req, res) => {
 
         drink.name = editeddrink.name,
             drink.prices = [editeddrink.prices],
+            drink.image = editeddrink.image,
             drink.category = editeddrink.category
 
         await drink.save()

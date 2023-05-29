@@ -25,6 +25,12 @@ export default function Drink({ drink }) {
         >
             <div>
                 <h1>{drink.name}</h1>
+
+                <img
+                    src={drink.image}
+                    className="img-fluid"
+                    style={{ height: "200px", width: "250px" }}
+                />
             </div>
 
             <div className="drink-grid-container">
