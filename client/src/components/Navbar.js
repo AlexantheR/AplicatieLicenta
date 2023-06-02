@@ -24,7 +24,8 @@ function NavigationBar() {
 
             <div className="navbarPageLinks">
               <Nav.Link href="/pizzamenu">Pizza</Nav.Link>
-              <Nav.Link href="/drinks">Drinks</Nav.Link>
+              <Nav.Link href="/drinks">Bauturi</Nav.Link>
+              <Nav.Link href="/book">Rezervare</Nav.Link>
             </div>
           </Nav>
 
