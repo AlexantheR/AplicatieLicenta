@@ -19,10 +19,9 @@ import ThankYou from './screens/ThankYou';
 
 
 function App() {
-  const [page, setPage] = useState(0);
   return (
     <div className="App">
-      <Navbar setPage={setPage}/>
+      <Navbar/>
 
       <BrowserRouter>
         <Route path="/" exact component={FirstPage} />
@@ -33,11 +32,9 @@ function App() {
         <Route path='/orders' exact component={Orderscreen} />
         <Route path='/admin' component={Adminscreen} />
         <Route path='/drinks' exact component={DrinksMenu} />
-
-        {page === 0 ? <MainBook setPage={setPage} /> : null}
-        {page === 1 ? <Book setPage={setPage} /> : null}
-        {page === 2 ? <ThankYou setPage={setPage} /> : null}
-
+        <Route path='/mainbook' exact component={MainBook} />   
+        <Route path='/book' exact component={Book} /> 
+        <Route path='/thankyou' exact component={ThankYou} />     
       </BrowserRouter>
 
     </div>

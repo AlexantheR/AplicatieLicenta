@@ -1,1 +1,124 @@
-{"tables":[{"name":"Table 1","capacity":2,"isAvailable":true,"location":"Terasa"},{"name":"Table 2","capacity":5,"isAvailable":true,"location":"Terasa"},{"name":"Table 3","capacity":6,"isAvailable":true,"location":"Interior"},{"name":"Table 4","capacity":7,"isAvailable":true,"location":"Interior"},{"name":"Table 5","capacity":6,"isAvailable":true,"location":"Terasa"},{"name":"Table 6","capacity":3,"isAvailable":true,"location":"Terasa"},{"name":"Table 7","capacity":5,"isAvailable":true,"location":"Bar"},{"name":"Table 8","capacity":6,"isAvailable":true,"location":"Interior"},{"name":"Table 9","capacity":7,"isAvailable":true,"location":"Interior"},{"name":"Table 10","capacity":5,"isAvailable":true,"location":"Terasa"},{"name":"Table 11","capacity":4,"isAvailable":true,"location":"Interior"},{"name":"Table 12","capacity":7,"isAvailable":true,"location":"Interior"},{"name":"Table 13","capacity":7,"isAvailable":true,"location":"Bar"},{"name":"Table 14","capacity":2,"isAvailable":true,"location":"Terasa"},{"name":"Table 15","capacity":2,"isAvailable":true,"location":"Interior"},{"name":"Table 16","capacity":7,"isAvailable":true,"location":"Interior"},{"name":"Table 17","capacity":3,"isAvailable":true,"location":"Interior"},{"name":"Table 18","capacity":4,"isAvailable":true,"location":"Bar"},{"name":"Table 19","capacity":7,"isAvailable":true,"location":"Bar"},{"name":"Table 20","capacity":3,"isAvailable":true,"location":"Interior"},{"name":"Table 21","capacity":6,"isAvailable":true,"location":"Bar"},{"name":"Table 22","capacity":3,"isAvailable":true,"location":"Terasa"}]}
+{
+    "tables": [
+        {
+            "name": "Table 1",
+            "capacity": 6,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 2",
+            "capacity": 6,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 3",
+            "capacity": 2,
+            "isAvailable": true,
+            "location": "Bar"
+        },
+        {
+            "name": "Table 4",
+            "capacity": 6,
+            "isAvailable": true,
+            "location": "Inside"
+        },
+        {
+            "name": "Table 5",
+            "capacity": 5,
+            "isAvailable": true,
+            "location": "Inside"
+        },
+        {
+            "name": "Table 6",
+            "capacity": 2,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 7",
+            "capacity": 2,
+            "isAvailable": true,
+            "location": "Bar"
+        },
+        {
+            "name": "Table 8",
+            "capacity": 3,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 9",
+            "capacity": 2,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 10",
+            "capacity": 2,
+            "isAvailable": true,
+            "location": "Bar"
+        },
+        {
+            "name": "Table 11",
+            "capacity": 2,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 12",
+            "capacity": 7,
+            "isAvailable": true,
+            "location": "Bar"
+        },
+        {
+            "name": "Table 13",
+            "capacity": 4,
+            "isAvailable": true,
+            "location": "Inside"
+        },
+        {
+            "name": "Table 14",
+            "capacity": 4,
+            "isAvailable": true,
+            "location": "Inside"
+        },
+        {
+            "name": "Table 15",
+            "capacity": 5,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 16",
+            "capacity": 4,
+            "isAvailable": true,
+            "location": "Bar"
+        },
+        {
+            "name": "Table 17",
+            "capacity": 2,
+            "isAvailable": true,
+            "location": "Bar"
+        },
+        {
+            "name": "Table 18",
+            "capacity": 4,
+            "isAvailable": true,
+            "location": "Patio"
+        },
+        {
+            "name": "Table 19",
+            "capacity": 5,
+            "isAvailable": true,
+            "location": "Inside"
+        },
+        {
+            "name": "Table 20",
+            "capacity": 7,
+            "isAvailable": true,
+            "location": "Bar"
+        }
+    ]
+}

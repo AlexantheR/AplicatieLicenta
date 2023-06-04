@@ -1,7 +1,9 @@
 import React from "react";
-import { Row, Col, Button } from "reactstrap";
+import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Row, Col } from "reactstrap";
 
 export default props => {
+
   return (
     <div>
       <Row noGutters className="text-center align-items-center pizza-cta">
@@ -10,15 +12,12 @@ export default props => {
             If you're looking for great pizza
             <i className="fas fa-pizza-slice pizza-slice"></i>
           </p>
-          <Button
-            color="none"
+          <Link
             className="book-table-btn"
-            onClick={_ => {
-              props.setPage(1);
-            }}
+            to="/book"
           >
             Book a Table
-          </Button>
+          </Link>
         </Col>
       </Row>
       <Row noGutters className="text-center big-img-container">

@@ -8,7 +8,7 @@ for (i = 1; i < numTables; i++) {
   const chairs = Math.floor(Math.random() * 6) + 2; // 2-8 (exclusive)
   const name = `Table ${i}`;
   // const availability = [true, false][Math.round(Math.random())];
-  const location = ["Terasa", "Interior", "Bar"][Math.floor(Math.random() * 3)]; // 0-3 (exclusive)
+  const location = ["Patio", "Inside", "Bar"][Math.floor(Math.random() * 3)]; // 0-3 (exclusive)
   fakeTables.push({
     name: name,
     capacity: chairs,
