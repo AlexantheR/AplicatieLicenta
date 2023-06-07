@@ -41,7 +41,8 @@ function NavigationBar() {
                 </a>
 
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a className="dropdown-item" href="/orders">Orders</a>
+                  <a className="dropdown-item" href="/orders">Orders</a>{
+                  (currentUser.isAdmin==1 ? (<a className="dropdown-item" href="/admin">Admin panel</a>):null)}                  
                   <a className="dropdown-item" href="#"
                     onClick={() => { dispatch(logoutUser()) }}>
                     <li>Logout</li></a>

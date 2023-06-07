@@ -4,6 +4,7 @@ import { registerUser } from "../actions/userActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from '../components/Success'
+
 export default function Registerscreen() {
     const [name, setname] = useState("");
     const [email, setemail] = useState("");
@@ -12,9 +13,10 @@ export default function Registerscreen() {
     const registerstate = useSelector(state => state.registerUserReducer)
     const { error, loading, success } = registerstate
     const dispatch = useDispatch()
-    function register() {
+    
+    async function register() {
 
-        if (password != cpassword) {
+        if (password !== cpassword) {
             alert("passwords not matched")
         }
         else {

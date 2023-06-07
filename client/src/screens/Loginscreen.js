@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from "../actions/userActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
+
 export default function Loginscreen() {
 
 
@@ -21,7 +22,7 @@ export default function Loginscreen() {
 
   }, [])
 
-  function login() {
+  async function login() {
     const user = { email, password }
     dispatch(loginUser(user))
   }

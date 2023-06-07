@@ -29,7 +29,7 @@ export default function Adminscreen() {
                 <div className="col-md-10">
                     <h2 style={{ fontSize: "35px" }}>Admin Panel</h2>
 
-                    <ul className="adminfunctions">
+                    <ul className="adminfunctions" style={{backgroundColor: '#E74646'}}>
                         <li>
                             <Link to={'/admin/userslist'} style={{ color: 'white' }}>Users List</Link>
                         </li>

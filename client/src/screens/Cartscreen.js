@@ -66,7 +66,7 @@ export default function Cartscreen() {
                                 <div className='m-1 w-100'>
                                     <img src={item.image} style={{ height: '100px' }}></img>
                                 </div>
-                                
+
                                 <div className='m-1 w-100'>
                                     <i className="fa-solid fa-trash mt-5" onClick={() => { dispatch(deleteDrinkFromCart(item)) }}></i>
                                 </div>
@@ -77,8 +77,11 @@ export default function Cartscreen() {
                     )}
                 </div>
 
+                
+
                 <div className='col-md-4 text-right'>
                     <h2 style={{ fontSize: '40px' }}>Subtotal: {subtotal} RON </h2>
+                    <h1>Pay cash or card?</h1>
                     <Checkout subtotal={subtotal} />
                 </div>
             </div>
