@@ -1,23 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState, useReducer } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, deleteFromCart, addToDrinksCart, deleteDrinkFromCart } from '../actions/cartActions';
 import Checkout from '../components/Checkout';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Cartscreen() {
 
     AOS.init()
     const cartstate = useSelector(state => state.cartReducer)
     const cartItems = cartstate.cartItems
-    var subtotal = cartItems.reduce((x, item) => x + item.price, 0)
-    const dispatch = useDispatch();
+    const [voucher, setVoucher] = useState('')
+    const [appliedVoucher, setAppliedVoucher] = useState(false)
+    // var subtotal = cartItems.reduce((x, item) => x + item.price, 0)
+    const [subtotal, setSubtotal] = useState(
+        cartItems.reduce((x, item) => x + item.price, 0)
+    )
+    const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        alert('Folositi codul "voucher123" pentru a beneficia de 10% reducere!')
+    }, [])
+
+    function applyVoucher() {
+        if (voucher === 'voucher123' && !appliedVoucher) {
+            var updatedSubtotal = subtotal - (subtotal * 0.1)
+            setAppliedVoucher(true)
+        } else {
+            alert('Invalid voucher')
+            var updatedSubtotal = subtotal
+        }
+        setSubtotal(updatedSubtotal)
+    }
 
     return (
         <div>
             <div className='row justify-content-center p-2' data-aos='fade-down'>
-
                 <div className='col-md-6'>
+
                     <h2 style={{ fontSize: '40px' }}>My cart</h2>
 
                     {cartItems.map(item => {
@@ -77,14 +99,32 @@ export default function Cartscreen() {
                     )}
                 </div>
 
-                
+
 
                 <div className='col-md-4 text-right'>
                     <h2 style={{ fontSize: '40px' }}>Subtotal: {subtotal} RON </h2>
                     <h1>Pay cash or card?</h1>
                     <Checkout subtotal={subtotal} />
+
+                    {appliedVoucher ?
+                        <h1>Voucher applied!</h1>
+                        : <div>
+                            <input
+                                id='voucher'
+                                type='text'
+                                placeholder='Voucher'
+                                value={voucher}
+                                onChange={(e) => { setVoucher(e.target.value) }}
+                                style={{ marginBottom: '8px' }}
+                            ></input>
+                            <br></br>
+                            <button className='btnPayNow' onClick={applyVoucher}
+                            >Apply Voucher
+                            </button>
+                        </div>
+                    }
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

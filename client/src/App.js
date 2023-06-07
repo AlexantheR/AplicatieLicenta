@@ -12,16 +12,17 @@ import Orderscreen from './screens/Orderscreen';
 import Adminscreen from './screens/Adminscreen';
 import FirstPage from './screens/FirstPage';
 import DrinksMenu from './screens/DrinksMenu';
-import { useState } from 'react';
 import MainBook from './screens/MainBook';
 import Book from './screens/Book';
 import ThankYou from './screens/ThankYou';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
 
       <BrowserRouter>
         <Route path="/" exact component={FirstPage} />
@@ -32,9 +33,9 @@ function App() {
         <Route path='/orders' exact component={Orderscreen} />
         <Route path='/admin' component={Adminscreen} />
         <Route path='/drinks' exact component={DrinksMenu} />
-        <Route path='/mainbook' exact component={MainBook} />   
-        <Route path='/book' exact component={Book} /> 
-        <Route path='/thankyou' exact component={ThankYou} />     
+        <Route path='/mainbook' exact component={MainBook} />
+        <Route path='/book' exact component={Book} />
+        <Route path='/thankyou' exact component={ThankYou} />
       </BrowserRouter>
 
     </div>

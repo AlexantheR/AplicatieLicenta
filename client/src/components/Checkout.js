@@ -33,12 +33,12 @@ export default function Checkout({ subtotal }) {
       {loading && (<Loading />)}
       {error && (<Error error='Something went wrong' />)}
       {success && (<Success success='Your order was placed successfully' />)}
-
+{/* 
       <input type='radio' id='cash' name='paymentMethod' value='cash'></input>
       <label for='cash' style={{ marginRight: '8px' }}>Cash</label>
       <input type='radio' id='card' name='paymentMethod' value='card'></input>
       <label for='card'>Card</label>
-      <br></br>
+      <br></br> */}
 
         <StripeCheckout
           amount={subtotal * 100}

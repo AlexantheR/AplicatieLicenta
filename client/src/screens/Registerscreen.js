@@ -28,7 +28,6 @@ export default function Registerscreen() {
             console.log(user);
             dispatch(registerUser(user))
         }
-
     }
 
     return (

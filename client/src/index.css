@@ -33,8 +33,14 @@ code {
   margin-right: auto !important;
 }
 
+
+
 .nav-link {
-  color: #f7d3ae !important;
+  /* color: #f7d3ae !important; */
+  color: white !important;
+}
+.nav-link:hover{
+  color: #2B2E4A !important;
 }
 
 .navbar-brand {
@@ -42,7 +48,7 @@ code {
 }
 
 #dropdownMenuLink{
-  color: #f7d3ae !important;
+  color: white !important;
 }
 /* 
 
@@ -145,6 +151,11 @@ input {
   color: white !important;
 }
 
+.btnModal{
+  background-color: #E74646 !important;
+  color: white !important;
+}
+
 
 .registerLoginLink {
   color: black;
@@ -188,10 +199,17 @@ td , th , tr{
   max-width: 500px;
   height: auto;
   margin-top: 2em;
-  padding-left: 2em;
-  padding-right: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
   object-fit: cover;
   object-position: bottom;
+}
+
+.responsiveImg:hover{
+  color: #e74c3c;
+  background-color: white !important;
+  border: 3px solid #2B2E4A !important;
+  box-shadow: #2B2E4A;
 }
 
 .pizza-slice {
