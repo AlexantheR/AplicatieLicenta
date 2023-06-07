@@ -15,8 +15,6 @@ import DrinksMenu from './screens/DrinksMenu';
 import MainBook from './screens/MainBook';
 import Book from './screens/Book';
 import ThankYou from './screens/ThankYou';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {

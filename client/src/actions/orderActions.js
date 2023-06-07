@@ -60,3 +60,17 @@ export const deliverOrder = (orderid) => async dispatch => {
         console.log(error)
     }
 }
+
+export const cancelOrder = (orderid) => async (dispatch) => {
+    try {
+      const response = await axios.post('/api/orders/cancelorder', { orderid });
+      console.log(response);
+      alert('Order Canceled');
+  
+      const orders = await axios.get('/api/orders/getallorders');
+      dispatch({ type: 'GET_ALLORDERS_SUCCESS', payload: orders.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  

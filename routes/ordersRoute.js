@@ -91,5 +91,18 @@ router.post("/deliverorder", async (req, res) => {
 
 });
 
+router.post("/cancelorder", async (req, res) => {
+    const orderid = req.body.orderid;
+    try {
+      const order = await Order.findOne({ _id: orderid });
+      order.isDelivered = false;
+      await order.save();
+      res.send('Order Cancelled Successfully');
+    } catch (error) {
+      return res.status(400).json({ message: error });
+    }
+  });
+  
+
 
 module.exports = router

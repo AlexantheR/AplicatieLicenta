@@ -212,6 +212,11 @@ td , th , tr{
   box-shadow: #2B2E4A;
 }
 
+#voucher-apply{
+  color: #8fc39b !important;
+  margin-top: 8px;
+}
+
 .pizza-slice {
   font-size: 1.2rem;
   padding-left: 1.25%;

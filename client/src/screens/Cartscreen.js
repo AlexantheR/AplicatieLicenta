@@ -4,7 +4,6 @@ import { addToCart, deleteFromCart, addToDrinksCart, deleteDrinkFromCart } from 
 import Checkout from '../components/Checkout';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function Cartscreen() {
 
@@ -14,9 +13,7 @@ export default function Cartscreen() {
     const [voucher, setVoucher] = useState('')
     const [appliedVoucher, setAppliedVoucher] = useState(false)
     // var subtotal = cartItems.reduce((x, item) => x + item.price, 0)
-    const [subtotal, setSubtotal] = useState(
-        cartItems.reduce((x, item) => x + item.price, 0)
-    )
+    const [subtotal, setSubtotal] = useState(0)
     const dispatch = useDispatch()
 
 
@@ -24,16 +21,33 @@ export default function Cartscreen() {
         alert('Folositi codul "voucher123" pentru a beneficia de 10% reducere!')
     }, [])
 
+    useEffect(() => {
+        const initialSubtotal = cartItems.reduce((x, item) => x + item.price, 0)
+        setSubtotal(initialSubtotal)
+    }, [cartItems])
+
+
+
     function applyVoucher() {
         if (voucher === 'voucher123' && !appliedVoucher) {
-            var updatedSubtotal = subtotal - (subtotal * 0.1)
-            setAppliedVoucher(true)
+            const updatedSubtotal = subtotal - subtotal * 0.1;
+            setSubtotal(updatedSubtotal);
+            setAppliedVoucher(true);
         } else {
-            alert('Invalid voucher')
-            var updatedSubtotal = subtotal
+            alert('Invalid voucher');
         }
-        setSubtotal(updatedSubtotal)
     }
+
+    // function applyVoucher() {
+    //     if (voucher === 'voucher123' && !appliedVoucher) {
+    //         var updatedSubtotal = subtotal - (subtotal * 0.1)
+    //         setAppliedVoucher(true)
+    //     } else {
+    //         alert('Invalid voucher')
+    //         var updatedSubtotal = subtotal
+    //     }
+    //     setSubtotal(updatedSubtotal)
+    // }
 
     return (
         <div>
@@ -107,7 +121,7 @@ export default function Cartscreen() {
                     <Checkout subtotal={subtotal} />
 
                     {appliedVoucher ?
-                        <h1>Voucher applied!</h1>
+                        <h1 id='voucher-apply'>Voucher applied!</h1>
                         : <div>
                             <input
                                 id='voucher'
