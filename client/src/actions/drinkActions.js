@@ -69,11 +69,11 @@ export const editDrink = (editeddrink) => async dispatch => {
 export const deleteDrink = (drinkid) => async dispatch => {
     try {
         const response = await axios.post('/api/drinks/deletedrink', { drinkid })
-        alert('Drink deleted successfully')
+        alert('Bautura stearsa cu succes')
         console.log(response);
         window.location.reload()
     } catch (error) {
-        alert('Something went wrong')
+        alert('Ceva nu a mers bine!')
         console.log(error);
     }
 }

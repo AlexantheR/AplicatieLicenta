@@ -54,15 +54,15 @@ export default function Editdrink({ match }) {
             <div className="text-left shadow-lg p-3 mb-5 bg-white rounded">
                 <h1>Edit Drink</h1>
                 {loading && <Loading />}
-                {error && <Error error="Something went wrong" />}
-                {editsuccess && <Success success="Drink edited successfully" />}
+                {error && <Error error="Ceva nu a mers bine!" />}
+                {editsuccess && <Success success="Bautura editata cu succes!" />}
                 {editloading && <Loading />}
 
                 <form onSubmit={formHandler}>
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="name"
+                        placeholder="denumire"
                         value={name}
                         onChange={(e) => {
                             setname(e.target.value);
@@ -71,7 +71,7 @@ export default function Editdrink({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="price"
+                        placeholder="pret"
                         value={prices}
                         onChange={(e) => {
                             setprices(e.target.value);
@@ -80,7 +80,7 @@ export default function Editdrink({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="category"
+                        placeholder="categorie"
                         value={category}
                         onChange={(e) => {
                             setcategory(e.target.value);
@@ -89,13 +89,13 @@ export default function Editdrink({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="image url"
+                        placeholder="url imagine"
                         value={image}
                         onChange={(e) => {
                             setimage(e.target.value);
                         }}
                     />
-                    <button className="btnEdit mt-3" type="submit">Edit Drink</button>
+                    <button className="btnEdit mt-3" type="submit">Editeaza bautura</button>
                 </form>
             </div>
         </div>

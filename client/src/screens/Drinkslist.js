@@ -18,18 +18,18 @@ export default function Drinkslist() {
         , []);
 
     return <div>
-        <h2>Drinks List</h2>
+        <h2>Lista bauturi</h2>
         {loading && (<Loading />)}
-        {error && (<Error error='Something went wrong' />)}
+        {error && (<Error error='Ceva nu a mers bine!' />)}
 
         <table className='table table-bordered table-responsive-sm'>
 
             <thead className='thead-dark'>
                 <tr>
-                    <th>Name</th>
-                    <th>Prices</th>
-                    <th>Category</th>
-                    <th>Actions</th>
+                    <th>Nume</th>
+                    <th>Pret</th>
+                    <th>Categorie</th>
+                    <th>Optiuni</th>
                 </tr>
             </thead>
             <tbody>

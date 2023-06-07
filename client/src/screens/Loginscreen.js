@@ -32,26 +32,27 @@ export default function Loginscreen() {
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5 text-left shadow-lg p-3 mb-5 bg-white rounded">
           <h2 className="text-center m-2" style={{ fontSize: "35px" }}>
-            Login
+            Inregistare
           </h2>
 
           {loading && (<Loading />)}
-          {error && (<Error error='Invalid Credentials' />)}
+          {error && (<Error error='Credentiale invalide' />)}
 
           <div>
             <input required type="text" placeholder="email" className="form-control" value={email} onChange={(e) => { setemail(e.target.value) }} />
             <input
               type="password"
-              placeholder="password"
+              placeholder="parola"
               className="form-control"
               value={password}
               required
               onChange={(e) => { setpassword(e.target.value) }}
             />
 
-            <button onClick={login} className="btnLogin mt-3 mb-3">LOGIN</button>
+            <button onClick={login} className="btnLogin mt-3 mb-3">AUTENTIFICARE</button>
             <br />
-            <a style={{ color: 'black' }} href="/register" className="mt-2">Click Here To Register</a>
+            <p>Nu ai un cont? </p>
+            <a href="/register" className="mt-2">Apasa aici pentru inregistrare</a>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ export default function Loading() {
 
             <div className="spinner-border" role="status"
                 style={{ height: '100px', width: '100px', marginTop: '100px' }}>
-                <span className="sr-only">Loading...</span>
+                <span className="sr-only">Se Incarca...</span>
             </div>
 
         </div>

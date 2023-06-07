@@ -55,10 +55,10 @@ export const deleteUser = (userid) => async dispatch => {
 
     try {
         await axios.post('/api/users/deleteuser', { userid })
-        alert('User deleted successfully')
+        alert('Utilizator sters cu succes!')
         window.location.reload()
     } catch (error) {
-        alert('Something went wrong')
+        alert('Ceva nu a mers bine!')
         console.log(error);
     }
 

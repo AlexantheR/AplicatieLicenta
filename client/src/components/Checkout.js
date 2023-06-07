@@ -31,8 +31,8 @@ export default function Checkout({ subtotal }) {
     <div>
 
       {loading && (<Loading />)}
-      {error && (<Error error='Something went wrong' />)}
-      {success && (<Success success='Your order was placed successfully' />)}
+      {error && (<Error error='Ceva nu a mers bine!' />)}
+      {success && (<Success success='Comanda a fost plasata cu succes!' />)}
 {/* 
       <input type='radio' id='cash' name='paymentMethod' value='cash'></input>
       <label for='cash' style={{ marginRight: '8px' }}>Cash</label>
@@ -48,12 +48,9 @@ export default function Checkout({ subtotal }) {
           currency='RON'
         >
           <button className='btnPayNow'>
-            Pay Now
+            Plateste
           </button>
         </StripeCheckout>
-
-
-
     </div>
   )
 }

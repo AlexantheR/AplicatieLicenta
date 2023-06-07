@@ -14,15 +14,15 @@ export default function Orderslist() {
     return (
         <div>
             {loading && <Loading />}
-            {error && <Error error="Something went wrong" />}
+            {error && <Error error="Ceva nu a mers bine!" />}
             <table className="table table-striped table-bordered table-responsive-sm">
                 <thead className="thead-dark">
                     <tr>
-                        <th>Order Id</th>
+                        <th>Id comanda</th>
                         <th>Email</th>
-                        <th>User Id</th>
-                        <th>Amount</th>
-                        <th>Date</th>
+                        <th>Id utilizator</th>
+                        <th>Suma</th>
+                        <th>Data</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -39,9 +39,9 @@ export default function Orderslist() {
                                     <td>{order.createdAt.substring(0, 10)}</td>
                                     <td>
                                         {order.isDelivered ? (
-                                            <h1>Delivered</h1>
+                                            <h1>Comanda trimisa</h1>
                                         ) : (
-                                            <button className="btnDeliver" onClick={() => { dispatch(deliverOrder(order._id)) }}>Deliver</button>
+                                            <button className="btnDeliver" onClick={() => { dispatch(deliverOrder(order._id)) }}>Trimite comanda</button>
                                         )}
                                     </td>
                                 </tr>

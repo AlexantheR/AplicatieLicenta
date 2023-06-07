@@ -26,7 +26,7 @@ export default function DrinksMenu() {
                 {loading ? (
                     <Loading />
                 ) : error ? (
-                    <Error error='Something went wrong!' />
+                    <Error error='Ceva nu a mers bine!!' />
                 ) : (
                     drinks.map((drink) => {
                         return (

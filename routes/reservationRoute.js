@@ -32,14 +32,14 @@ router.post("/", function(req, res, next) {
               if (err) {
                 console.log(err);
               } else {
-                console.log("Reserved");
-                res.status(200).send("Added Reservation");
+                console.log("Reservat");
+                res.status(200).send("Rezervare adaugata");
               }
             });
           }
         });
       } else {
-        console.log("Day not found");
+        console.log("Zi negasita");
       }
     }
   });

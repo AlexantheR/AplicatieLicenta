@@ -73,11 +73,11 @@ export const deletePizza = (pizzaid) => async dispatch => {
 
   try {
     const response = await axios.post('/api/pizzas/deletepizza', { pizzaid })
-    alert('Pizza Deleted Successfully')
+    alert('Pizza stearsa cu succes!')
     console.log(response);
     window.location.reload()
   } catch (error) {
-    alert('Something went wrong')
+    alert('Ceva nu a mers bine!')
     console.log(error);
   }
 

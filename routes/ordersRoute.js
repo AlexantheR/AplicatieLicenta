@@ -41,13 +41,13 @@ router.post('/placeorder', async (req, res) => {
 
             neworder.save()
 
-            res.send('Payment done')
+            res.send('Plata efectuata')
         } else {
-            res.send('Payment failed')
+            res.send('Plata esuata')
         }
 
     } catch (error) {
-        return res.status(400).json({ message: 'Something went wrong' })
+        return res.status(400).json({ message: 'Ceva nu a mers bine!' })
     }
 })
 
@@ -60,7 +60,7 @@ router.post('/getuserorders', async (req, res) => {
         }).sort({ _id: -1 })
         res.send(orders)
     } catch (error) {
-        return res.status(400).json({ message: 'Something went wrong' })
+        return res.status(400).json({ message: 'Ceva nu a mers bine!' })
     }
 })
 
@@ -82,7 +82,7 @@ router.post("/deliverorder", async (req, res) => {
         const order = await Order.findOne({ _id: orderid })
         order.isDelivered = true
         await order.save()
-        res.send('Order Delivered Successfully')
+        res.send('Comanda trimisa cu succes')
     } catch (error) {
 
         return res.status(400).json({ message: error });
@@ -97,7 +97,7 @@ router.post("/cancelorder", async (req, res) => {
       const order = await Order.findOne({ _id: orderid });
       order.isDelivered = false;
       await order.save();
-      res.send('Order Cancelled Successfully');
+      res.send('Comanda anulata cu succes');
     } catch (error) {
       return res.status(400).json({ message: error });
     }

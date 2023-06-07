@@ -11,7 +11,7 @@ export const addToCart = (pizza, quantity, variant) => (dispatch, getState) => {
     }
 
     if (cartItem.quantity > 10) {
-        alert("You can not add more than 10 pizzas!")
+        alert("Nu poti adauga mai mult de 10 pizza!")
     }
 
     else {
@@ -51,7 +51,7 @@ export const addToDrinksCart = (drink, quantity) => (dispatch, getState) => {
         }
     
         if (cartItem.quantity > 20) {
-            alert("You can not add more than 20 drinks!")
+            alert("Nu poti adauga mai mult de 20 de bauturi!")
         }
     
         else {

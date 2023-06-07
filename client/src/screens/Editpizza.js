@@ -28,9 +28,9 @@ export default function Editpizza({ match }) {
                 setname(pizza.name)
                 setdescription(pizza.description)
                 setcategory(pizza.category)
-                setsmallprice(pizza.prices[0]['small'])
-                setmediumprice(pizza.prices[0]['medium'])
-                setlargeprice(pizza.prices[0]['large'])
+                setsmallprice(pizza.prices[0]['mica'])
+                setmediumprice(pizza.prices[0]['medie'])
+                setlargeprice(pizza.prices[0]['mare'])
                 setimage(pizza.image)
             }
             else {
@@ -56,9 +56,9 @@ export default function Editpizza({ match }) {
             description,
             category,
             prices: {
-                small: smallprice,
-                medium: mediumprice,
-                large: largeprice,
+                mica: smallprice,
+                medie: mediumprice,
+                mare: largeprice,
             },
         };
 
@@ -71,17 +71,17 @@ export default function Editpizza({ match }) {
 
 
             <div className="text-left shadow-lg p-3 mb-5 bg-white rounded">
-                <h1>Edit Pizza</h1>
+                <h1>Editeaza Pizza</h1>
                 {loading && <Loading />}
-                {error && <Error error="Something went wrong" />}
-                {editsuccess && (<Success success='Pizza details edited successfully' />)}
+                {error && <Error error="Ceva nu a mers bine!" />}
+                {editsuccess && (<Success success='Pizza editata cu succes' />)}
                 {editloading && (<Loading />)}
 
                 <form onSubmit={formHandler}>
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="name"
+                        placeholder="denumire"
                         value={name}
                         onChange={(e) => {
                             setname(e.target.value);
@@ -90,7 +90,7 @@ export default function Editpizza({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="small variant price"
+                        placeholder="pret varianta mica"
                         value={smallprice}
                         onChange={(e) => {
                             setsmallprice(e.target.value);
@@ -99,7 +99,7 @@ export default function Editpizza({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="medium variant price"
+                        placeholder="pret varianta medie"
                         value={mediumprice}
                         onChange={(e) => {
                             setmediumprice(e.target.value);
@@ -108,7 +108,7 @@ export default function Editpizza({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="large variant price"
+                        placeholder="pret varianta mare"
                         value={largeprice}
                         onChange={(e) => {
                             setlargeprice(e.target.value);
@@ -117,7 +117,7 @@ export default function Editpizza({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="category"
+                        placeholder="categorie"
                         value={category}
                         onChange={(e) => {
                             setcategory(e.target.value);
@@ -126,7 +126,7 @@ export default function Editpizza({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="description"
+                        placeholder="descriere"
                         value={description}
                         onChange={(e) => {
                             setdescription(e.target.value);
@@ -135,14 +135,14 @@ export default function Editpizza({ match }) {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="image url"
+                        placeholder="url imagine"
                         value={image}
                         onChange={(e) => {
                             setimage(e.target.value);
                         }}
                     />
                     <button className="btnEdit mt-3" type="submit">
-                        Edit Pizza
+                        Editeaza Pizza
                     </button>
                 </form>
             </div>

@@ -34,27 +34,16 @@ export default function Cartscreen() {
             setSubtotal(updatedSubtotal);
             setAppliedVoucher(true);
         } else {
-            alert('Invalid voucher');
+            alert('Voucher invalid!');
         }
     }
-
-    // function applyVoucher() {
-    //     if (voucher === 'voucher123' && !appliedVoucher) {
-    //         var updatedSubtotal = subtotal - (subtotal * 0.1)
-    //         setAppliedVoucher(true)
-    //     } else {
-    //         alert('Invalid voucher')
-    //         var updatedSubtotal = subtotal
-    //     }
-    //     setSubtotal(updatedSubtotal)
-    // }
 
     return (
         <div>
             <div className='row justify-content-center p-2' data-aos='fade-down'>
                 <div className='col-md-6'>
 
-                    <h2 style={{ fontSize: '40px' }}>My cart</h2>
+                    <h2 style={{ fontSize: '40px' }}>Cosul meu</h2>
 
                     {cartItems.map(item => {
                         if (!item.name.includes('ml')) {
@@ -62,8 +51,8 @@ export default function Cartscreen() {
 
                                 <div className='text-left m-1 w-100'>
                                     <h1>{item.name} [{item.variant}]</h1>
-                                    <h1>Price: {item.quantity} * {item.prices[0][item.variant]} = {item.price}</h1>
-                                    <h1 style={{ display: 'inline' }}>Quantity: </h1>
+                                    <h1>Pret: {item.quantity} * {item.prices[0][item.variant]} = {item.price}</h1>
+                                    <h1 style={{ display: 'inline' }}>Cantitate: </h1>
                                     <i className="fa-solid fa-plus" aria-hidden='true' onClick={() => {
                                         dispatch(addToCart(item, item.quantity + 1, item.variant))
                                     }}></i>
@@ -87,8 +76,8 @@ export default function Cartscreen() {
 
                                 <div className='text-left m-1 w-100'>
                                     <h1>{item.name}</h1>
-                                    <h1>Price: {item.quantity} * {item.prices[0]} = {item.price}</h1>
-                                    <h1 style={{ display: 'inline' }}>Quantity: </h1>
+                                    <h1>Pret: {item.quantity} * {item.prices[0]} = {item.price}</h1>
+                                    <h1 style={{ display: 'inline' }}>Cantitate: </h1>
                                     <i className="fa-solid fa-plus" aria-hidden='true' onClick={() => {
                                         dispatch(addToDrinksCart(item, item.quantity + 1))
                                     }}></i>
@@ -116,12 +105,12 @@ export default function Cartscreen() {
 
 
                 <div className='col-md-4 text-right'>
-                    <h2 style={{ fontSize: '40px' }}>Subtotal: {subtotal} RON </h2>
-                    <h1>Pay cash or card?</h1>
+                    <h2 style={{ fontSize: '40px' }}>Total: {subtotal} RON </h2>
+                    <h1>Platiti cash sau card?</h1>
                     <Checkout subtotal={subtotal} />
 
                     {appliedVoucher ?
-                        <h1 id='voucher-apply'>Voucher applied!</h1>
+                        <h1 id='voucher-apply'>Voucher aplicat cu succes!</h1>
                         : <div>
                             <input
                                 id='voucher'
@@ -133,7 +122,7 @@ export default function Cartscreen() {
                             ></input>
                             <br></br>
                             <button className='btnPayNow' onClick={applyVoucher}
-                            >Apply Voucher
+                            >Aplica voucher
                             </button>
                         </div>
                     }

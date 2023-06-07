@@ -6,10 +6,10 @@ export default _ => {
     <div>
       <Row noGutters className="text-center">
         <Col>
-          <p className="thanks-header">Thank You!</p>
+          <p className="thanks-header">Va asteptam!</p>
           <i className="fas fa-pizza-slice thank-you-pizza"></i>
           <p className="thanks-subtext">
-            You should receive an email with the details of your reservation.
+            Rezervarea a fost inregistrata cu succes!
           </p>
         </Col>
       </Row>

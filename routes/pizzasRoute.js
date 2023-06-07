@@ -19,13 +19,13 @@ router.post("/addpizza", async (req, res) => {
     const newpizza = new Pizza({
       name: pizza.name,
       image: pizza.image,
-      variants: ['small', 'medium', 'large'],
+      variants: ['mica', 'medie', 'mare'],
       description: pizza.description,
       category: pizza.category,
       prices: [pizza.prices]
     })
     await newpizza.save()
-    res.send('New Pizza Added Successfully')
+    res.send('Pizza noua adaugata cu succes')
   } catch (error) {
     return res.status(400).json({ message: error });
   }
@@ -60,7 +60,7 @@ router.post("/editpizza", async (req, res) => {
 
     await pizza.save()
 
-    res.send('Pizza Details Edited successfully')
+    res.send('Detalii pizza modificate cu succes')
 
   } catch (error) {
     return res.status(400).json({ message: error });
@@ -74,7 +74,7 @@ router.post("/deletepizza", async (req, res) => {
 
   try {
     await Pizza.findOneAndDelete({ _id: pizzaid })
-    res.send('Pizza Deleted successfully')
+    res.send('Pizza stearsa cu succes')
   } catch (error) {
     return res.status(400).json({ message: error });
   }

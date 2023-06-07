@@ -13,7 +13,6 @@ import {
 } from "reactstrap";
 
 import Table from "./Table";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 
 export default props => {
@@ -27,7 +26,7 @@ export default props => {
     },
     date: new Date(),
     time: null,
-    location: "Any Location",
+    location: "Orice locatie",
     size: 0
   });
 
@@ -39,7 +38,7 @@ export default props => {
   });
 
   // List of potential locations
-  const [locations] = useState(["Any Location", "Patio", "Inside", "Bar"]);
+  const [locations] = useState(["Orice locatie", "Terasa", "Interior", "Bar"]);
   const [times] = useState([
     "9AM",
     "10AM",
@@ -106,7 +105,7 @@ export default props => {
         let tables = res.tables.filter(
           table =>
             (selection.size > 0 ? table.capacity >= selection.size : true) &&
-            (selection.location !== "Any Location"
+            (selection.location !== "Orice locatie"
               ? table.location === selection.location
               : true)
         );
@@ -123,7 +122,7 @@ export default props => {
       (booking.phone.length === 0) |
       (booking.email.length === 0)
     ) {
-      console.log("Incomplete Details");
+      console.log("Detalii incomplete");
       setReservationError(true);
     } else {
       const datetime = getDate();
@@ -139,7 +138,7 @@ export default props => {
         })
       });
       res = await res.text();
-      console.log("Reserved: " + res);
+      console.log("Reservat: " + res);
       props.history.push("/thankyou");
     }
   };
@@ -236,7 +235,7 @@ export default props => {
 
   // Generating tables from available tables state
   const getTables = _ => {
-    console.log("Getting tables");
+    console.log("Preluare mese");
     if (getEmptyTables() > 0) {
       let tables = [];
       totalTables.forEach(table => {
@@ -272,7 +271,7 @@ export default props => {
       <Row noGutters className="text-center align-items-center pizza-cta">
         <Col>
           <p className="looking-for-pizza">
-            {!selection.table.id ? "Book a Table" : "Confirm Reservation"}
+            {!selection.table.id ? "Rezerva o masa" : "Confirmare rezervare"}
             <i
               className={
                 !selection.table.id
@@ -283,13 +282,13 @@ export default props => {
           </p>
           <p className="selected-table">
             {selection.table.id
-              ? "You are booking table " + selection.table.name
+              ? "Urmeaza sa rezervi masa " + selection.table.name
               : null}
           </p>
 
           {reservationError ? (
             <p className="reservation-error">
-              * Please fill out all of the details.
+              * Va rugam sa completati toate detaliile.
             </p>
           ) : null}
         </Col>
@@ -315,7 +314,7 @@ export default props => {
                     };
                     setSelection(newSel);
                   } else {
-                    console.log("Invalid date");
+                    console.log("Data invalida");
                     let newSel = {
                       ...selection,
                       table: {
@@ -331,7 +330,7 @@ export default props => {
             <Col xs="12" sm="3">
               <UncontrolledDropdown>
                 <DropdownToggle caret color="none" id="booking-dropdown">
-                  {selection.time === null ? "Select a Time" : selection.time}
+                  {selection.time === null ? "Alege ora" : selection.time}
                 </DropdownToggle>
                 <DropdownMenu right className="booking-dropdown-menu">
                   {getTimes()}
@@ -352,7 +351,7 @@ export default props => {
               <UncontrolledDropdown>
                 <DropdownToggle color="none" caret id="booking-dropdown">
                   {selection.size === 0
-                    ? "Select a Party Size"
+                    ? "Alege numarul de persoane"
                     : selection.size.toString()}
                 </DropdownToggle>
                 <DropdownMenu right className="booking-dropdown-menu">
@@ -364,26 +363,26 @@ export default props => {
           <Row noGutters className="tables-display">
             <Col>
               {getEmptyTables() > 0 ? (
-                <p className="available-tables">{getEmptyTables()} available</p>
+                <p className="available-tables">{getEmptyTables()} mese libere</p>
               ) : null}
 
               {selection.date && selection.time ? (
                 getEmptyTables() > 0 ? (
                   <div>
                     <div className="table-key">
-                      <span className="empty-table"></span> &nbsp; Available
+                      <span className="empty-table"></span> &nbsp; Liber
                       &nbsp;&nbsp;
-                      <span className="full-table"></span> &nbsp; Unavailable
+                      <span className="full-table"></span> &nbsp; Ocupat
                       &nbsp;&nbsp;
                     </div>
                     <Row noGutters>{getTables()}</Row>
                   </div>
                 ) : (
-                  <p className="table-display-message">No Available Tables</p>
+                  <p className="table-display-message">Nicio masa libera</p>
                 )
               ) : (
                 <p className="table-display-message">
-                  Please select a date and time for your reservation.
+                  Va rugam sa selectati data si ora rezervarii.
                 </p>
               )}
             </Col>
@@ -399,7 +398,7 @@ export default props => {
               <Input
                 type="text"
                 bsSize="lg"
-                placeholder="Name"
+                placeholder="Nume"
                 className="reservation-input"
                 value={booking.name}
                 onChange={e => {
@@ -414,7 +413,7 @@ export default props => {
               <Input
                 type="text"
                 bsSize="lg"
-                placeholder="Phone Number"
+                placeholder="Numar de telefon"
                 className="reservation-input"
                 value={booking.phone}
                 onChange={e => {
@@ -447,7 +446,7 @@ export default props => {
                 className="book-table-btn"
                 onClick={() => { reserve() }}
               >
-                Book Now
+                Rezervare masa
               </button>
             </Col>
           </Row>

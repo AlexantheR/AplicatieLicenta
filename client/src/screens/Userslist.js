@@ -19,14 +19,14 @@ export default function Userslist() {
 
             <h1>Users list</h1>
             {loading && <Loading />}
-            {error && <Error error="Something went wrong" />}
+            {error && <Error error="Ceva nu a mers bine!" />}
             <table className='table table-striped table-bordered table-responsive-sm'>
                 <thead className='thead-dark'>
                     <tr>
-                        <th>User Id</th>
-                        <th>Name</th>
+                        <th>Id utilizator</th>
+                        <th>Nume</th>
                         <th>Email</th>
-                        <th>Delete</th>
+                        <th>Sterge</th>
                     </tr>
                 </thead>
 

@@ -26,7 +26,7 @@ export default function PizzaMenu() {
         {loading ? (
           <Loading />
         ) : error ? (
-          <Error error='Something went wrong!' />
+          <Error error='Ceva nu a mers bine!!' />
         ) : (
           pizzas.map((pizza) => {
             return (

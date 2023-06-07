@@ -27,26 +27,26 @@ export default function Adminscreen() {
         <div>
             <div className="row justify-content-center p-3">
                 <div className="col-md-10">
-                    <h2 style={{ fontSize: "35px" }}>Admin Panel</h2>
+                    <h2 style={{ fontSize: "35px" }}>Panou Admin</h2>
 
                     <ul className="adminfunctions" style={{backgroundColor: '#E74646'}}>
                         <li>
-                            <Link to={'/admin/userslist'} style={{ color: 'white' }}>Users List</Link>
+                            <Link to={'/admin/userslist'} style={{ color: 'white' }}>Lista utilizatori</Link>
                         </li>
                         <li>
-                            <Link to={'/admin/pizzaslist'} style={{ color: 'white' }}>Pizzas List</Link>
+                            <Link to={'/admin/pizzaslist'} style={{ color: 'white' }}>Lista pizza</Link>
                         </li>
                         <li>
-                            <Link to={'/admin/drinkslist'} style={{ color: 'white' }}>Drinks List</Link>
+                            <Link to={'/admin/drinkslist'} style={{ color: 'white' }}>Lista bauturi</Link>
                         </li>
                         <li>
-                            <Link to={'/admin/addpizza'} style={{ color: 'white' }}>Add Pizza</Link>
+                            <Link to={'/admin/addpizza'} style={{ color: 'white' }}>Adauga pizza</Link>
                         </li>
                         <li>
-                            <Link to={'/admin/adddrink'} style={{ color: 'white' }}>Add Drink</Link>
+                            <Link to={'/admin/adddrink'} style={{ color: 'white' }}>Adauga bautura</Link>
                         </li>
                         <li>
-                            <Link to={'/admin/orderslist'} style={{ color: 'white' }}>Orders List</Link>
+                            <Link to={'/admin/orderslist'} style={{ color: 'white' }}>Lista comenzi</Link>
                         </li>
 
 

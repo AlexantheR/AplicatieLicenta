@@ -41,23 +41,23 @@ function NavigationBar() {
                 </a>
 
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a className="dropdown-item" href="/orders">Orders</a>{
-                  (currentUser.isAdmin==1 ? (<a className="dropdown-item" href="/admin">Admin panel</a>):null)}                  
+                  <a className="dropdown-item" href="/orders">Comenzile mele</a>{
+                  (currentUser.isAdmin==1 ? (<a className="dropdown-item" href="/admin">Panou Admin</a>):null)}                  
                   <a className="dropdown-item" href="#"
                     onClick={() => { dispatch(logoutUser()) }}>
-                    <li>Logout</li></a>
+                    <li>Deconectare</li></a>
                 </div>
               </div>
 
             ) : (
               <li className="nav-item">
                 <a className="nav-link" href="/login">
-                  Login
+                  Autentificare
                 </a>
               </li>)}
             <li className="nav-item">
               <a className="nav-link" href="/cart">
-                Cart {cartstate.cartItems.length}
+                Cos {cartstate.cartItems.length}
               </a>
             </li>
           </ul>

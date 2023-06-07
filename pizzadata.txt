@@ -2,15 +2,15 @@
 
  "name":"Pepper Barbecue Chicken",
  "variants":[
-   "small",
-   "medium",
-   "large"
+   "mica",
+   "medie",
+   "mare"
  ],
  "prices":[
    {
-     "small":25,
-     "medium":35,
-     "large":40
+     "mica":25,
+     "medie":35,
+     "mare":40
    }
   ],
   "category":"nonveg",
@@ -20,15 +20,15 @@
 
   "name":"Pizza Egeea",
  "variants":[
-   "small",
-   "medium",
-   "large"
+   "mica",
+   "medie",
+   "mare"
  ],
  "prices":[
    {
-     "small":20,
-     "medium":30,
-     "large":35
+     "mica":20,
+     "medie":30,
+     "mare":35
    }
   ],
   "category":"veg",
@@ -38,15 +38,15 @@
 
   "name":"Pizza Rustic",
  "variants":[
-   "small",
-   "medium",
-   "large"
+   "mica",
+   "medie",
+   "mare"
  ],
  "prices":[
    {
-     "small":25,
-     "medium":35,
-     "large":40
+     "mica":25,
+     "medie":35,
+     "mare":40
    }
   ],
   "category":"nonveg",
@@ -56,15 +56,15 @@
 
   "name":"Pizza BBQ",
  "variants":[
-   "small",
-   "medium",
-   "large"
+   "mica",
+   "medie",
+   "mare"
  ],
  "prices":[
    {
-     "small":25,
-     "medium":35,
-     "large":40
+     "mica":25,
+     "medie":35,
+     "mare":40
    }
   ],
   "category":"nonveg",
@@ -74,15 +74,15 @@
 
   "name":"Pizza Honey Mustard Chicken",
  "variants":[
-   "small",
-   "medium",
-   "large"
+   "mica",
+   "medie",
+   "mare"
  ],
  "prices":[
    {
-     "small":25,
-     "medium":35,
-     "large":40
+     "mica":25,
+     "medie":35,
+     "mare":40
    }
   ],
   "category":"nonveg",
@@ -92,15 +92,15 @@
 
   "name":"Pizza Hot Pastrami",
  "variants":[
-   "small",
-   "medium",
-   "large"
+   "mica",
+   "medie",
+   "mare"
  ],
  "prices":[
    {
-     "small":25,
-     "medium":35,
-     "large":40
+     "mica":25,
+     "medie":35,
+     "mare":40
    }
   ],
   "category":"nonveg",

@@ -9,14 +9,14 @@ export default props => {
       <Row noGutters className="text-center align-items-center pizza-cta">
         <Col>
           <p className="looking-for-pizza">
-            If you're looking for great pizza
+            Cauti pizza delicioasa ?
             <i className="fas fa-pizza-slice pizza-slice"></i>
           </p>
           <Link
             className="book-table-btn"
             to="/book"
           >
-            Book a Table
+            Rezerva o masa
           </Link>
         </Col>
       </Row>

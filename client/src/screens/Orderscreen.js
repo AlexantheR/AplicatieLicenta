@@ -28,7 +28,7 @@ export default function Orderscreen() {
       <hr />
       <div className='row justify-content-center'>
         {loading && <Loading />}
-        {error && <Error error='Something went wrong' />}
+        {error && <Error error='Ceva nu a mers bine!' />}
         {orders &&
           orders.map(order => (
             <div
@@ -65,12 +65,12 @@ export default function Orderscreen() {
                 </div>
 
                 <div className='text-left w-100 m-1'>
-                  <h2 style={{ fontSize: '25px' }}>Order Info</h2>
+                  <h2 style={{ fontSize: '25px' }}>Informatii comanda</h2>
                   <hr />
-                  <p>Suma comenzii: {order.orderAmount}</p>
+                  <p>Suma comenzii: {order.orderAmount} RON</p>
                   <p>Data: {order.createdAt.substring(0, 10)}</p>
                   <p>Id tranzactie: {order.transactionId}</p>
-                  <p>Id: comanda {order._id}</p>
+                  <p>Id comanda: {order._id}</p>
                   {order.isDelivered ? (<button
                     className='book-table-btn'
                     onClick={() => {

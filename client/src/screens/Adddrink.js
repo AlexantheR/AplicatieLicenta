@@ -34,17 +34,17 @@ export default function Adddrink() {
     return (
         <div>
             <div className='text-left shadow-lg p-3 mb-5 bg-white rounded'>
-                <h1>Add Drink</h1>
+                <h1>Adauga bautura</h1>
 
                 {loading && (<Loading />)}
-                {error && (<Error error='Something went wrong' />)}
-                {success && (<Success success='New Drink added successfully' />)}
+                {error && (<Error error='Ceva nu a mers bine!' />)}
+                {success && (<Success success='Bautura noua adaugata cu succes!' />)}
 
                 <form onSubmit={formHandler}>
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="name"
+                        placeholder="denumire"
                         value={name}
                         onChange={(e) => {
                             setname(e.target.value);
@@ -53,7 +53,7 @@ export default function Adddrink() {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="price"
+                        placeholder="pret"
                         value={prices}
                         onChange={(e) => {
                             setprices(e.target.value);
@@ -62,7 +62,7 @@ export default function Adddrink() {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="category"
+                        placeholder="categorie"
                         value={category}
                         onChange={(e) => {
                             setcategory(e.target.value);
@@ -71,13 +71,13 @@ export default function Adddrink() {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="image url"
+                        placeholder="url imagine"
                         value={image}
                         onChange={(e) => {
                             setimage(e.target.value);
                         }}
                     />
-                    <button type="submit" className="btnAdd mt-3">Add Drink</button>
+                    <button type="submit" className="btnAdd mt-3">Adauga bautura</button>
                 </form>
             </div>
         </div>

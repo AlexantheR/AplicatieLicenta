@@ -12,17 +12,17 @@ export default function Filter() {
                 <div className="col-md-3 w-100">
                     <input
                         onChange={(e) => { setsearchkey(e.target.value) }}
-                        value={searchkey} type="text" className="form-control w-100" placeholder="Search pizzas" />
+                        value={searchkey} type="text" className="form-control w-100" placeholder="Cauta pizza" />
                 </div>
                 <div className="col-md-3 w-100">
                     <select className="form-control w-100 mt-2" value={category} onChange={(e) => setcategory(e.target.value)}>
-                        <option value="all">All</option>
-                        <option value="veg">Veg</option>
-                        <option value="nonveg">Non Veg</option>
+                        <option value="all">Toate</option>
+                        <option value="veg">Vegetarian</option>
+                        <option value="nonveg">Non Vegetarian</option>
                     </select>
                 </div>
                 <div className="col-md-3 w-100">
-                    <button className='btnFilter w-100 mt-2' onClick={() => { dispatch(filterPizzas(searchkey, category)) }}>FILTER</button>
+                    <button className='btnFilter w-100 mt-2' onClick={() => { dispatch(filterPizzas(searchkey, category)) }}>FILTREAZA</button>
                 </div>
 
             </div>

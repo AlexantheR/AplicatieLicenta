@@ -13,11 +13,11 @@ export default function FilterDrinks() {
                 <div className="col-md-3 w-100">
                     <input
                         onChange={(e) => { setsearchkey(e.target.value) }}
-                        value={searchkey} type="text" className="form-control w-100" placeholder="Search drinks" />
+                        value={searchkey} type="text" className="form-control w-100" placeholder="Cauta bauturi" />
                 </div>
                 <div className="col-md-3 w-100">
                     <select className="form-control w-100 mt-2" value={category} onChange={(e) => setcategory(e.target.value)}>
-                        <option value="all">All</option>
+                        <option value="all">Toate</option>
                         <option value="apa">Apa</option>
                         <option value="racoritoare">Racoritoare</option>
                         <option value="energizant">Energizant</option>
@@ -25,7 +25,7 @@ export default function FilterDrinks() {
                     </select>
                 </div>
                 <div className="col-md-3 w-100">
-                    <button className='btnFilter w-100 mt-2' onClick={() => { dispatch(filterDrinks(searchkey, category)) }}>FILTER</button>
+                    <button className='btnFilter w-100 mt-2' onClick={() => { dispatch(filterDrinks(searchkey, category)) }}>FILTREAZA</button>
                 </div>
             </div>
         </div>

@@ -36,10 +36,10 @@ router.post('/login', async (req, res) => {
                 };
                 res.send(currentUser);
             } else {
-                return res.status(400).json({ message: 'User login failed' });
+                return res.status(400).json({ message: 'Autentificare esuata' });
             }
         } else {
-            return res.status(400).json({ message: 'User login failed' });
+            return res.status(400).json({ message: 'Autentificare esuata' });
         }
     } catch (error) {
         return res.status(400).json({ message: error });
@@ -64,7 +64,7 @@ router.post("/deleteuser", async (req, res) => {
 
     try {
         await User.findOneAndDelete({ _id: userid })
-        res.send('User Deleted Successfully')
+        res.send('Utilizator sters cu succes!')
     } catch (error) {
         return res.status(400).json({ message: error });
     }

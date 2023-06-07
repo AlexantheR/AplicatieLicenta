@@ -23,7 +23,7 @@ router.post("/adddrink", async (req, res) => {
             category: drink.category,
         })
         await newdrink.save()
-        res.send('New Drink Added Successfully')
+        res.send('Bautura noua adaugata cu succes')
     } catch (error) {
         return res.status(400).json({ message: error });
     }
@@ -56,7 +56,7 @@ router.post("/editdrink", async (req, res) => {
             drink.category = editeddrink.category
 
         await drink.save()
-        res.send('Drink Edited Successfully')
+        res.send('Bautura editata cu succes')
     } catch (error) {
         return res.status(400).json({ message: error });
     }
@@ -69,7 +69,7 @@ router.post("/deletedrink", async (req, res) => {
 
     try {
         await Drink.findOneAndDelete({ _id: drinkid })
-        res.send('Drink Deleted Successfully')
+        res.send('Bautura stearsa cu succes')
     } catch (error) {
         return res.status(400).json({ message: error });
     }

@@ -16,16 +16,16 @@ export default function Pizzaslist() {
     return <div>
         <h2>Pizzas List</h2>
         {loading && (<Loading />)}
-        {error && (<Error error='Something went wrong' />)}
+        {error && (<Error error='Ceva nu a mers bine!' />)}
 
         <table className='table table-bordered table-responsive-sm'>
 
             <thead className='thead-dark'>
                 <tr>
-                    <th>Name</th>
-                    <th>Prices</th>
-                    <th>Category</th>
-                    <th>Actions</th>
+                    <th>Nume</th>
+                    <th>Pret</th>
+                    <th>Categorie</th>
+                    <th>Optiuni</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,9 +35,9 @@ export default function Pizzaslist() {
                         <td>{pizza.name}</td>
                         <td>
 
-                            Small : {pizza.prices[0]['small']} <br />
-                            Medium : {pizza.prices[0]['medium']} <br />
-                            Large : {pizza.prices[0]['large']}
+                            Mica : {pizza.prices[0]['mica']} <br />
+                            Medie : {pizza.prices[0]['medie']} <br />
+                            Mare : {pizza.prices[0]['mare']}
 
                         </td>
                         <td>{pizza.category}</td>

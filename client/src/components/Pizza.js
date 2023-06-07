@@ -12,7 +12,7 @@ export default function Pizza({ pizza }) {
   })
 
   const [quantity, setQuantity] = useState(1);
-  const [variant, setVariant] = useState("small");
+  const [variant, setVariant] = useState("mica");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -41,7 +41,7 @@ export default function Pizza({ pizza }) {
 
       <div className="flex-container">
         <div className="m-1 w-100">
-          <p>Variants</p>
+          <p>Variante</p>
           <select
             className="form-control"
             value={variant}
@@ -56,7 +56,7 @@ export default function Pizza({ pizza }) {
         </div>
 
         <div className="m-1 w-100">
-          <p>Quantity</p>
+          <p>Cantitate</p>
           <select
             className="form-control"
             value={quantity}
@@ -74,12 +74,12 @@ export default function Pizza({ pizza }) {
       <div className="flex-container">
         <div className="m-1 w-100">
           <h1 className="mt-1">
-            Price: {pizza.prices[0][variant] * quantity} RON
+            Pret: {pizza.prices[0][variant] * quantity} RON
           </h1>
         </div>
 
         <div className="m-1 w-100">
-          <button className="btnAdd" onClick={addtocart}>ADD TO CART</button>
+          <button className="btnAdd" onClick={addtocart}>ADAUGA IN COS</button>
         </div>
       </div>
 
@@ -99,7 +99,7 @@ export default function Pizza({ pizza }) {
 
         <Modal.Footer>
           <button className="btnModal" onClick={handleClose}>
-            CLOSE
+            INCHIDE
           </button>
         </Modal.Footer>
       </Modal>
