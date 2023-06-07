@@ -19,9 +19,19 @@ export default function Pizza({ pizza }) {
   const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.loginUserReducer.currentUser)
 
   function addtocart() {
     dispatch(addToCart(pizza, quantity, variant))
+  }
+
+  function handleOrder(){
+    if(currentUser){
+      addToCart()
+    }else{
+      alert('Va rugam sa va logati pentru a putea comanda!')
+      window.location.href = '/login'
+    }
   }
 
   return (
@@ -79,7 +89,7 @@ export default function Pizza({ pizza }) {
         </div>
 
         <div className="m-1 w-100">
-          <button className="btnAdd" onClick={addtocart}>ADAUGA IN COS</button>
+          <button className="btnAdd" onClick={handleOrder}>ADAUGA IN COS</button>
         </div>
       </div>
 

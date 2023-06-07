@@ -12,10 +12,21 @@ export default function Drink({ drink }) {
     const [quantity, setQuantity] = useState(1);
 
     const dispatch = useDispatch();
+    const currentUser = useSelector((state) => state.loginUserReducer.currentUser)
+
 
     function addtodrinkscart() {
         dispatch(addToDrinksCart(drink, quantity))
     }
+
+    function handleOrder(){
+        if(currentUser){
+          addToDrinksCart()
+        }else{
+          alert('Va rugam sa va logati pentru a putea comanda!')
+          window.location.href = '/login'
+        }
+      }
 
     return (
         <div
@@ -50,7 +61,7 @@ export default function Drink({ drink }) {
                 </div>
 
                 <div className="m-1 w-100">
-                    <button onClick={addtodrinkscart} className="btnAdd">{drink.prices[0] * quantity} RON</button>
+                    <button onClick={handleOrder} className="btnAdd">{drink.prices[0] * quantity} RON</button>
                 </div>
             </div>
         </div>
