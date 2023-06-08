@@ -20,7 +20,7 @@ export default props => {
           </Link>
         </Col>
       </Row>
-      <Row noGutters className="text-center big-img-container">
+      {/* <Row noGutters className="text-center big-img-container">
         <Col>
           <img
             src={require("../images/cafe.jpg")}
@@ -28,7 +28,7 @@ export default props => {
             className="big-img"
           />
         </Col>
-      </Row>
+      </Row> */}
     </div>
   );
 };

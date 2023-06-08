@@ -34,15 +34,15 @@ function NavigationBar() {
             {currentUser ? (
 
               <div className="dropdown show mt-2">
-                <a className="dropdown-toggle" type="button" 
+                <a className="dropdown-toggle" type="button"
                   id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                   aria-expanded="false">
-                  {currentUser.name}
+                  {currentUser?.isPremium ? <span className="badge badge-warning">Premium</span> : null} {currentUser.name}
                 </a>
 
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a className="dropdown-item" href="/orders">Comenzile mele</a>{
-                  (currentUser.isAdmin==1 ? (<a className="dropdown-item" href="/admin">Panou Admin</a>):null)}                  
+                    (currentUser.isAdmin == 1 ? (<a className="dropdown-item" href="/admin">Panou Admin</a>) : null)}
                   <a className="dropdown-item" href="#"
                     onClick={() => { dispatch(logoutUser()) }}>
                     <li>Deconectare</li></a>

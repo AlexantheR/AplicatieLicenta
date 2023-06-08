@@ -338,9 +338,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
 
 .tables-display {
   background-color: #e74c3c;
-  margin: 10% 2%;
-  padding: 3% 5%;
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
   border-radius: 25px;
+  height: auto;
+  width: auto;
 }
 
 @media (min-width: 768px) {
