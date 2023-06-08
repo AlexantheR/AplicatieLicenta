@@ -63,3 +63,33 @@ export const deleteUser = (userid) => async dispatch => {
     }
 
 }
+
+export const makeUserPremium = (userId) => async (dispatch) => {
+    dispatch({ type: 'MAKE_USER_PREMIUM_REQUEST' });
+
+    try {
+        const response = await axios.post('/api/users/makeuserpremium', { userId });
+        console.log(response);
+        dispatch({ type: 'MAKE_USER_PREMIUM_SUCCESS', payload: response.data });
+        alert('Utilizatorul a fost marcat ca Premium!');
+    } catch (error) {
+        dispatch({ type: 'MAKE_USER_PREMIUM_FAILED', payload: error });
+        alert('Ceva nu a mers bine!');
+        console.log(error);
+    }
+};
+
+export const loseUserPremium = (userId) => async (dispatch) => {
+    dispatch({ type: 'LOSE_USER_PREMIUM_REQUEST' });
+
+    try {
+        const response = await axios.post('/api/users/loseuserpremium', { userId });
+        console.log(response);
+        dispatch({ type: 'LOSE_USER_PREMIUM_SUCCESS', payload: response.data });
+        alert('Utilizatorul a pierdut statutul de Premium!');
+    } catch (error) {
+        dispatch({ type: 'LOSE_USER_PREMIUM_FAILED', payload: error });
+        alert('Ceva nu a mers bine!');
+        console.log(error);
+    }
+};

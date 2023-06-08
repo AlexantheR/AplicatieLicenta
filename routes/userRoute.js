@@ -32,6 +32,7 @@ router.post('/login', async (req, res) => {
                     name: user.name,
                     email: user.email,
                     isAdmin: user.isAdmin,
+                    isPremium: user.isPremium,
                     _id: user._id
                 };
                 res.send(currentUser);
@@ -69,6 +70,42 @@ router.post("/deleteuser", async (req, res) => {
         return res.status(400).json({ message: error });
     }
 
+});
+
+router.post("/makeuserpremium", async (req, res) => {
+    const { userId } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'Utilizatorul nu a fost gasit' });
+        }
+
+        user.isPremium = true;
+        await user.save();
+
+        res.json({ message: 'Utilizatorul a fost marcat ca Premium' });
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+});
+
+router.post("/loseuserpremium", async (req, res) => {
+    const { userId } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'Utilizatorul nu a fost gasit' });
+        }
+
+        user.isPremium = false;
+        await user.save();
+
+        res.json({ message: 'Utilizatorul a pierdut statutul de Premium' });
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
 });
 
 

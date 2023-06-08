@@ -136,6 +136,13 @@ input {
   color: white !important;
 }
 
+.btnSendToPayment{
+  background-color: #E74646 !important;
+  color: white !important;
+  border-radius: 5px !important;
+  border-color: black !important;
+}
+
 .btnFilter {
   background-color: #E74646 !important;
   color: white !important;

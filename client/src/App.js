@@ -15,6 +15,7 @@ import DrinksMenu from './screens/DrinksMenu';
 import MainBook from './screens/MainBook';
 import Book from './screens/Book';
 import ThankYou from './screens/ThankYou';
+import PaymentScreen from './screens/PaymentScreen';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path='/mainbook' exact component={MainBook} />
         <Route path='/book' exact component={Book} />
         <Route path='/thankyou' exact component={ThankYou} />
+        <Route path='/payment' exact component={PaymentScreen} />
       </BrowserRouter>
 
     </div>

@@ -5,6 +5,7 @@ import Checkout from '../components/Checkout';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function Cartscreen() {
 
@@ -15,6 +16,8 @@ export default function Cartscreen() {
     const [appliedVoucher, setAppliedVoucher] = useState(false)
     // var subtotal = cartItems.reduce((x, item) => x + item.price, 0)
     const [subtotal, setSubtotal] = useState(0)
+    const currentUser = useSelector((state) => state.loginUserReducer.currentUser)
+
     const dispatch = useDispatch()
 
 
@@ -43,16 +46,20 @@ export default function Cartscreen() {
         <div>
             <div className='row justify-content-center p-2' data-aos='fade-down'>
                 <div className='col-md-6'>
-
                     <h2 style={{ fontSize: '40px' }}>Cosul meu</h2>
 
                     {cartItems.map(item => {
-                        if (!item.name.includes('ml')) {
-                            return <div className='flex-container'>
+                        const isDiscounted = item.variant === "mare" && currentUser?.isPremium;
+                        const price = isDiscounted ? (item.price * 0.95) : item.price;
+                        const priceDisplay = ` ${isDiscounted ? (item.prices[0][item.variant] * 0.95) :
+                            item.prices[0][item.variant]} * ${item.quantity} = ${price}`;
 
+
+                        return (
+                            <div className='flex-container'>
                                 <div className='text-left m-1 w-100'>
                                     <h1>{item.name} [{item.variant}]</h1>
-                                    <h1>Pret: {item.quantity} * {item.prices[0][item.variant]} = {item.price}</h1>
+                                    <h1>Pret: {priceDisplay}</h1>
                                     <h1 style={{ display: 'inline' }}>Cantitate: </h1>
                                     <i className="fa-solid fa-plus" aria-hidden='true' onClick={() => {
                                         dispatch(addToCart(item, item.quantity + 1, item.variant))
@@ -72,38 +79,9 @@ export default function Cartscreen() {
                                     <i className="fa-solid fa-trash mt-5" onClick={() => { dispatch(deleteFromCart(item)) }}></i>
                                 </div>
                             </div>
-                        } else {
-                            return <div className='flex-container'>
-
-                                <div className='text-left m-1 w-100'>
-                                    <h1>{item.name}</h1>
-                                    <h1>Pret: {item.quantity} * {item.prices[0]} = {item.price}</h1>
-                                    <h1 style={{ display: 'inline' }}>Cantitate: </h1>
-                                    <i className="fa-solid fa-plus" aria-hidden='true' onClick={() => {
-                                        dispatch(addToDrinksCart(item, item.quantity + 1))
-                                    }}></i>
-                                    <b>{item.quantity}</b>
-                                    <i className="fa-solid fa-minus" onClick={() => {
-                                        dispatch(addToDrinksCart(item, item.quantity - 1))
-                                    }}></i>
-                                    <hr></hr>
-                                </div>
-
-                                <div className='m-1 w-100'>
-                                    <img src={item.image} style={{ height: '100px' }}></img>
-                                </div>
-
-                                <div className='m-1 w-100'>
-                                    <i className="fa-solid fa-trash mt-5" onClick={() => { dispatch(deleteDrinkFromCart(item)) }}></i>
-                                </div>
-                            </div>
-                        }
-                    }
-
-                    )}
+                        );
+                    })}
                 </div>
-
-
 
                 <div className='col-md-4 text-right'>
                     <h2 style={{ fontSize: '40px' }}>Total: {subtotal} RON </h2>
@@ -112,23 +90,25 @@ export default function Cartscreen() {
 
                     {appliedVoucher ?
                         <h1 id='voucher-apply'>Voucher aplicat cu succes!</h1>
-                        : <div>
-                            <input
-                                id='voucher'
-                                type='text'
-                                placeholder='Voucher'
-                                value={voucher}
-                                onChange={(e) => { setVoucher(e.target.value) }}
-                                style={{ marginBottom: '8px' }}
-                            ></input>
-                            <br></br>
-                            <button className='btnPayNow' onClick={applyVoucher}
-                            >Aplica voucher
-                            </button>
-                        </div>
-                    }
+                        : (
+                            <div>
+                                <input
+                                    id='voucher'
+                                    type='text'
+                                    placeholder='Voucher'
+                                    value={voucher}
+                                    onChange={(e) => { setVoucher(e.target.value) }}
+                                    style={{ marginBottom: '8px' }}
+                                ></input>
+                                <br></br>
+                                <button className='book-table-btn' onClick={applyVoucher}>
+                                    Aplica voucher
+                                </button>
+                            </div>
+                        )}
                 </div>
             </div>
-        </div >
-    )
+        </div>
+    );
+
 }

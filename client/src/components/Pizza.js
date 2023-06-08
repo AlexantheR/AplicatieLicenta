@@ -25,14 +25,15 @@ export default function Pizza({ pizza }) {
     dispatch(addToCart(pizza, quantity, variant))
   }
 
-  function handleOrder(){
-    if(currentUser){
+  function handleOrder() {
+    if (currentUser) {
       dispatchAddToCart()
-    }else{
+    } else {
       alert('Va rugam sa va logati pentru a putea comanda!')
       window.location.href = '/login'
     }
   }
+
 
   return (
     <div
@@ -84,8 +85,11 @@ export default function Pizza({ pizza }) {
       <div className="flex-container">
         <div className="m-1 w-100">
           <h1 className="mt-1">
-            Pret: {pizza.prices[0][variant] * quantity} RON
+            Pret: {((variant === "mare" && currentUser?.isPremium) ? (pizza.prices[0][variant] * quantity * 0.95) 
+            : (pizza.prices[0][variant] * quantity)).toFixed(2)} RON
           </h1>
+
+
         </div>
 
         <div className="m-1 w-100">
