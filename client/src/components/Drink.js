@@ -15,13 +15,13 @@ export default function Drink({ drink }) {
     const currentUser = useSelector((state) => state.loginUserReducer.currentUser)
 
 
-    function addtodrinkscart() {
+    function dispatchAddToDrinksCart() {
         dispatch(addToDrinksCart(drink, quantity))
     }
 
     function handleOrder(){
         if(currentUser){
-          addToDrinksCart()
+            dispatchAddToDrinksCart()
         }else{
           alert('Va rugam sa va logati pentru a putea comanda!')
           window.location.href = '/login'

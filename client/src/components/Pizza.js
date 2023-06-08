@@ -21,13 +21,13 @@ export default function Pizza({ pizza }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.loginUserReducer.currentUser)
 
-  function addtocart() {
+  function dispatchAddToCart() {
     dispatch(addToCart(pizza, quantity, variant))
   }
 
   function handleOrder(){
     if(currentUser){
-      addToCart()
+      dispatchAddToCart()
     }else{
       alert('Va rugam sa va logati pentru a putea comanda!')
       window.location.href = '/login'

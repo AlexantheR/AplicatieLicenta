@@ -5,6 +5,7 @@ import { placeOrder } from '../actions/orderActions'
 import Loading from '../components/Loading'
 import Success from '../components/Success'
 import Error from '../components/Error'
+// import nodemailer from 'nodemailer'
 
 export default function Checkout({ subtotal }) {
 
@@ -17,15 +18,11 @@ export default function Checkout({ subtotal }) {
   }
 
 
-  // var paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value
-  // if (paymentMethod === 'cash') {
-  //   alert('Cash order succesfull!')
-  // } else if (paymentMethod === 'card') {
-
-  // } else {
-  //   alert('Please select a payment method!')
-  // }
-
+  // `Comanda a fost plasata! Mai jos poti vedea detaliile comenzii:\n\n`+
+  //     `Suma: ${subtotal} RON\n` + 
+  //     `Id tranzactie: ${token.id}\n` + 
+  //     `Adresa: ${token.card.address_line1}, ${token.card.address_city}, ${token.card.address_country}, ${token.card.address_zip}`,
+    
 
   return (
     <div>
@@ -33,12 +30,6 @@ export default function Checkout({ subtotal }) {
       {loading && (<Loading />)}
       {error && (<Error error='Ceva nu a mers bine!' />)}
       {success && (<Success success='Comanda a fost plasata cu succes!' />)}
-{/* 
-      <input type='radio' id='cash' name='paymentMethod' value='cash'></input>
-      <label for='cash' style={{ marginRight: '8px' }}>Cash</label>
-      <input type='radio' id='card' name='paymentMethod' value='card'></input>
-      <label for='card'>Card</label>
-      <br></br> */}
 
         <StripeCheckout
           amount={subtotal * 100}
