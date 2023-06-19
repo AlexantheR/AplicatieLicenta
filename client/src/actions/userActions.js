@@ -1,5 +1,23 @@
 import axios from "axios"
 
+export const checkEmailAvailability = (email) => async (dispatch) => {
+    try {
+        dispatch({ type: 'CHECK_EMAIL_REQUEST' });
+
+        const response = await axios.get(`/api/users/checkemail?email=${email}`);
+        const unique = response.data.unique;
+
+        dispatch({ type: 'CHECK_EMAIL_SUCCESS', payload: unique });
+        return unique;
+    } catch (error) {
+        dispatch({ type: 'CHECK_EMAIL_FAILED', payload: error });
+        console.log(error);
+        return false;
+    }
+};
+
+
+
 export const registerUser = (user) => async dispatch => {
 
     dispatch({ type: 'USER_REGISTER_REQUEST' })

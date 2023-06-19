@@ -29,7 +29,7 @@ export default function Userslist() {
 
     return (
         <div>
-            <h1>Users list</h1>
+            <h1>Lista utilizatori</h1>
             {loading && <Loading />}
             {error && <Error error="Ceva nu a mers bine!" />}
             <table className='table table-striped table-bordered table-responsive-sm'>

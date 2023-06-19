@@ -3,20 +3,55 @@ const router = express.Router();
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 
-router.post('/register', async (req, res) => {
-
-    const { name, email, password } = req.body
+router.get('/checkemail', async (req, res) => {
+    const { email } = req.query;
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10)
-        const newUser = new User({ name, email, password: hashedPassword })
-        newUser.save()
-        res.send(User[0])
-        // res.send(newUser)
+        const existingUser = await User.findOne({ email });
+
+        res.json({ unique: !existingUser });
     } catch (error) {
-        return res.status(400).json({ message: error })
+        return res.status(400).json({ message: error });
     }
-})
+});
+
+
+
+router.post('/register', async (req, res) => {
+    const { name, email, password } = req.body;
+
+    try {
+        // Check if the email already exists in the database
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: 'Adresa de email exista deja.' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ name, email, password: hashedPassword });
+        await newUser.save();
+
+        res.send(newUser);
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+});
+
+
+// router.post('/register', async (req, res) => {
+
+//     const { name, email, password } = req.body
+
+//     try {
+//         const hashedPassword = await bcrypt.hash(password, 10)
+//         const newUser = new User({ name, email, password: hashedPassword })
+//         newUser.save()
+//         res.send(User[0])
+//         // res.send(newUser)
+//     } catch (error) {
+//         return res.status(400).json({ message: error })
+//     }
+// })
 
 
 router.post('/login', async (req, res) => {
@@ -107,6 +142,5 @@ router.post("/loseuserpremium", async (req, res) => {
         return res.status(400).json({ message: error });
     }
 });
-
 
 module.exports = router

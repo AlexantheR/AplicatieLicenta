@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser } from "../actions/userActions";
+import { registerUser, checkEmailAvailability } from "../actions/userActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from '../components/Success'
@@ -13,22 +13,44 @@ export default function Registerscreen() {
     const registerstate = useSelector(state => state.registerUserReducer)
     const { error, loading, success } = registerstate
     const dispatch = useDispatch()
-    
-    async function register() {
 
-        if (password !== cpassword) {
-            alert("parolele nu sunt la fel")
-        }
-        else {
-            const user = {
-                name,
-                email,
-                password
+    async function register() {
+        if (name === '' || email === '' || password === '' || cpassword === '') {
+            alert('Toate campurile sunt necesare!');
+        } else if (!email.includes('@') || !email.includes('.')) {
+            alert('Adresa de email invalida!');
+        } else if (password !== cpassword) {
+            alert('Parolele nu sunt la fel.');
+        } else if (password.length < 6) {
+            alert('Parola trebuie sa contina minim 6 caractere.');
+        } else if (!/\d/.test(password)) {
+            alert('Parola trebuie sa contina minim o cifra.');
+        } else if (!/[a-zA-Z]/.test(password)) {
+            alert('Parola trebuie sa contina minim o litera.');
+        } else {
+            try {
+                dispatch({ type: 'CHECK_EMAIL_REQUEST' });
+
+                const unique = await dispatch(checkEmailAvailability(email));
+
+                if (!unique) {
+                    alert('Adresa de email exista deja.');
+                } else {
+                    const user = {
+                        name,
+                        email,
+                        password,
+                    };
+
+                    console.log(user);
+                    dispatch(registerUser(user));
+                    window.location.href = '/login';
+                }
+            } catch (error) {
+                alert('Ceva nu a mers bine.');
+                console.log(error);
             }
-            console.log(user);
-            dispatch(registerUser(user))
         }
-        window.location.href = '/login'
     }
 
     return (
