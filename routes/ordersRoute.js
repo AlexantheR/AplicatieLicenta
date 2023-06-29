@@ -3,6 +3,45 @@ const express = require('express')
 const router = express.Router()
 const stripe = require('stripe')('sk_test_51MxrSbBLFgjsWwKCOS2diP0rp2Bav8JbBo4jsD3Tl6QwhucSY9kt0fZnsIY0eV3BTatgZxRfyCVi5zrZzDWcRB6W00Zx8Yn3Nr')
 const Order = require('../models/orderModel')
+const nodemailer = require('nodemailer');
+
+async function sendInvoiceEmail(token, subtotal) {
+    try {
+        const transport = nodemailer.createTransport({
+            host: 'sandbox.smtp.mailtrap.io',
+            port: 2525,
+            auth: {
+                user: 'c47e34f6301bab',
+                pass: 'de0f0e2f8d7e4c',
+            },
+        });
+
+        const message = {
+            from: 'adinu90@gmail.com',
+            to: token.email,
+            subject: `Comanda cu id-ul ${token.card.id}`,
+            text: `Multumim pentru comanda! Puteti vedea detaliile mai jos:\n\n` +
+                `Total: ${subtotal} RON\n` +
+                `Adresa: ${token.card.address_line1}, ${token.card.address_city}, ${token.card.address_country}, ${token.card.address_zip}`,
+        };
+
+        await transport.sendMail(message);
+    } catch (error) {
+        throw error;
+    }
+}
+
+router.post('/sendinvoice', async (req, res) => {
+    const { token, subtotal } = req.body;
+
+    try {
+        await sendInvoiceEmail(token, subtotal);
+        res.send('Email invoice sent successfully');
+    } catch (error) {
+        console.error('Error sending email invoice:', error);
+        res.status(500).send('Error sending email invoice');
+    }
+});
 
 router.post('/placeorder', async (req, res) => {
     const { token, subtotal, currentUser, cartItems } = req.body
@@ -94,15 +133,15 @@ router.post("/deliverorder", async (req, res) => {
 router.post("/cancelorder", async (req, res) => {
     const orderid = req.body.orderid;
     try {
-      const order = await Order.findOne({ _id: orderid });
-      order.isDelivered = false;
-      await order.save();
-      res.send('Comanda anulata cu succes');
+        const order = await Order.findOne({ _id: orderid });
+        order.isDelivered = false;
+        await order.save();
+        res.send('Comanda anulata cu succes');
     } catch (error) {
-      return res.status(400).json({ message: error });
+        return res.status(400).json({ message: error });
     }
-  });
-  
+});
+
 
 
 module.exports = router

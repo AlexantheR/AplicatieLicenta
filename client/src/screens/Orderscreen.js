@@ -76,7 +76,7 @@ export default function Orderscreen() {
                     onClick={() => {
                       handleCancelOrder(order._id)
                       window.location.reload()
-                    }                    }
+                    }}
                   >
                     Anuleaza comanda
                   </button>) :
