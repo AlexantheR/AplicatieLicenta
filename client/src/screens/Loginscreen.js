@@ -50,9 +50,9 @@ export default function Loginscreen() {
             />
 
             <button onClick={login} className="btnLogin mt-3 mb-3">AUTENTIFICARE</button>
-            <br />
-            <p>Nu ai un cont? </p>
-            <a href="/register" className="mt-2">Apasa aici pentru inregistrare</a>
+            <p>Nu ai un cont? <a href="/register">Apasa aici pentru inregistrare</a></p>
+            <p>Ai uitat parola? <a href="/forgotpassword">Apasa aici pentru resetare</a></p>
+
           </div>
         </div>
       </div>

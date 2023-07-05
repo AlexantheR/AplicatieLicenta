@@ -16,7 +16,21 @@ export const checkEmailAvailability = (email) => async (dispatch) => {
     }
 };
 
+export const forgotPassword = (user) => async (dispatch) => {
+    try {
+        dispatch({ type: 'FORGOT_PASSWORD_REQUEST' });
 
+        const response = await axios.post('/api/users/forgotpassword', { user });
+        console.log(response);
+
+        dispatch({ type: 'FORGOT_PASSWORD_SUCCESS' });
+        alert('Verifica-ti email-ul pentru a reseta parola!');
+    } catch (error) {
+        dispatch({ type: 'FORGOT_PASSWORD_FAILED', payload: error });
+        alert('Ceva nu a mers bine!');
+        console.log(error);
+    }
+}
 
 export const registerUser = (user) => async dispatch => {
 

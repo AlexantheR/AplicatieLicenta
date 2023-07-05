@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser, checkEmailAvailability } from "../actions/userActions";
+import { forgotPassword } from "../actions/userActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from '../components/Success'
 
-export default function Registerscreen() {
-    const [name, setname] = useState("");
+export default function ResetpasswordScreen() {
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
     const [cpassword, setcpassword] = useState("");
-    const registerstate = useSelector(state => state.registerUserReducer)
-    const { error, loading, success } = registerstate
+    const forgotPasswordState = useSelector(state => state.forgotPasswordReducer)
+    const { error, loading, success } = forgotPasswordState
     const dispatch = useDispatch()
 
-    async function register() {
-        if (name === '' || email === '' || password === '' || cpassword === '') {
+    async function updatePassword() {
+        if (email === '' || password === '' || cpassword === '') {
             alert('Toate campurile sunt necesare!');
         } else if (!email.includes('@') || !email.includes('.')) {
             alert('Adresa de email invalida!');
@@ -29,21 +28,16 @@ export default function Registerscreen() {
             alert('Parola trebuie sa contina minim o litera.');
         } else {
             try {
-                dispatch({ type: 'CHECK_EMAIL_REQUEST' });
+                dispatch({ type: 'FORGOT_PASSWORD_REQUEST' });
 
-                const unique = await dispatch(checkEmailAvailability(email));
+                const user = { email, password }
+                const response = await dispatch(forgotPassword(user));
+                console.log(response);
 
-                if (!unique) {
-                    alert('Adresa de email exista deja.');
+                if (response.error) {
+                    alert('Ceva nu a mers bine.');
                 } else {
-                    const user = {
-                        name,
-                        email,
-                        password,
-                    };
-
-                    console.log(user);
-                    dispatch(registerUser(user));
+                    alert('Parola a fost resetata cu succes!');
                     window.location.href = '/login';
                 }
             } catch (error) {
@@ -54,19 +48,18 @@ export default function Registerscreen() {
     }
 
     return (
-        <div className='register'>
+        <div className='reset-password'>
             <div className="row justify-content-center mt-5">
                 <div className="col-md-5 mt-5 text-left shadow-lg p-3 mb-5 bg-white rounded">
 
                     {loading && (<Loading />)}
-                    {success && (<Success success='Utilizatorul s-a inregistrat cu succes' />)}
-                    {error && (<Error error='Adresa de email exista deja' />)}
+                    {success && (<Success success='Parola a fost resetata cu succes!' />)}
+                    {error && (<Error error={error} />)}
 
                     <h2 className="text-center m-2" style={{ fontSize: "35px" }}>
-                        Inregistrare
+                        Resetare parola
                     </h2>
                     <div>
-                        <input required type="text" placeholder="nume" className="form-control" value={name} onChange={(e) => { setname(e.target.value) }} />
                         <input required type="text" placeholder="email" className="form-control" value={email} onChange={(e) => { setemail(e.target.value) }} />
                         <input
                             type="password"
@@ -84,10 +77,7 @@ export default function Registerscreen() {
                             required
                             onChange={(e) => { setcpassword(e.target.value) }}
                         />
-                        <button onClick={register} className="btnRegister mt-3 mb-3">INREGISTRARE</button>
-                        <br />
-                        <p>Ai deja un cont? <a href="/login">Apasa aici pentru autentificare</a></p>
-
+                        <button onClick={updatePassword} className="btnRegister mt-3 mb-3">Schimba parola</button>
                     </div>
                 </div>
             </div>

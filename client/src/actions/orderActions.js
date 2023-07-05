@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
+export const placeOrderCard = (token, subtotal) => async (dispatch, getState) => {
     dispatch({ type: 'PLACE_ORDER_REQUEST' });
     const currentUser = getState().loginUserReducer.currentUser;
     const cartItems = getState().cartReducer.cartItems;
 
     try {
-        const response = await axios.post('/api/orders/placeorder', {
+        const response = await axios.post('/api/orders/placeorder/card', {
             token,
             subtotal,
             currentUser,
@@ -19,6 +19,49 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
         console.log(error);
     }
 };
+
+export const placeOrderRamburs = (orderDetails) => async (dispatch, getState) => {
+    dispatch({ type: 'PLACE_ORDER_REQUEST' });
+    const currentUser = getState().loginUserReducer.currentUser;
+    const cartItems = getState().cartReducer.cartItems;
+  
+    try {
+      const response = await axios.post('/api/orders/placeorder/cash', {
+        token: orderDetails.token,
+        subtotal: orderDetails.subtotal,
+        currentUser: currentUser, // Pass currentUser as an individual parameter
+        cartItems: cartItems, // Pass cartItems as an individual parameter
+      });
+      dispatch({ type: 'PLACE_ORDER_SUCCESS' });
+      console.log(response);
+    } catch (error) {
+      dispatch({ type: 'PLACE_ORDER_FAILED' });
+      console.log(error);
+    }
+  };
+  
+
+
+
+
+
+// export const placeOrder = (token, subtotal) => async (dispatch) => {
+//     dispatch({ type: 'PLACE_ORDER_REQUEST' });
+
+//     try {
+//         const response = await axios.post('/api/orders/placeorder', {
+//             token,
+//             subtotal,
+//         });
+
+//         dispatch({ type: 'PLACE_ORDER_SUCCESS' });
+//         console.log(response.data);
+//     } catch (error) {
+//         dispatch({ type: 'PLACE_ORDER_FAILED' });
+//         console.log(error);
+//     }
+// };
+
 
 export const getUserOrders = () => async (dispatch, getState) => {
 

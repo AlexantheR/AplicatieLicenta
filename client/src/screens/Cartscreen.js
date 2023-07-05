@@ -19,7 +19,6 @@ export default function Cartscreen() {
     const currentUser = useSelector((state) => state.loginUserReducer.currentUser)
     const dispatch = useDispatch()
 
-
     useEffect(() => {
         alert('Folositi codul "voucher123" pentru a beneficia de 10% reducere!')
     }, [])
@@ -114,12 +113,9 @@ export default function Cartscreen() {
                     )}
                 </div>
 
-
-
                 <div className='col-md-4 text-right'>
                     <h2 style={{ fontSize: '40px' }}>Total: {subtotal.toFixed(2)} RON </h2>
                     <Checkout subtotal={subtotal} />
-
 
                     {appliedVoucher ?
                         <h1 id='voucher-apply'>Voucher aplicat cu succes!</h1>

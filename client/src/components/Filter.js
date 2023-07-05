@@ -22,7 +22,7 @@ export default function Filter() {
                     </select>
                 </div>
                 <div className="col-md-3 w-100">
-                    <button className='btnFilter w-100 mt-2' onClick={() => { dispatch(filterPizzas(searchkey, category)) }}>FILTREAZA</button>
+                    <button className='book-table-btn w-100 mt-2' onClick={() => { dispatch(filterPizzas(searchkey, category)) }}>FILTREAZA</button>
                 </div>
 
             </div>

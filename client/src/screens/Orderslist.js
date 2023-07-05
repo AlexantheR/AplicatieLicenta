@@ -4,13 +4,21 @@ import { deliverOrder, getAllOrders } from "../actions/orderActions";
 import Error from "../components/Error";
 import Filter from "../components/Filter";
 import Loading from "../components/Loading";
+
 export default function Orderslist() {
     const dispatch = useDispatch();
     const getordersstate = useSelector((state) => state.getAllOrdersReducer);
     const { loading, error, orders } = getordersstate;
+
     useEffect(() => {
         dispatch(getAllOrders());
     }, []);
+
+    // Sort the orders by date in descending order
+    const sortedOrders = orders.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
     return (
         <div>
             {loading && <Loading />}
@@ -26,12 +34,11 @@ export default function Orderslist() {
                         <th>Status</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    {orders &&
-                        orders.map((order) => {
+                    {sortedOrders &&
+                        sortedOrders.map((order) => {
                             return (
-                                <tr>
+                                <tr key={order._id}>
                                     <td>{order._id}</td>
                                     <td>{order.email}</td>
                                     <td>{order.userid}</td>
@@ -41,7 +48,14 @@ export default function Orderslist() {
                                         {order.isDelivered ? (
                                             <h1>Comanda trimisa</h1>
                                         ) : (
-                                            <button className="btnDeliver" onClick={() => { dispatch(deliverOrder(order._id)) }}>Trimite comanda</button>
+                                            <button
+                                                className="btnDeliver"
+                                                onClick={() => {
+                                                    dispatch(deliverOrder(order._id));
+                                                }}
+                                            >
+                                                Trimite comanda
+                                            </button>
                                         )}
                                     </td>
                                 </tr>

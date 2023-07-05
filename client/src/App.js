@@ -16,14 +16,16 @@ import MainBook from './screens/MainBook';
 import Book from './screens/Book';
 import ThankYou from './screens/ThankYou';
 import PaymentScreen from './screens/PaymentScreen';
+import ResetpasswordScreen from './screens/ResetpasswordScreen';
 
 
 function App() {
+  
   return (
     <div className="App">
       <Navbar />
 
-      <BrowserRouter>
+      <BrowserRouter>      
         <Route path="/" exact component={FirstPage} />
         <Route path="/PizzaMenu" exact component={PizzaMenu} />
         <Route path="/cart" exact component={Cartscreen} />
@@ -36,6 +38,7 @@ function App() {
         <Route path='/book' exact component={Book} />
         <Route path='/thankyou' exact component={ThankYou} />
         <Route path='/payment' exact component={PaymentScreen} />
+        <Route path='/forgotpassword' exact component={ResetpasswordScreen} />
       </BrowserRouter>
 
     </div>
