@@ -100,6 +100,7 @@ export default function Checkout({ subtotal }) {
             placeholder="oras"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            required
           />
           <br />
           <input
@@ -107,6 +108,7 @@ export default function Checkout({ subtotal }) {
             placeholder="tara"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
+            required
           />
           <br />
           <input
@@ -114,13 +116,23 @@ export default function Checkout({ subtotal }) {
             placeholder="cod postal"
             value={pincode}
             onChange={(e) => setPincode(e.target.value)}
+            required
           />
           <br />
-          <br />
-          <button className="book-table-btn" onClick={tokenHandler}>
-            Plateste ramburs
+          {(!street || !city || !country || !pincode) && (
+            <p>*Pentru a putea da comanda, va rugam completati toate detaliile necesare.</p>
+          )}
+          <button
+            className="book-table-btn"
+            onClick={tokenHandler}
+            disabled={!street || !city || !country || !pincode} // Disable the button if any of the inputs are empty
+          >
+            {(!street || !city || !country || !pincode) ? 'Adresa incompleta' : 'Plateste ramburs'}
           </button>
         </div>
+
+
+
       )}
     </div>
   );
