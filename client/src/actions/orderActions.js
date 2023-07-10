@@ -40,11 +40,6 @@ export const placeOrderRamburs = (orderDetails) => async (dispatch, getState) =>
     }
   };
   
-
-
-
-
-
 // export const placeOrder = (token, subtotal) => async (dispatch) => {
 //     dispatch({ type: 'PLACE_ORDER_REQUEST' });
 

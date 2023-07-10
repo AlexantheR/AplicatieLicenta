@@ -1,0 +1,96 @@
+.homepage {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.header {
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+nav ul li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.main {
+    padding: 40px 20px;
+}
+
+.hero {
+    background-image: url('./images/pizze.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #ff8500;
+}
+
+.about {
+    padding: 80px 40px;
+    background-color: #f8f8f8;
+}
+
+.about h2 {
+    font-size: 30px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.contact {
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.contact h2 {
+    font-size: 30px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.footer {
+    padding: 20px;
+    background-color: #f8f8f8;
+}

@@ -12,11 +12,10 @@ import Orderscreen from './screens/Orderscreen';
 import Adminscreen from './screens/Adminscreen';
 import FirstPage from './screens/FirstPage';
 import DrinksMenu from './screens/DrinksMenu';
-import MainBook from './screens/MainBook';
 import Book from './screens/Book';
 import ThankYou from './screens/ThankYou';
 import PaymentScreen from './screens/PaymentScreen';
-import ResetpasswordScreen from './screens/ResetpasswordScreen';
+import Makeuserpremium from './screens/MakeUserPremium';
 
 
 function App() {
@@ -34,11 +33,10 @@ function App() {
         <Route path='/orders' exact component={Orderscreen} />
         <Route path='/admin' component={Adminscreen} />
         <Route path='/drinks' exact component={DrinksMenu} />
-        <Route path='/mainbook' exact component={MainBook} />
         <Route path='/book' exact component={Book} />
         <Route path='/thankyou' exact component={ThankYou} />
         <Route path='/payment' exact component={PaymentScreen} />
-        <Route path='/forgotpassword' exact component={ResetpasswordScreen} />
+        <Route path='/makeuserpremium' exact component={Makeuserpremium} />
       </BrowserRouter>
 
     </div>

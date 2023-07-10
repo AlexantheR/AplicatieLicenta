@@ -25,7 +25,7 @@ function NavigationBar() {
             <div className="navbarPageLinks">
               <Nav.Link href="/pizzamenu">Pizza</Nav.Link>
               <Nav.Link href="/drinks">Bauturi</Nav.Link>
-              <Nav.Link href="/mainbook">Rezervare</Nav.Link>
+              <Nav.Link href="/book">Rezervare</Nav.Link>
             </div>
           </Nav>
 
@@ -43,6 +43,9 @@ function NavigationBar() {
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a className="dropdown-item" href="/orders">Comenzile mele</a>{
                     (currentUser.isAdmin == 1 ? (<a className="dropdown-item" href="/admin">Panou Admin</a>) : null)}
+                  {currentUser?.isPremium ? <a className="dropdown-item" href="/makeuserpremium">Dezabonare Premium?</a> : 
+                  (<a className="dropdown-item" href="/makeuserpremium">Premium?</a>)}
+                  
                   <a className="dropdown-item" href="#"
                     onClick={() => { dispatch(logoutUser()) }}>
                     <li>Deconectare</li></a>

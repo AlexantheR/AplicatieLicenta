@@ -4,9 +4,6 @@ import { addToCart, deleteFromCart, addToDrinksCart, deleteDrinkFromCart } from 
 import Checkout from '../components/Checkout';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-
 export default function Cartscreen() {
 
     AOS.init()

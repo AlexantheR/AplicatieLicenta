@@ -18,26 +18,6 @@ export const registerUserReducer = (state = {}, action) => {
     }
 }
 
-export const forgotPasswordReducer = (state = {}, action) => {
-    switch (action.type) {
-        case 'FORGOT_PASSWORD_REQUEST':
-            return {
-                loading: true
-            }
-        case 'FORGOT_PASSWORD_SUCCESS':
-            return {
-                loading: false,
-                success: true
-            }
-        case 'FORGOT_PASSWORD_FAILED':
-            return {
-                loading: false,
-                error: action.payload
-            }
-        default: return state
-    }
-}
-
 export const loginUserReducer = (state = {}, action) => {
     switch (action.type) {
         case 'USER_LOGIN_REQUEST':
@@ -55,6 +35,12 @@ export const loginUserReducer = (state = {}, action) => {
                 loading: false,
                 error: action.payload
             }
+
+        case 'UPDATE_USER_PREMIUM_STATUS':
+            return {
+                ...state,
+                currentUser: action.payload,
+            };
         default: return state
     }
 }

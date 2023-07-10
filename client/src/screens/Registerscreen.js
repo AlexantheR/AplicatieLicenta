@@ -84,8 +84,9 @@ export default function Registerscreen() {
                             required
                             onChange={(e) => { setcpassword(e.target.value) }}
                         />
-                        <button onClick={register} className="btnRegister mt-3 mb-3">INREGISTRARE</button>
-                        <br />
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <button onClick={register} className="book-table-btn mt-3 mb-3">INREGISTRARE</button>
+                        </div>
                         <p>Ai deja un cont? <a href="/login">Apasa aici pentru autentificare</a></p>
 
                     </div>

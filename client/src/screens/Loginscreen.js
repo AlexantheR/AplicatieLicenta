@@ -49,10 +49,10 @@ export default function Loginscreen() {
               onChange={(e) => { setpassword(e.target.value) }}
             />
 
-            <button onClick={login} className="btnLogin mt-3 mb-3">AUTENTIFICARE</button>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <button onClick={login} className="book-table-btn mt-3 mb-3">AUTENTIFICARE</button>
+            </div>
             <p>Nu ai un cont? <a href="/register">Apasa aici pentru inregistrare</a></p>
-            <p>Ai uitat parola? <a href="/forgotpassword">Apasa aici pentru resetare</a></p>
-
           </div>
         </div>
       </div>

@@ -15,12 +15,12 @@ export default function Userslist() {
         dispatch(getAllUsers());
     }, []);
 
-    const handlePremium = (userId, isPremium) => {
+    const handlePremium = (email, isPremium) => {
         if (isPremium) {
-            dispatch(loseUserPremium(userId));
+            dispatch(loseUserPremium(email));
             window.location.reload()
         } else {
-            dispatch(makeUserPremium(userId));
+            dispatch(makeUserPremium(email));
             window.location.reload()
         }
     };
@@ -49,8 +49,8 @@ export default function Userslist() {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td><i className='fa fa-trash' onClick={() => { dispatch(deleteUser(user._id)) }}></i></td>
-                            {user.isPremium ? <td><button onClick={() => handlePremium(user._id, user.isPremium)}>Inceteaza premium</button></td>
-                                : <td><button onClick={() => handlePremium(user._id, user.isPremium)}>Promoveaza utilizator</button></td>}
+                            {user.isPremium ? <td><button onClick={() => handlePremium(user.email, user.isPremium)}>Inceteaza premium</button></td>
+                                : <td><button onClick={() => handlePremium(user.email, user.isPremium)}>Promoveaza utilizator</button></td>}
                         </tr>
                     ))}
                 </tbody>
