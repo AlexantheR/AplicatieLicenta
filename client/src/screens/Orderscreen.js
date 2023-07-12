@@ -19,6 +19,7 @@ export default function Orderscreen() {
   const handleCancelOrder = orderId => {
     if (window.confirm('Sigur doriti sa anulati comanda?')) {
       dispatch(cancelOrder(orderId));
+      window.location.reload()
     }
   };
 
@@ -75,7 +76,6 @@ export default function Orderscreen() {
                     className='book-table-btn'
                     onClick={() => {
                       handleCancelOrder(order._id)
-                      window.location.reload()
                     }}
                   >
                     Anuleaza comanda

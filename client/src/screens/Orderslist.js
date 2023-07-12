@@ -49,7 +49,7 @@ export default function Orderslist() {
                                             <h1>Comanda trimisa</h1>
                                         ) : (
                                             <button
-                                                className="btnDeliver"
+                                                className="book-table-btn"
                                                 onClick={() => {
                                                     dispatch(deliverOrder(order._id));
                                                 }}

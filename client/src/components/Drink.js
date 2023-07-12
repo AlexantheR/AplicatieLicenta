@@ -61,7 +61,7 @@ export default function Drink({ drink }) {
                 </div>
 
                 <div className="m-1 w-100">
-                    <button onClick={handleOrder} className="btnAdd">{drink.prices[0] * quantity} RON</button>
+                    <button onClick={handleOrder} className="book-table-btn">{drink.prices[0] * quantity} RON</button>
                 </div>
             </div>
         </div>

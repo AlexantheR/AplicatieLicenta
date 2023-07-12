@@ -51,6 +51,7 @@ export default function Makeuserpremium() {
                     </div>
                 ) : (
                     <div className='col-md-4'>
+                        <h2>Deveniti client premium</h2>
                         <PremiumCheckout onPremiumStatusChange={handleUpdatePremiumStatus} />
                     </div>
                 )}

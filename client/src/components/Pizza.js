@@ -93,7 +93,7 @@ export default function Pizza({ pizza }) {
         </div>
 
         <div className="m-1 w-100">
-          <button className="btnAdd" onClick={handleOrder}>ADAUGA IN COS</button>
+          <button className="book-table-btn" onClick={handleOrder}>COMANDA</button>
         </div>
       </div>
 

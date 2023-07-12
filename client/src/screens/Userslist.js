@@ -49,8 +49,8 @@ export default function Userslist() {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td><i className='fa fa-trash' onClick={() => { dispatch(deleteUser(user._id)) }}></i></td>
-                            {user.isPremium ? <td><button onClick={() => handlePremium(user.email, user.isPremium)}>Inceteaza premium</button></td>
-                                : <td><button onClick={() => handlePremium(user.email, user.isPremium)}>Promoveaza utilizator</button></td>}
+                            {user.isPremium ? <td><button className="book-table-btn" onClick={() => handlePremium(user.email, user.isPremium)}>Inceteaza premium</button></td>
+                                : <td><button className="book-table-btn" onClick={() => handlePremium(user.email, user.isPremium)}>Promoveaza utilizator</button></td>}
                         </tr>
                     ))}
                 </tbody>

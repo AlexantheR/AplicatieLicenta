@@ -237,12 +237,11 @@ tr {
 }
 
 .pizza-cta {
-  padding-top: 4%;
+  padding-top: 2%;
 }
 
 .looking-for-pizza {
   font-size: 2.5rem;
-  padding-bottom: 1.8%;
   padding-right: 3%;
   padding-left: 3%;
 }
@@ -342,21 +341,22 @@ input[type=date]::-webkit-calendar-picker-indicator {
   }
 }
 
-.table-display-message {
-  padding: 2% 0;
-  text-align: center;
-  font-size: 1.3rem;
-  color: white;
-}
-
 .tables-display {
   background-color: #e74c3c;
-  margin-top: 30px !important;
-  margin-bottom: 30px !important;
+  margin: auto;
   border-radius: 25px;
-  height: auto;
-  width: auto;
+  max-width: 100%;
+  height: calc(300px);
+  /* Adjust the height based on your requirements */
+  width: 90%;
+  /* Adjust the width as needed */
+  overflow: auto;
 }
+
+.table-container {
+  margin: 0 1%;
+}
+
 
 @media (min-width: 768px) {
   .tables-display {
@@ -364,9 +364,15 @@ input[type=date]::-webkit-calendar-picker-indicator {
   }
 }
 
+.table-display-message {
+  padding: 2% 0;
+  text-align: center;
+  font-size: 1.3rem;
+  color: white;
+}
+
 .table-key {
-  padding-top: 1%;
-  padding-bottom: 4.5%;
+  padding: 1% 0;
   color: white;
 }
 
@@ -374,11 +380,20 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: white;
   font-size: 1.2rem;
   font-family: Roboto, sans-serif;
+  text-align: center; /* Align the text in the center */
+  margin: 0 auto; /* Center the element horizontally */
 }
 
-.table-container {
-  margin: 0 1%;
+.wrong-time {
+  color: white;
+  font-size: 1.2rem;
+  font-family: Roboto, sans-serif;
+  text-align: center; /* Align the text in the center */
+  margin: 0 auto; /* Center the element horizontally */
+  padding-top: 5%;
 }
+
+
 
 .table {
   background-color: rgba(245, 246, 250, 0.4);
@@ -421,6 +436,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding-top: 15px;
   font-family: Roboto, sans-serif;
 }
+
 
 .reservation-details-container {
   padding: 0 4%;
@@ -479,4 +495,28 @@ input[type=date]::-webkit-calendar-picker-indicator {
     font-size: 7rem;
     padding-bottom: 4%;
   }
+}
+
+.reservation-wrapper {
+  margin-top: -10px;
+  /* Adjust the top margin as needed */
+  margin-bottom: -10px;
+  /* Adjust the bottom margin as needed */
+}
+
+.reservation-row {
+  margin-top: -10px;
+  /* Adjust the top margin as needed */
+  margin-bottom: -10px;
+  /* Adjust the bottom margin as needed */
+}
+
+.chart-container {
+  height: 400px;
+  /* Adjust the height as needed */
+  width: 100%;
+  /* Adjust the width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

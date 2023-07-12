@@ -77,7 +77,7 @@ export default function Adddrink() {
                             setimage(e.target.value);
                         }}
                     />
-                    <button type="submit" className="btnAdd mt-3">Adauga bautura</button>
+                    <button type="submit" className="book-table-btn">Adauga bautura</button>
                 </form>
             </div>
         </div>

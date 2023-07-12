@@ -8,13 +8,16 @@ Chart.register(CategoryScale, LinearScale, Title, BarElement);
 
 export default function Graph({ orders = [] }) {
     const [chartData, setChartData] = useState(null);
+    const [totalAmount, setTotalAmount] = useState(0);
 
     useEffect(() => {
         if (orders.length > 0) {
             const monthlySoldItems = calculateMonthlySoldItems(orders);
             const chartData = prepareChartData(monthlySoldItems);
             const options = prepareChartOptions(monthlySoldItems);
+            const totalAmount = calculateTotalAmount(monthlySoldItems);
             setChartData({ data: chartData, options: options });
+            setTotalAmount(totalAmount);
         }
     }, [orders]);
 
@@ -105,28 +108,38 @@ export default function Graph({ orders = [] }) {
                         font: {
                             size: 12,
                         },
-                        maxTicksLimit: 10, // Adjust the number of ticks displayed on the y-axis
+                        maxTicksLimit: 10,
                     },
                 },
             },
-            tooltips: {
-                displayColors: false,
-                titleFont: {
-                    size: 14,
-                    weight: 'bold',
-                },
-                bodyFont: {
-                    size: 12,
-                },
-                callbacks: {
-                    label: (context) => {
-                        const datasetIndex = context.datasetIndex;
-                        const dataIndex = context.dataIndex;
-                        const dataset = context.chart.data.datasets[datasetIndex];
-                        const label = dataset.label;
-                        const orderItemName = Object.keys(monthlySoldItems)[dataIndex];
-                        const value = dataset.data[dataIndex];
-                        return `${orderItemName}: $${value.toFixed(2)}`; // Display the value with two decimal places and prefix with $
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            plugins: {
+                tooltip: {
+                    enabled: true,
+                    titleAlign: 'center',
+                    bodyAlign: 'center',
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold',
+                    },
+                    bodyFont: {
+                        size: 12,
+                    },
+                    callbacks: {
+                        label: (context) => {
+                            const dataset = context.dataset;
+                            const value = dataset.data[context.dataIndex];
+                            const orderItemName = Object.keys(monthlySoldItems)[context.dataIndex];
+                            return `${orderItemName}: $${value.toFixed(2)}`;
+                        },
+                        afterLabel: (context) => {
+                            const dataset = context.dataset;
+                            const value = dataset.data[context.dataIndex];
+                            return `$${value.toFixed(2)}`;
+                        },
                     },
                 },
             },
@@ -135,9 +148,18 @@ export default function Graph({ orders = [] }) {
         return options;
     };
 
+
+    const calculateTotalAmount = (monthlySoldItems) => {
+        const totalAmount = Object.values(monthlySoldItems).reduce((a, b) => a + b, 0);
+        return totalAmount;
+    };
+
     return (
         <div>
-            {chartData && <Bar data={chartData.data} options={chartData.options} />}
+            {totalAmount > 0 && <h3 className="text-center">Total comenzi: {totalAmount.toFixed(2)} RON</h3>}
+            <div className="chart-container">
+                {chartData && <Bar data={chartData.data} options={chartData.options} />}
+            </div>
         </div>
     );
 }
