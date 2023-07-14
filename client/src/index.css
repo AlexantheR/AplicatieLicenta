@@ -81,7 +81,9 @@ h1 {
 }
 
 .flex-container {
-  display: flex !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .drink-grid-container {
@@ -380,16 +382,20 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: white;
   font-size: 1.2rem;
   font-family: Roboto, sans-serif;
-  text-align: center; /* Align the text in the center */
-  margin: 0 auto; /* Center the element horizontally */
+  text-align: center;
+  /* Align the text in the center */
+  margin: 0 auto;
+  /* Center the element horizontally */
 }
 
 .wrong-time {
   color: white;
   font-size: 1.2rem;
   font-family: Roboto, sans-serif;
-  text-align: center; /* Align the text in the center */
-  margin: 0 auto; /* Center the element horizontally */
+  text-align: center;
+  /* Align the text in the center */
+  margin: 0 auto;
+  /* Center the element horizontally */
   padding-top: 5%;
 }
 
@@ -519,4 +525,18 @@ input[type=date]::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.motiv-premium {
+  text-align: justify;
+  text-indent: 40px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+
+.discounted-price {
+  color: red;
 }

@@ -115,35 +115,30 @@ export default props => {
   }, [selection.time, selection.date, selection.size, selection.location]);
 
   // Make the reservation if all details are filled out and the time is valid
-  const reserve = async () => {
+  const reserve = async _ => {
     if (
-      booking.name.length === 0 ||
-      booking.phone.length === 0 ||
-      booking.email.length === 0
+      (booking.name.length === 0) |
+      (booking.phone.length === 0) |
+      (booking.email.length === 0)
     ) {
       console.log("Detalii incomplete");
       setReservationError(true);
     } else {
       const datetime = getDate();
-      const now = new Date();
-      if (datetime < now) {
-        console.log("Timpul selectat este mai devreme decât timpul curent");
-      } else {
-        let res = await fetch("http://localhost:5000/reservation", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            ...booking,
-            date: datetime,
-            table: selection.table.id
-          })
-        });
-        res = await res.text();
-        console.log("Reservat: " + res);
-        props.history.push("/thankyou");
-      }
+      let res = await fetch("http://localhost:5000/reservation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          ...booking,
+          date: datetime,
+          table: selection.table.id
+        })
+      });
+      res = await res.text();
+      console.log("Reservat: " + res);
+      props.history.push("/thankyou");
     }
   };
 

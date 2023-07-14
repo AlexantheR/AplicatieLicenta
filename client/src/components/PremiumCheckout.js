@@ -41,7 +41,7 @@ export default function PremiumCheckout() {
           stripeKey="pk_test_51MxrSbBLFgjsWwKCRKsXXygticOx7Q961jmSeGXuSGJyM7SlZ3XClkSWn0idUqskONrUw7IqEOC0uz9vs1rCWeCu00152iWCYs"
           currency="RON"
         >
-          <button className="book-table-btn">Plătește pentru Premium</button>
+          <button className="book-table-btn">Plateste pentru Premium</button>
         </StripeCheckout>
       ) : (
         <p>Plata a fost efectuată cu succes!</p>

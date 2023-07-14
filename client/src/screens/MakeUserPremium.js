@@ -52,6 +52,12 @@ export default function Makeuserpremium() {
                 ) : (
                     <div className='col-md-4'>
                         <h2>Deveniti client premium</h2>
+                        <div className='motiv-premium'>
+                            <h1>Iti multumim pentru fidelitatea ta si pentru ca alegi mereu pizza noastra delicioasa. Suntem incantati sa-ti prezentam o oferta speciala care te va face sa te simti cu adevarat privilegiat - devenind client premium si beneficiind de reduceri exclusive.</h1>
+                            <h1>Cu doar <b>25 RON</b> pe luna, poti sa-ti cumperi abonamentul premium si sa primesti o <b>reducere de 10%</b> la fiecare comanda de pizza mare. In plus, prin achizitionarea abonamentului premium, sustii si dezvoltarea noastra ca brand. Ne ajuta sa investim in ingrediente de calitate superioara, sa mentinem un nivel ridicat de servicii si sa inovam constant pentru a-ti oferi experiente culinare extraordinare.</h1>
+                            <h1>Asadar, nu mai sta pe ganduri! Alege sa devii client premium si bucura-te de avantajele pe care ti le oferim. Incepe sa economisesti si sa te rasfeti cu pizza noastra delicioasa in fiecare luna. Cu fiecare comanda, vei simti ca alegerea ta este mai mult decat o reducere - este o recompensa pentru gusturile tale rafinate.</h1>
+                        </div>
+                        <p style={{ textAlign: 'justify', fontStyle: 'italic', paddingTop:'3px' }}>*Dorim sa-ti aducem la cunostinta ca ne rezervam dreptul de a revoca statusul de client premium in anumite cazuri, in conformitate cu termenii si conditiile noastre. Aceasta poate interveni in situatii in care exista abuz sau incalcari ale politicilor noastre de utilizare sau comportament nerespectuos fata de angajatii nostri.</p>
                         <PremiumCheckout onPremiumStatusChange={handleUpdatePremiumStatus} />
                     </div>
                 )}

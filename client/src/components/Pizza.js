@@ -85,11 +85,16 @@ export default function Pizza({ pizza }) {
       <div className="flex-container">
         <div className="m-1 w-100">
           <h1 className="mt-1">
-            Pret: {((variant === "mare" && currentUser?.isPremium) ? (pizza.prices[0][variant] * quantity * 0.95) 
-            : (pizza.prices[0][variant] * quantity)).toFixed(2)} RON
+            Pret: {((variant === "mare" && currentUser?.isPremium) ? (
+              <span>
+                <span className="original-price">{(pizza.prices[0][variant] * quantity).toFixed(2)} RON</span>
+                <br />
+                <span className="discounted-price">{(pizza.prices[0][variant] * quantity * 0.95).toFixed(2)} RON</span>
+              </span>
+            ) : (
+              (pizza.prices[0][variant] * quantity).toFixed(2) + " RON"
+            ))}
           </h1>
-
-
         </div>
 
         <div className="m-1 w-100">
