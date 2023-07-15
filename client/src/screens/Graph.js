@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart } from 'chart.js';
-import { CategoryScale, LinearScale, Title, BarElement } from 'chart.js';
+import { Bar, Pie } from 'react-chartjs-2';
+import { CategoryScale, LinearScale, Title, BarElement, ArcElement, Chart, Legend } from 'chart.js';
 import 'chartjs-plugin-datalabels';
 
-Chart.register(CategoryScale, LinearScale, Title, BarElement);
+Chart.register(CategoryScale, LinearScale, Title, BarElement, ArcElement, Legend);
 
-export default function Graph({ orders = [] }) {
+export default function Graph({ orders = [], users = [] }) {
     const [chartData, setChartData] = useState(null);
     const [totalAmount, setTotalAmount] = useState(0);
+    const [pieChartData, setPieChartData] = useState(null);
 
     useEffect(() => {
         if (orders.length > 0) {
@@ -20,6 +20,12 @@ export default function Graph({ orders = [] }) {
             setTotalAmount(totalAmount);
         }
     }, [orders]);
+
+    useEffect(() => {
+        if (users.length > 0) {
+            calculateClientType(users);
+        }
+    }, [users]);
 
     const calculateMonthlySoldItems = (orders) => {
         const monthlySoldItems = {
@@ -46,7 +52,6 @@ export default function Graph({ orders = [] }) {
             });
         });
 
-        console.log(monthlySoldItems);
         return monthlySoldItems;
     };
 
@@ -55,7 +60,7 @@ export default function Graph({ orders = [] }) {
         const data = Object.values(monthlySoldItems);
 
         const dataset = {
-            label: 'Cumulated Price',
+            label: 'Total comenzi lunare',
             backgroundColor: '#e74646',
             borderColor: 'rgba(0, 0, 0, 1)',
             borderWidth: 2,
@@ -72,21 +77,6 @@ export default function Graph({ orders = [] }) {
 
     const prepareChartOptions = (monthlySoldItems) => {
         const options = {
-            plugins: {
-                datalabels: {
-                    anchor: 'end',
-                    align: 'end',
-                    color: 'black',
-                    formatter: (value, context) => {
-                        const datasetIndex = context.datasetIndex;
-                        const dataIndex = context.dataIndex;
-                        const dataset = context.chart.data.datasets[datasetIndex];
-                        const label = dataset.label;
-                        const orderItemName = Object.keys(monthlySoldItems)[dataIndex];
-                        return `${orderItemName}: ${value.toFixed(2)}`; // Display the value with two decimal places
-                    },
-                },
-            },
             maintainAspectRatio: false,
             responsive: true,
             scales: {
@@ -112,11 +102,10 @@ export default function Graph({ orders = [] }) {
                     },
                 },
             },
-            interaction: {
-                intersect: false,
-                mode: 'index',
-            },
             plugins: {
+                legend: {
+                    position: 'right',
+                },
                 tooltip: {
                     enabled: true,
                     titleAlign: 'center',
@@ -138,8 +127,20 @@ export default function Graph({ orders = [] }) {
                         afterLabel: (context) => {
                             const dataset = context.dataset;
                             const value = dataset.data[context.dataIndex];
-                            return `$${value.toFixed(2)}`;
+                            const percent = (value / totalAmount) * 100;
+                            return `${percent.toFixed(2)}%`;
                         },
+                    },
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: {
+                        size: 12,
+                    },
+                    formatter: (value, context) => {
+                        const dataset = context.chart.data.datasets[context.datasetIndex];
+                        const percent = (dataset.data[context.dataIndex] / totalAmount) * 100;
+                        return `${percent.toFixed(2)}%`;
                     },
                 },
             },
@@ -148,17 +149,69 @@ export default function Graph({ orders = [] }) {
         return options;
     };
 
-
     const calculateTotalAmount = (monthlySoldItems) => {
         const totalAmount = Object.values(monthlySoldItems).reduce((a, b) => a + b, 0);
         return totalAmount;
     };
 
+    const calculateClientType = (users) => {
+        let premiumClients = 0;
+        let nonPremiumClients = 0;
+
+        users.forEach((user) => {
+            if (user.isPremium) {
+                premiumClients++;
+            } else {
+                nonPremiumClients++;
+            }
+        });
+
+        const totalClients = premiumClients + nonPremiumClients;
+        const premiumPercentage = (premiumClients / totalClients) * 100;
+        const nonPremiumPercentage = (nonPremiumClients / totalClients) * 100;
+
+        const pieChartData = {
+            labels: [
+                `Clienti Premium (${premiumClients}) - ${premiumPercentage.toFixed(2)}%`,
+                `Clienti Non-Premium (${nonPremiumClients}) - ${nonPremiumPercentage.toFixed(2)}%`
+            ],
+            datasets: [
+                {
+                    data: [premiumClients, nonPremiumClients],
+                    backgroundColor: ['#ffc107', '#dc3545'],
+                },
+            ],
+        };
+
+        setPieChartData(pieChartData);
+    };
+
     return (
         <div>
-            {totalAmount > 0 && <h3 className="text-center">Total comenzi: {totalAmount.toFixed(2)} RON</h3>}
+            {totalAmount > 0 && <h3 className="total-comenzi">Total comenzi: {totalAmount.toFixed(2)} RON</h3>}
             <div className="chart-container">
                 {chartData && <Bar data={chartData.data} options={chartData.options} />}
+            </div>
+            <div className="piechart-container">
+                {pieChartData && (
+                    <Pie
+                        data={pieChartData}
+                        options={{
+                            maintainAspectRatio: false,
+                            responsive: true,
+                            plugins: {
+                                datalabels: {
+                                    color: '#fff',
+                                    formatter: (value, context) => {
+                                        const dataset = context.chart.data.datasets[0];
+                                        const percent = (dataset.data[context.dataIndex] / users.length) * 100;
+                                        return `${percent.toFixed(2)}%`;
+                                    },
+                                },
+                            },
+                        }}
+                    />
+                )}
             </div>
         </div>
     );

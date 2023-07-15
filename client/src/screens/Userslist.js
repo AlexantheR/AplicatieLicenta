@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrders } from "../actions/orderActions";
 import Error from "../components/Error";
-import Filter from "../components/Filter";
 import Loading from "../components/Loading";
 import { deleteUser, getAllUsers, makeUserPremium, loseUserPremium } from '../actions/userActions';
 
@@ -24,8 +22,6 @@ export default function Userslist() {
             window.location.reload()
         }
     };
-
-
 
     return (
         <div>

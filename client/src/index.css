@@ -518,14 +518,17 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 
 .chart-container {
-  height: 400px;
-  /* Adjust the height as needed */
-  width: 100%;
-  /* Adjust the width as needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 400px; /* Adjust the height as needed */
+  width: 55%;
+  float: left;
 }
+
+.piechart-container {
+  height: 400px; /* Adjust the height as needed */
+  width: 45%;
+  float: left;
+}
+
 
 .motiv-premium {
   text-align: justify;
@@ -538,5 +541,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 
 .discounted-price {
-  color: red;
+  color: #e74c3c;
+}
+
+.total-comenzi{
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: left;
+  text-indent: 80px;
 }

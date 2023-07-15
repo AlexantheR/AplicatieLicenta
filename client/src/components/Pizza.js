@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../actions/cartActions";
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Pizza({ pizza }) {
-
-  AOS.init({
-
-  })
+  AOS.init();
 
   const [quantity, setQuantity] = useState(1);
   const [variant, setVariant] = useState("mica");
@@ -19,21 +16,38 @@ export default function Pizza({ pizza }) {
   const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.loginUserReducer.currentUser)
+  const currentUser = useSelector((state) => state.loginUserReducer.currentUser);
 
   function dispatchAddToCart() {
-    dispatch(addToCart(pizza, quantity, variant))
+    dispatch(addToCart(pizza, quantity, variant));
   }
 
   function handleOrder() {
     if (currentUser) {
-      dispatchAddToCart()
+      dispatchAddToCart();
     } else {
-      alert('Va rugam sa va logati pentru a putea comanda!')
-      window.location.href = '/login'
+      alert('Va rugam sa va logati pentru a putea comanda!');
+      window.location.href = '/login';
     }
   }
 
+  const calculateDiscountedPrice = () => {
+    if (variant === "mare" && currentUser?.isPremium) {
+      const originalPrice = pizza.prices[0][variant] * quantity;
+      const discountedPrice = originalPrice * 0.90;
+      const discountAmount = originalPrice - discountedPrice;
+
+      return (
+        <span>
+          <span className="original-price">{originalPrice.toFixed(2)} RON</span>
+          <br />
+          <span className="discounted-price">{discountedPrice.toFixed(2)} RON (-{discountAmount.toFixed(2)} RON, 10% REDUCERE)</span>
+        </span>
+      );
+    }
+
+    return `${(pizza.prices[0][variant] * quantity).toFixed(2)} RON`;
+  };
 
   return (
     <div
@@ -85,15 +99,7 @@ export default function Pizza({ pizza }) {
       <div className="flex-container">
         <div className="m-1 w-100">
           <h1 className="mt-1">
-            Pret: {((variant === "mare" && currentUser?.isPremium) ? (
-              <span>
-                <span className="original-price">{(pizza.prices[0][variant] * quantity).toFixed(2)} RON</span>
-                <br />
-                <span className="discounted-price">{(pizza.prices[0][variant] * quantity * 0.95).toFixed(2)} RON</span>
-              </span>
-            ) : (
-              (pizza.prices[0][variant] * quantity).toFixed(2) + " RON"
-            ))}
+            Pret: {calculateDiscountedPrice()}
           </h1>
         </div>
 
@@ -117,7 +123,7 @@ export default function Pizza({ pizza }) {
         </Modal.Body>
 
         <Modal.Footer>
-          <button className="btnModal" onClick={handleClose}>
+          <button className="book-table-btn" onClick={handleClose}>
             INCHIDE
           </button>
         </Modal.Footer>

@@ -13,6 +13,7 @@ import Drinkslist from "./Drinkslist";
 import Userslist from "./Userslist";
 import Graph from "./Graph";
 import { getAllOrders } from "../actions/orderActions";
+import { getAllUsers } from "../actions/userActions";
 
 export default function Adminscreen() {
     const userstate = useSelector((state) => state.loginUserReducer);
@@ -20,6 +21,9 @@ export default function Adminscreen() {
 
     const allOrders = useSelector((state) => state.getAllOrdersReducer);
     const { orders, loading, error } = allOrders || {}; // Add a default value of an empty object
+
+    const allUsers = useSelector((state) => state.getAllUsersReducer);
+    const { users } = allUsers || {}; // Add a default value of an empty object
 
     const dispatch = useDispatch();
 
@@ -31,6 +35,7 @@ export default function Adminscreen() {
 
     useEffect(() => {
         dispatch(getAllOrders());
+        dispatch(getAllUsers());
     }, [dispatch]);
 
     return (
@@ -59,7 +64,7 @@ export default function Adminscreen() {
                             <Link to={'/admin/orderslist'} style={{ color: 'white' }}>Lista comenzi</Link>
                         </li>
                         <li>
-                            <Link to={'/admin/graph'} style={{ color: 'white' }}>Grafic vanzari</Link>
+                            <Link to={'/admin/graph'} style={{ color: 'white' }}>Situatii raportare</Link>
                         </li>
                     </ul>
 
@@ -79,7 +84,7 @@ export default function Adminscreen() {
                             ) : error ? (
                                 <div>Error: {error}</div>
                             ) : (
-                                <Graph orders={orders} />
+                                <Graph orders={orders} users={users} />
                             )}
                         </Route>
                     </Switch>
