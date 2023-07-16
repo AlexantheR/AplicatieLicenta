@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
+
 export const placeOrderCard = (token, subtotal) => async (dispatch, getState) => {
     dispatch({ type: 'PLACE_ORDER_REQUEST' });
     const currentUser = getState().loginUserReducer.currentUser;
@@ -13,8 +14,14 @@ export const placeOrderCard = (token, subtotal) => async (dispatch, getState) =>
             currentUser,
             cartItems,
         });
+
         dispatch({ type: 'PLACE_ORDER_SUCCESS' });
         console.log(response);
+
+        localStorage.removeItem('cartItems');
+        setTimeout(() => {
+            window.location.reload()
+        }, 2000);
     } catch (error) {
         dispatch({ type: 'PLACE_ORDER_FAILED' });
         console.log(error);
@@ -30,16 +37,24 @@ export const placeOrderRamburs = (orderDetails) => async (dispatch, getState) =>
         const response = await axios.post('/api/orders/placeorder/cash', {
             token: orderDetails.token,
             subtotal: orderDetails.subtotal,
-            currentUser: currentUser, // Pass currentUser as an individual parameter
-            cartItems: cartItems, // Pass cartItems as an individual parameter
+            currentUser: currentUser,
+            cartItems: cartItems,
         });
+
         dispatch({ type: 'PLACE_ORDER_SUCCESS' });
         console.log(response);
+
+        localStorage.removeItem('cartItems');
+        setTimeout(() => {
+            window.location.reload()
+        }, 2000);
     } catch (error) {
         dispatch({ type: 'PLACE_ORDER_FAILED' });
         console.log(error);
     }
 };
+
+
 
 // export const placeOrder = (token, subtotal) => async (dispatch) => {
 //     dispatch({ type: 'PLACE_ORDER_REQUEST' });
