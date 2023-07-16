@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
-
+const nodemailer = require('nodemailer');
 
 router.get('/checkemail', async (req, res) => {
     const { email } = req.query;
@@ -92,7 +92,34 @@ router.post("/deleteuser", async (req, res) => {
 router.post("/makeuserpremium", async (req, res) => {
     const { email } = req.body;
 
+    const sendPremiumConfirmationEmail = async (email) => {
+        try {
+            const transport = nodemailer.createTransport({
+                host: 'sandbox.smtp.mailtrap.io',
+                port: 2525,
+                auth: {
+                    user: 'c47e34f6301bab',
+                    pass: 'de0f0e2f8d7e4c',
+                },
+            });
+
+            const message = {
+                from: 'adinu90@gmail.com',
+                to: email,
+                subject: 'Activare cont Premium',
+                text: 'Felicitări! Acum sunteți un utilizator premium. Vă mulțumim pentru plata de 25 RON.',
+            };
+
+            await transport.sendMail(message);
+        } catch (error) {
+            throw error;
+        }
+    };
+
+
     try {
+
+        await sendPremiumConfirmationEmail(email);
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ message: 'Utilizatorul nu a fost gasit' });
