@@ -267,6 +267,36 @@ export default props => {
   };
 
 
+  const handleNameChange = (e) => {
+    const input = e.target.value;
+    const onlyLetters = /^[A-Za-z]+$/;
+
+    if (onlyLetters.test(input) || input === '') {
+      setBooking({ ...booking, name: input });
+    }
+  };
+
+  const handlePhoneChange = (e) => {
+    const input = e.target.value;
+    const onlyNumbers = /^[0-9]*$/; // Modify the regular expression to allow an empty input or only numbers
+
+    if (onlyNumbers.test(input) && input.length <= 10) {
+      setBooking({ ...booking, phone: input });
+    }
+  };
+
+  const handleEmailChange = (e) => {
+  const input = e.target.value;
+
+  // Email validation regular expression
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailRegex.test(input) || input === "") {
+    setBooking({ ...booking, email: input });
+  }
+};
+
+
   return (
     <div className="reservation-wrapper">
       <Row noGutters className="text-center align-items-center pizza-cta">
@@ -406,12 +436,7 @@ export default props => {
                 placeholder="Nume"
                 className="reservation-input"
                 value={booking.name}
-                onChange={e => {
-                  setBooking({
-                    ...booking,
-                    name: e.target.value
-                  });
-                }}
+                onChange={handleNameChange}
               />
             </Col>
             <Col xs="12" sm="3" className="reservation-details">
@@ -421,12 +446,7 @@ export default props => {
                 placeholder="Numar de telefon"
                 className="reservation-input"
                 value={booking.phone}
-                onChange={e => {
-                  setBooking({
-                    ...booking,
-                    phone: e.target.value
-                  });
-                }}
+                onChange={handlePhoneChange}
               />
             </Col>
             <Col xs="12" sm="3" className="reservation-details">

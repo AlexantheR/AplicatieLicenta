@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../actions/cartActions";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { toast } from "react-toastify";
 
 export default function Pizza({ pizza }) {
   AOS.init();
@@ -26,8 +27,13 @@ export default function Pizza({ pizza }) {
     if (currentUser) {
       dispatchAddToCart();
     } else {
-      alert('Va rugam sa va logati pentru a putea comanda!');
-      window.location.href = '/login';
+      toast.error('Va rugam sa va logati pentru a putea comanda!', {
+        position: toast.POSITION.BOTTOM_CENTER, // Set the toast position to bottom-center
+        autoClose: 3000
+      });
+      setTimeout(() => {
+        window.location.href = '/login'; // Redirect to the login page after 3 seconds
+      }, 3000);
     }
   }
 
@@ -41,7 +47,9 @@ export default function Pizza({ pizza }) {
         <span>
           <span className="original-price">{originalPrice.toFixed(2)} RON</span>
           <br />
-          <span className="discounted-price">{discountedPrice.toFixed(2)} RON (-{discountAmount.toFixed(2)} RON, 10% REDUCERE)</span>
+          <span className="discounted-price">{discountedPrice.toFixed(2)} RON</span>
+          <br />
+          <p className="procent-reducere">(<b>10%</b> DISCOUNT)</p>
         </span>
       );
     }

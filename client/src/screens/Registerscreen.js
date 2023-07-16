@@ -4,6 +4,7 @@ import { registerUser, checkEmailAvailability } from "../actions/userActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from '../components/Success'
+import { toast } from "react-toastify";
 
 export default function Registerscreen() {
     const [name, setname] = useState("");
@@ -16,17 +17,29 @@ export default function Registerscreen() {
 
     async function register() {
         if (name === '' || email === '' || password === '' || cpassword === '') {
-            alert('Toate campurile sunt necesare!');
+            toast.error('Toate campurile sunt necesare!', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
         } else if (!email.includes('@') || !email.includes('.')) {
-            alert('Adresa de email invalida!');
+            toast.error('Adresa de email invalida!', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
         } else if (password !== cpassword) {
-            alert('Parolele nu sunt la fel.');
+            toast.error('Parolele nu sunt la fel.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
         } else if (password.length < 6) {
-            alert('Parola trebuie sa contina minim 6 caractere.');
+            toast.error('Parola trebuie sa contina minim 6 caractere.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
         } else if (!/\d/.test(password)) {
-            alert('Parola trebuie sa contina minim o cifra.');
+            toast.error('Parola trebuie sa contina minim o cifra.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
         } else if (!/[a-zA-Z]/.test(password)) {
-            alert('Parola trebuie sa contina minim o litera.');
+            toast.error('Parola trebuie sa contina minim o litera.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
         } else {
             try {
                 dispatch({ type: 'CHECK_EMAIL_REQUEST' });
@@ -34,7 +47,9 @@ export default function Registerscreen() {
                 const unique = await dispatch(checkEmailAvailability(email));
 
                 if (!unique) {
-                    alert('Adresa de email exista deja.');
+                    toast.error('Adresa de email exista deja.', {
+                        position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+                    });
                 } else {
                     const user = {
                         name,
@@ -47,7 +62,7 @@ export default function Registerscreen() {
                     window.location.href = '/login';
                 }
             } catch (error) {
-                alert('Ceva nu a mers bine.');
+                toast.error('Ceva nu a mers bine.');
                 console.log(error);
             }
         }

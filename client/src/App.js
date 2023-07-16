@@ -16,15 +16,16 @@ import Book from './screens/Book';
 import ThankYou from './screens/ThankYou';
 import PaymentScreen from './screens/PaymentScreen';
 import Makeuserpremium from './screens/MakeUserPremium';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  
+
   return (
     <div className="App">
       <Navbar />
-
-      <BrowserRouter>      
+      <ToastContainer />
+      <BrowserRouter>
         <Route path="/" exact component={FirstPage} />
         <Route path="/PizzaMenu" exact component={PizzaMenu} />
         <Route path="/cart" exact component={Cartscreen} />

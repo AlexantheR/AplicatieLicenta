@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 export const placeOrderCard = (token, subtotal) => async (dispatch, getState) => {
     dispatch({ type: 'PLACE_ORDER_REQUEST' });
@@ -24,22 +25,22 @@ export const placeOrderRamburs = (orderDetails) => async (dispatch, getState) =>
     dispatch({ type: 'PLACE_ORDER_REQUEST' });
     const currentUser = getState().loginUserReducer.currentUser;
     const cartItems = getState().cartReducer.cartItems;
-  
+
     try {
-      const response = await axios.post('/api/orders/placeorder/cash', {
-        token: orderDetails.token,
-        subtotal: orderDetails.subtotal,
-        currentUser: currentUser, // Pass currentUser as an individual parameter
-        cartItems: cartItems, // Pass cartItems as an individual parameter
-      });
-      dispatch({ type: 'PLACE_ORDER_SUCCESS' });
-      console.log(response);
+        const response = await axios.post('/api/orders/placeorder/cash', {
+            token: orderDetails.token,
+            subtotal: orderDetails.subtotal,
+            currentUser: currentUser, // Pass currentUser as an individual parameter
+            cartItems: cartItems, // Pass cartItems as an individual parameter
+        });
+        dispatch({ type: 'PLACE_ORDER_SUCCESS' });
+        console.log(response);
     } catch (error) {
-      dispatch({ type: 'PLACE_ORDER_FAILED' });
-      console.log(error);
+        dispatch({ type: 'PLACE_ORDER_FAILED' });
+        console.log(error);
     }
-  };
-  
+};
+
 // export const placeOrder = (token, subtotal) => async (dispatch) => {
 //     dispatch({ type: 'PLACE_ORDER_REQUEST' });
 
@@ -93,7 +94,9 @@ export const deliverOrder = (orderid) => async dispatch => {
     try {
         const response = await axios.post('/api/orders/deliverorder', { orderid })
         console.log(response)
-        alert('Comanda trimisa')
+        toast.success('Comanda trimisa', {
+            position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+        })
 
         const orders = await axios.get('/api/orders/getallorders')
         dispatch({ type: 'GET_ALLORDERS_SUCCESS', payload: orders.data })
@@ -106,7 +109,9 @@ export const cancelOrder = (orderid) => async (dispatch) => {
     try {
         const response = await axios.post('/api/orders/cancelorder', { orderid });
         console.log(response);
-        alert('Comanda anulata');
+        toast.success('Comanda anulata', {
+            position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+        });
 
         const orders = await axios.get('/api/orders/getallorders');
         dispatch({ type: 'GET_ALLORDERS_SUCCESS', payload: orders.data });

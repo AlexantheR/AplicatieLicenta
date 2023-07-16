@@ -4,6 +4,8 @@ import { addToCart, deleteFromCart, addToDrinksCart, deleteDrinkFromCart } from 
 import Checkout from '../components/Checkout';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Cartscreen() {
 
     AOS.init()
@@ -17,7 +19,9 @@ export default function Cartscreen() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        alert('Folositi codul "voucher123" pentru a beneficia de 10% reducere!')
+        toast.warning('Folositi codul "voucher123" pentru a beneficia de 10% reducere!', {
+            position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+        });
     }, [])
 
     useEffect(() => {
@@ -37,7 +41,9 @@ export default function Cartscreen() {
             setSubtotal(updatedSubtotal);
             setAppliedVoucher(true);
         } else {
-            alert('Voucher invalid!');
+            toast.error('Voucher invalid!', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
         }
     }
 

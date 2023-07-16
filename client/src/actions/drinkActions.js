@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const getAllDrinks = () => async dispatch => {
     dispatch({ type: "GET_DRINKS_REQUEST" });
@@ -69,11 +70,15 @@ export const editDrink = (editeddrink) => async dispatch => {
 export const deleteDrink = (drinkid) => async dispatch => {
     try {
         const response = await axios.post('/api/drinks/deletedrink', { drinkid })
-        alert('Bautura stearsa cu succes')
+        toast.success('Bautura stearsa cu succes', {
+            position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+        })
         console.log(response);
         window.location.reload()
     } catch (error) {
-        alert('Ceva nu a mers bine!')
+        toast.error('Ceva nu a mers bine!', {
+            position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+        })
         console.log(error);
     }
 }

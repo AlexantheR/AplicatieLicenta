@@ -544,6 +544,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: #e74c3c;
 }
 
+.procent-reducere{
+  color: #e74c3c;
+  font-size: 0.9rem;
+}
+
 .total-comenzi{
   font-size: 1.4rem;
   font-weight: bold;

@@ -1,10 +1,11 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import { useDispatch, useSelector } from 'react-redux';
 import { placeOrderCard, placeOrderRamburs } from '../actions/orderActions';
 import Loading from '../components/Loading';
 import Success from '../components/Success';
 import Error from '../components/Error';
+import { toast } from 'react-toastify';
 
 export default function Checkout({ subtotal }) {
   const orderstate = useSelector((state) => state.placeOrderReducer);
@@ -25,26 +26,55 @@ export default function Checkout({ subtotal }) {
 
   async function tokenHandler(token) {
     console.log(token);
-    if (currentUser && paymentMethod === 'card') {
-      dispatch(placeOrderCard(token, subtotal));
-    } else if (paymentMethod === 'ramburs') {
-      const orderDetails = {
-        subtotal,
-        currentUser,
-        token: {
-          street,
-          city,
-          country,
-          pincode
-        },
-      };
-      dispatch(placeOrderRamburs(orderDetails));
+    if (currentUser) {
+      if (paymentMethod === 'card') {
+        dispatch(placeOrderCard(token, subtotal));
+      } else if (paymentMethod === 'ramburs') {
+        if (!street || !city || !country || !pincode) {
+          toast.error('Va rugam sa completati toate detaliile adresei!', {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 3000
+          });
+        } else {
+          const orderDetails = {
+            subtotal,
+            currentUser,
+            token: {
+              street,
+              city,
+              country,
+              pincode
+            },
+          };
+          dispatch(placeOrderRamburs(orderDetails));
+        }
+      }
     } else {
-      alert('Va rugam sa va logati pentru a putea comanda!');
-      window.location.href = '/login';
+      toast.error('Va rugam sa va logati pentru a putea comanda!', {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 3000
+      });
+      setTimeout(() => {
+        window.location.href = '/login';
+      }, 3000);
     }
   }
 
+  const handleCityChange = (e) => {
+    const inputValue = e.target.value;
+    const lettersOnly = /^[A-Za-z\s]+$/; // Regular expression to match only letters and spaces
+    if (lettersOnly.test(inputValue) || inputValue === '') {
+      setCity(inputValue);
+    }
+  };
+
+  const handleCountryChange = (e) => {
+    const inputValue = e.target.value;
+    const lettersOnly = /^[A-Za-z\s]+$/; // Regular expression to match only letters and spaces
+    if (lettersOnly.test(inputValue) || inputValue === '') {
+      setCountry(inputValue);
+    }
+  };
 
   return (
     <div>
@@ -99,7 +129,7 @@ export default function Checkout({ subtotal }) {
             type="text"
             placeholder="oras"
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={handleCityChange}
             required
           />
           <br />
@@ -107,7 +137,7 @@ export default function Checkout({ subtotal }) {
             type="text"
             placeholder="tara"
             value={country}
-            onChange={(e) => setCountry(e.target.value)}
+            onChange={handleCountryChange}
             required
           />
           <br />
@@ -115,9 +145,14 @@ export default function Checkout({ subtotal }) {
             type="text"
             placeholder="cod postal"
             value={pincode}
-            onChange={(e) => setPincode(e.target.value)}
+            onChange={(e) => {
+              let input = e.target.value.replace(/\D/g, "");
+              input = input.slice(0, 6);
+              setPincode(input);
+            }}
             required
           />
+
           <br />
           {(!street || !city || !country || !pincode) && (
             <p>*Pentru a putea da comanda, va rugam completati toate detaliile necesare.</p>
@@ -125,14 +160,11 @@ export default function Checkout({ subtotal }) {
           <button
             className="book-table-btn"
             onClick={tokenHandler}
-            disabled={!street || !city || !country || !pincode} // Disable the button if any of the inputs are empty
+            disabled={!street || !city || !country || !pincode}
           >
             {(!street || !city || !country || !pincode) ? 'Adresa incompleta' : 'Plateste ramburs'}
           </button>
         </div>
-
-
-
       )}
     </div>
   );

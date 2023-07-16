@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToDrinksCart } from "../actions/cartActions";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { toast } from "react-toastify";
 
 export default function Drink({ drink }) {
     AOS.init({
@@ -19,14 +20,19 @@ export default function Drink({ drink }) {
         dispatch(addToDrinksCart(drink, quantity))
     }
 
-    function handleOrder(){
-        if(currentUser){
+    function handleOrder() {
+        if (currentUser) {
             dispatchAddToDrinksCart()
-        }else{
-          alert('Va rugam sa va logati pentru a putea comanda!')
-          window.location.href = '/login'
+        } else {
+            toast.error('Va rugam sa va logati pentru a putea comanda!', {
+                position: toast.POSITION.BOTTOM_CENTER, // Set the toast position to bottom-center
+                autoClose: 3000
+            });
+            setTimeout(() => {
+                window.location.href = '/login'; // Redirect to the login page after 3 seconds
+            }, 3000);
         }
-      }
+    }
 
     return (
         <div

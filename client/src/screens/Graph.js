@@ -61,8 +61,8 @@ export default function Graph({ orders = [], users = [] }) {
 
         const dataset = {
             label: 'Total comenzi lunare',
-            backgroundColor: '#e74646',
-            borderColor: 'rgba(0, 0, 0, 1)',
+            backgroundColor: 'rgb(0,0,205)',
+            borderColor: 'rgba(0, 0, 191, 1)',
             borderWidth: 2,
             data: data,
         };
@@ -178,7 +178,7 @@ export default function Graph({ orders = [], users = [] }) {
             datasets: [
                 {
                     data: [premiumClients, nonPremiumClients],
-                    backgroundColor: ['#ffc107', '#dc3545'],
+                    backgroundColor: ['#25add7', 'rgb(0,0,205)'],
                 },
             ],
         };
