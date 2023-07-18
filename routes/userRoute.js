@@ -95,16 +95,16 @@ router.post("/makeuserpremium", async (req, res) => {
     const sendPremiumConfirmationEmail = async (email) => {
         try {
             const transport = nodemailer.createTransport({
-                host: 'sandbox.smtp.mailtrap.io',
+                host: "sandbox.smtp.mailtrap.io",
                 port: 2525,
                 auth: {
-                    user: 'c47e34f6301bab',
-                    pass: 'de0f0e2f8d7e4c',
-                },
+                    user: "a7d4eb81509d44",
+                    pass: "461945f07d5d15"
+                }
             });
 
             const message = {
-                from: 'adinu90@gmail.com',
+                from: 'dinualexandru20@stud.ase.ro',
                 to: email,
                 subject: 'Activare cont Premium',
                 text: 'Felicitări! Acum sunteți un utilizator premium. Vă mulțumim pentru plata de 25 RON.',

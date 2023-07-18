@@ -97,7 +97,9 @@ export const makeUserPremium = (email) => async (dispatch) => {
         }
 
         alert('Utilizatorul a fost marcat ca Premium!');
-        window.location.reload();
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
     } catch (error) {
         dispatch({ type: 'MAKE_USER_PREMIUM_FAILED', payload: error });
         alert('Ceva nu a mers bine!');
@@ -122,7 +124,9 @@ export const loseUserPremium = (email) => async (dispatch) => {
         }
 
         alert('Utilizatorul a pierdut statutul de Premium!');
-        window.location.reload();
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
     } catch (error) {
         dispatch({ type: 'LOSE_USER_PREMIUM_FAILED', payload: error });
         alert('Ceva nu a mers bine!');

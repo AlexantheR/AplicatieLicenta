@@ -5,124 +5,124 @@ const stripe = require('stripe')('sk_test_51MxrSbBLFgjsWwKCOS2diP0rp2Bav8JbBo4js
 const Order = require('../models/orderModel')
 const nodemailer = require('nodemailer');
 
-router.post('/placeorder', async (req, res) => {
-    const { token, subtotal, currentUser, cartItems } = req.body;
+// router.post('/placeorder', async (req, res) => {
+//     const { token, subtotal, currentUser, cartItems } = req.body;
 
-    const sendInvoiceEmail = async (token, subtotal) => {
-        try {
-            const transport = nodemailer.createTransport({
-                host: 'sandbox.smtp.mailtrap.io',
-                port: 2525,
-                auth: {
-                    user: 'c47e34f6301bab',
-                    pass: 'de0f0e2f8d7e4c',
-                },
-            });
+//     const sendInvoiceEmail = async (token, subtotal) => {
+//         try {
+//             const transport = nodemailer.createTransport({
+//                 host: 'sandbox.smtp.mailtrap.io',
+//                 port: 2525,
+//                 auth: {
+//                     user: 'c47e34f6301bab',
+//                     pass: 'de0f0e2f8d7e4c',
+//                 },
+//             });
 
-            const message = {
-                from: 'adinu90@gmail.com',
-                to: token.email,
-                subject: `Comanda cu id-ul ${token.card.id}`,
-                text:
-                    `Multumim pentru comanda! Puteti vedea detaliile mai jos:\n\n` +
-                    'Produse comandate:\n' +
-                    cartItems
-                        .map(
-                            (item) =>
-                                item.name +
-                                ' ' +
-                                item.quantity +
-                                ' x ' +
-                                item.price +
-                                ' = ' +
-                                item.price * item.quantity
-                        )
-                        .join('\n') +
-                    '\n' +
-                    `Total: ${subtotal} RON\n` +
-                    `Adresa: ${token.card.address_line1}, ${token.card.address_city}, ${token.card.address_country}, ${token.card.address_zip}`,
-            };
+//             const message = {
+//                 from: 'adinu90@gmail.com',
+//                 to: token.email,
+//                 subject: `Comanda cu id-ul ${token.card.id}`,
+//                 text:
+//                     `Multumim pentru comanda! Puteti vedea detaliile mai jos:\n\n` +
+//                     'Produse comandate:\n' +
+//                     cartItems
+//                         .map(
+//                             (item) =>
+//                                 item.name +
+//                                 ' ' +
+//                                 item.quantity +
+//                                 ' x ' +
+//                                 item.price +
+//                                 ' = ' +
+//                                 item.price * item.quantity
+//                         )
+//                         .join('\n') +
+//                     '\n' +
+//                     `Total: ${subtotal} RON\n` +
+//                     `Adresa: ${token.card.address_line1}, ${token.card.address_city}, ${token.card.address_country}, ${token.card.address_zip}`,
+//             };
 
-            await transport.sendMail(message);
-        } catch (error) {
-            throw error;
-        }
-    };
+//             await transport.sendMail(message);
+//         } catch (error) {
+//             throw error;
+//         }
+//     };
 
-    try {
-        // Send email invoice
-        await sendInvoiceEmail(token, subtotal);
+//     try {
+//         // Send email invoice
+//         await sendInvoiceEmail(token, subtotal);
 
-        if (token.paymentMethod === 'card') {
-            // Create customer and process payment with Stripe
-            const customer = await stripe.customers.create({
-                email: token.email,
-                source: token.id,
-            });
+//         if (token.paymentMethod === 'card') {
+//             // Create customer and process payment with Stripe
+//             const customer = await stripe.customers.create({
+//                 email: token.email,
+//                 source: token.id,
+//             });
 
-            const payment = await stripe.charges.create(
-                {
-                    amount: subtotal * 100,
-                    currency: 'RON',
-                    customer: customer.id,
-                    receipt_email: token.email,
-                },
-                {
-                    idempotencyKey: uuidv4(),
-                }
-            );
+//             const payment = await stripe.charges.create(
+//                 {
+//                     amount: subtotal * 100,
+//                     currency: 'RON',
+//                     customer: customer.id,
+//                     receipt_email: token.email,
+//                 },
+//                 {
+//                     idempotencyKey: uuidv4(),
+//                 }
+//             );
 
-            if (payment) {
-                // Save the order in the database
-                const neworder = new Order({
-                    name: currentUser.name,
-                    email: currentUser.email,
-                    userid: currentUser._id,
-                    orderItems: cartItems,
-                    orderAmount: subtotal,
-                    shippingAddress: {
-                        street: token.card.address_line1,
-                        city: token.card.address_city,
-                        country: token.card.address_country,
-                        pincode: token.card.address_zip,
-                    },
-                    transactionId: payment.source.id,
-                });
+//             if (payment) {
+//                 // Save the order in the database
+//                 const neworder = new Order({
+//                     name: currentUser.name,
+//                     email: currentUser.email,
+//                     userid: currentUser._id,
+//                     orderItems: cartItems,
+//                     orderAmount: subtotal,
+//                     shippingAddress: {
+//                         street: token.card.address_line1,
+//                         city: token.card.address_city,
+//                         country: token.card.address_country,
+//                         pincode: token.card.address_zip,
+//                     },
+//                     transactionId: payment.source.id,
+//                 });
 
-                await neworder.save();
+//                 await neworder.save();
 
-                res.send('Plata efectuata');
-            } else {
-                res.send('Plata esuata');
-            }
-        } else if (token.paymentMethod === 'ramburs') {
-            // Save the order in the database for cash payment
-            const neworder = new Order({
-                name: currentUser.name,
-                email: currentUser.email,
-                userid: currentUser._id,
-                orderItems: cartItems,
-                orderAmount: subtotal,
-                paymentMethod: 'Ramburs',
-                shippingAddress: {
-                    street: token.address,
-                    city: token.city,
-                    country: token.country,
-                    pincode: token.postalCode,
-                },
-            });
+//                 res.send('Plata efectuata');
+//             } else {
+//                 res.send('Plata esuata');
+//             }
+//         } else if (token.paymentMethod === 'ramburs') {
+//             // Save the order in the database for cash payment
+//             const neworder = new Order({
+//                 name: currentUser.name,
+//                 email: currentUser.email,
+//                 userid: currentUser._id,
+//                 orderItems: cartItems,
+//                 orderAmount: subtotal,
+//                 paymentMethod: 'Ramburs',
+//                 shippingAddress: {
+//                     street: token.address,
+//                     city: token.city,
+//                     country: token.country,
+//                     pincode: token.postalCode,
+//                 },
+//             });
 
-            await neworder.save();
+//             await neworder.save();
 
-            res.send('Comanda plasata pentru plata ramburs');
-        } else {
-            res.status(400).json({ message: 'Metoda de plata invalida' });
-        }
-    } catch (error) {
-        console.error('Error placing order:', error);
-        res.status(500).json({ message: 'Ceva nu a mers bine!' });
-    }
-});
+//             res.send('Comanda plasata pentru plata ramburs');
+//         } else {
+//             res.status(400).json({ message: 'Metoda de plata invalida' });
+//         }
+//     } catch (error) {
+//         console.error('Error placing order:', error);
+//         res.status(500).json({ message: 'Ceva nu a mers bine!' });
+//     }
+// });
 
 router.post('/placeorder/card', async (req, res) => {
     const { token, subtotal, currentUser, cartItems } = req.body;
@@ -130,16 +130,16 @@ router.post('/placeorder/card', async (req, res) => {
     const sendInvoiceEmail = async (token, subtotal) => {
         try {
             const transport = nodemailer.createTransport({
-                host: 'sandbox.smtp.mailtrap.io',
+                host: "sandbox.smtp.mailtrap.io",
                 port: 2525,
                 auth: {
-                    user: 'c47e34f6301bab',
-                    pass: 'de0f0e2f8d7e4c',
-                },
+                    user: "a7d4eb81509d44",
+                    pass: "461945f07d5d15"
+                }
             });
 
             const message = {
-                from: 'adinu90@gmail.com',
+                from: 'dinualexandru20@stud.ase.ro',
                 to: token.email,
                 subject: `Comanda card cu id-ul ${token.card.id}`,
                 text:
@@ -226,16 +226,16 @@ router.post('/placeorder/cash', async (req, res) => {
     const sendInvoiceEmail = async (token, subtotal) => {
         try {
             const transport = nodemailer.createTransport({
-                host: 'sandbox.smtp.mailtrap.io',
+                host: "sandbox.smtp.mailtrap.io",
                 port: 2525,
                 auth: {
-                    user: 'c47e34f6301bab',
-                    pass: 'de0f0e2f8d7e4c',
-                },
+                    user: "a7d4eb81509d44",
+                    pass: "461945f07d5d15"
+                }
             });
 
             const message = {
-                from: 'adinu90@gmail.com',
+                from: 'dinualexandru20@stud.ase.ro',
                 to: currentUser.email,
                 subject: `Comanda ramburs`,
                 text:
@@ -281,7 +281,7 @@ router.post('/placeorder/cash', async (req, res) => {
                 street: token.street,
                 city: token.city,
                 country: token.country,
-                pincode: token.pin,
+                pincode: token.pincode,
             },
             transactionId: 'Ramburs'
         });

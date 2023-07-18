@@ -27,7 +27,7 @@ export default function Cartscreen() {
     useEffect(() => {
         const initialSubtotal = cartItems.reduce((x, item) => {
             const isDiscounted = item.variant === 'mare' && currentUser?.isPremium;
-            const price = isDiscounted ? item.price * 0.95 : item.price;
+            const price = isDiscounted ? item.price * 0.9 : item.price;
             return x + price;
         }, 0);
         setSubtotal(initialSubtotal);
@@ -36,12 +36,12 @@ export default function Cartscreen() {
 
 
     useEffect(() => {
-        if (subtotal > 30) {
+        if (subtotal > 10) {
             toast.warning('Folositi codul "voucher123" pentru a beneficia de 10% reducere!', {
                 position: toast.POSITION.BOTTOM_CENTER,
             });
         }
-    }, [subtotal]);
+    }, [subtotal, appliedVoucher]);
 
     function applyVoucher() {
         if (voucher === 'voucher123' && !appliedVoucher) {
@@ -54,6 +54,7 @@ export default function Cartscreen() {
             });
         }
     }
+
 
     return (
         <div>
@@ -73,8 +74,8 @@ export default function Cartscreen() {
                         {cartItems.map(item => {
                             if (!item.name.includes('ml')) {
                                 const isDiscounted = item.variant === "mare" && currentUser?.isPremium;
-                                const price = isDiscounted ? (item.price * 0.95) : item.price;
-                                const priceDisplay = ` ${isDiscounted ? (item.prices[0][item.variant] * 0.95) :
+                                const price = isDiscounted ? (item.price * 0.9) : item.price;
+                                const priceDisplay = ` ${isDiscounted ? (item.prices[0][item.variant] * 0.9) :
                                     item.prices[0][item.variant]} * ${item.quantity} = ${price}`;
 
                                 return <div className='flex-container'>

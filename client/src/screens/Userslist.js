@@ -15,11 +15,9 @@ export default function Userslist() {
 
     const handlePremium = (email, isPremium) => {
         if (isPremium) {
-            dispatch(loseUserPremium(email));
-            window.location.reload()
+            dispatch(loseUserPremium(email));            
         } else {
-            dispatch(makeUserPremium(email));
-            window.location.reload()
+            dispatch(makeUserPremium(email));            
         }
     };
 

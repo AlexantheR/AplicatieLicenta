@@ -269,12 +269,13 @@ export default props => {
 
   const handleNameChange = (e) => {
     const input = e.target.value;
-    const onlyLetters = /^[A-Za-z]+$/;
+    const onlyLettersAndSpaces = /^[A-Za-z\s]+$/;
 
-    if (onlyLetters.test(input) || input === '') {
+    if (onlyLettersAndSpaces.test(input) || input === '') {
       setBooking({ ...booking, name: input });
     }
   };
+
 
   const handlePhoneChange = (e) => {
     const input = e.target.value;
@@ -286,15 +287,15 @@ export default props => {
   };
 
   const handleEmailChange = (e) => {
-  const input = e.target.value;
+    const input = e.target.value;
 
-  // Email validation regular expression
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Email validation regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (emailRegex.test(input) || input === "") {
-    setBooking({ ...booking, email: input });
-  }
-};
+    if (emailRegex.test(input) || input === "") {
+      setBooking({ ...booking, email: input });
+    }
+  };
 
 
   return (

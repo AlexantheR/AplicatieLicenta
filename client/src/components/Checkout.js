@@ -154,15 +154,12 @@ export default function Checkout({ subtotal }) {
           />
 
           <br />
-          {(!street || !city || !country || !pincode) && (
-            <p>*Pentru a putea da comanda, va rugam completati toate detaliile necesare.</p>
-          )}
           <button
             className="book-table-btn"
             onClick={tokenHandler}
-            disabled={!street || !city || !country || !pincode}
+            disabled={pincode.length !== 6 || !street || !city || !country}
           >
-            {(!street || !city || !country || !pincode) ? 'Adresa incompleta' : 'Plateste ramburs'}
+            {pincode.length !== 6 ? 'Adresa incompleta' : 'Plateste ramburs'}
           </button>
         </div>
       )}
