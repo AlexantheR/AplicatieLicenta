@@ -1,0 +1,1 @@
+My bachelor thesis consisted in creating a web application that deals with online shopping and table reservations for a pizza restaurant. In order to implement this solution I used the following technologies: MongoDB, Express.js, React.js, Node.js (MERN Stack) together with React Redux.
