@@ -18,7 +18,6 @@ export const registerUserReducer = (state = {}, action) => {
     }
 }
 
-
 export const loginUserReducer = (state = {}, action) => {
     switch (action.type) {
         case 'USER_LOGIN_REQUEST':
@@ -36,6 +35,12 @@ export const loginUserReducer = (state = {}, action) => {
                 loading: false,
                 error: action.payload
             }
+
+        case 'UPDATE_USER_PREMIUM_STATUS':
+            return {
+                ...state,
+                currentUser: action.payload,
+            };
         default: return state
     }
 }

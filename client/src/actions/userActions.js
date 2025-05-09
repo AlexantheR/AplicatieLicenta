@@ -1,5 +1,22 @@
 import axios from "axios"
 
+export const checkEmailAvailability = (email) => async (dispatch) => {
+    try {
+        dispatch({ type: 'CHECK_EMAIL_REQUEST' });
+
+        const response = await axios.get(`/api/users/checkemail?email=${email}`);
+        const unique = response.data.unique;
+
+        dispatch({ type: 'CHECK_EMAIL_SUCCESS', payload: unique });
+        return unique;
+    } catch (error) {
+        dispatch({ type: 'CHECK_EMAIL_FAILED', payload: error });
+        console.log(error);
+        return false;
+    }
+};
+
+
 export const registerUser = (user) => async dispatch => {
 
     dispatch({ type: 'USER_REGISTER_REQUEST' })
@@ -64,14 +81,25 @@ export const deleteUser = (userid) => async dispatch => {
 
 }
 
-export const makeUserPremium = (userId) => async (dispatch) => {
+export const makeUserPremium = (email) => async (dispatch) => {
     dispatch({ type: 'MAKE_USER_PREMIUM_REQUEST' });
 
     try {
-        const response = await axios.post('/api/users/makeuserpremium', { userId });
+        const response = await axios.post('/api/users/makeuserpremium', { email });
         console.log(response);
         dispatch({ type: 'MAKE_USER_PREMIUM_SUCCESS', payload: response.data });
+
+        // Update the local storage
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+            currentUser.isPremium = true;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
+
         alert('Utilizatorul a fost marcat ca Premium!');
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
     } catch (error) {
         dispatch({ type: 'MAKE_USER_PREMIUM_FAILED', payload: error });
         alert('Ceva nu a mers bine!');
@@ -79,17 +107,34 @@ export const makeUserPremium = (userId) => async (dispatch) => {
     }
 };
 
-export const loseUserPremium = (userId) => async (dispatch) => {
+
+export const loseUserPremium = (email) => async (dispatch) => {
     dispatch({ type: 'LOSE_USER_PREMIUM_REQUEST' });
 
     try {
-        const response = await axios.post('/api/users/loseuserpremium', { userId });
+        const response = await axios.post('/api/users/loseuserpremium', { email });
         console.log(response);
         dispatch({ type: 'LOSE_USER_PREMIUM_SUCCESS', payload: response.data });
+
+        // Update the local storage
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+            currentUser.isPremium = false;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
+
         alert('Utilizatorul a pierdut statutul de Premium!');
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
     } catch (error) {
         dispatch({ type: 'LOSE_USER_PREMIUM_FAILED', payload: error });
         alert('Ceva nu a mers bine!');
         console.log(error);
     }
+};
+
+
+export const updateUserPremiumStatus = (updatedUser) => {
+    return { type: 'UPDATE_USER_PREMIUM_STATUS', payload: updatedUser };
 };

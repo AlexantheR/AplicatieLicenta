@@ -111,7 +111,7 @@ export default function Addpizza() {
                             setimage(e.target.value);
                         }}
                     />
-                    <button className='btnAdd mt-3' type='submit'>Adauga pizza</button>
+                    <button className="book-table-btn" type='submit'>Adauga pizza</button>
                 </form>
             </div>
         </div>

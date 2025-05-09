@@ -8,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Raleway', sans-serif !important;
-  overflow-x: hidden ;
+  overflow-x: hidden;
 }
 
 code {
@@ -16,18 +16,18 @@ code {
     monospace;
 }
 
-.navbar{
+.navbar {
   width: 100%;
   background-color: #e74646 !important;
 }
 
 
 
-.navbarButtons{
+.navbarButtons {
   display: flex !important;
 }
 
-.navbarPageLinks{
+.navbarPageLinks {
   display: inline-flex !important;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -39,7 +39,8 @@ code {
   /* color: #f7d3ae !important; */
   color: white !important;
 }
-.nav-link:hover{
+
+.nav-link:hover {
   color: #2B2E4A !important;
 }
 
@@ -47,9 +48,10 @@ code {
   color: #FFF3E2 !important;
 }
 
-#dropdownMenuLink{
+#dropdownMenuLink {
   color: white !important;
 }
+
 /* 
 
 
@@ -79,10 +81,12 @@ h1 {
 }
 
 .flex-container {
-  display: flex !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.drink-grid-container{
+.drink-grid-container {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
   grid-gap: 20px !important;
@@ -136,7 +140,7 @@ input {
   color: white !important;
 }
 
-.btnSendToPayment{
+.btnSendToPayment {
   background-color: #E74646 !important;
   color: white !important;
   border-radius: 5px !important;
@@ -148,17 +152,17 @@ input {
   color: white !important;
 }
 
-.btnDeliver{
+.btnDeliver {
   background-color: #E74646 !important;
   color: white !important;
 }
 
-.btnEdit{
+.btnEdit {
   background-color: #E74646 !important;
   color: white !important;
 }
 
-.btnModal{
+.btnModal {
   background-color: #E74646 !important;
   color: white !important;
 }
@@ -169,39 +173,43 @@ input {
   display: flex;
 }
 
-.login{
+.login {
   background-image: url('./images/b1.svg');
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  height:90vh;
+  height: 90vh;
 }
-.register{
+
+.register {
   background-image: url('./images/b2.svg');
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  height:90vh;
+  height: 90vh;
 }
 
-.adminfunctions{
+.adminfunctions {
   padding: 10px;
-  background-color:rgb(1, 1, 77);
+  background-color: rgb(1, 1, 77);
 }
 
-.adminfunctions li{
-  list-style-type: none !important; 
+.adminfunctions li {
+  list-style-type: none !important;
   display: inline !important;
   color: white !important;
 }
-.adminfunctions li a{
-   color: white !important;
-   padding: 20px;
+
+.adminfunctions li a {
+  color: white !important;
+  padding: 20px;
 }
 
-td , th , tr{
-  text-align:left;
+td,
+th,
+tr {
+  text-align: left;
 }
 
-.responsiveImg{
+.responsiveImg {
   width: 100%;
   max-width: 500px;
   height: auto;
@@ -212,14 +220,14 @@ td , th , tr{
   object-position: bottom;
 }
 
-.responsiveImg:hover{
+.responsiveImg:hover {
   color: #e74c3c;
   background-color: white !important;
   border: 3px solid #2B2E4A !important;
   box-shadow: #2B2E4A;
 }
 
-#voucher-apply{
+#voucher-apply {
   color: #8fc39b !important;
   margin-top: 8px;
 }
@@ -231,12 +239,11 @@ td , th , tr{
 }
 
 .pizza-cta {
-  padding-top: 4%;
+  padding-top: 2%;
 }
 
 .looking-for-pizza {
   font-size: 2.5rem;
-  padding-bottom: 1.8%;
   padding-right: 3%;
   padding-left: 3%;
 }
@@ -250,10 +257,9 @@ td , th , tr{
   border: 2px white solid;
   font-family: ABeeZee, sans-serif;
 }
+
 .book-table-btn:hover {
-  color: #e74c3c;
-  background-color: white !important;
-  border: 2px solid black !important;
+  background-color: #ff8500;
 }
 
 @media (min-width: 768px) {
@@ -262,6 +268,7 @@ td , th , tr{
     padding: 0.5% 5%;
   }
 }
+
 .big-img-container {
   padding: 10% 0;
 }
@@ -271,6 +278,7 @@ td , th , tr{
     padding: 4% 0;
   }
 }
+
 .big-img {
   width: 96%;
   border-radius: 25px;
@@ -295,7 +303,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #booking-dropdown {
   width: 85%;
   padding: 4% 0;
-  background-color: #e74c3c; 
+  background-color: #e74c3c;
   color: white;
   margin: 2% 0;
   font-family: "Roboto";
@@ -304,21 +312,26 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-radius: 5px;
   text-align: center;
 }
+
 #booking-dropdown:hover {
   color: #e74c3c;
   background-color: white !important;
   border: 2px solid #e74c3c !important;
 }
+
 #booking-dropdown:focus {
   outline: none;
   box-shadow: none;
 }
+
 #booking-dropdown-menu {
   outline: none;
 }
+
 #booking-dropdown-item:hover {
   background-color: white;
 }
+
 #booking-dropdown-item:active {
   background-color: white;
   color: black;
@@ -329,6 +342,30 @@ input[type=date]::-webkit-calendar-picker-indicator {
     font-size: 1.2rem;
   }
 }
+
+.tables-display {
+  background-color: #e74c3c;
+  margin: auto;
+  border-radius: 25px;
+  max-width: 100%;
+  height: calc(300px);
+  /* Adjust the height based on your requirements */
+  width: 90%;
+  /* Adjust the width as needed */
+  overflow: auto;
+}
+
+.table-container {
+  margin: 0 1%;
+}
+
+
+@media (min-width: 768px) {
+  .tables-display {
+    margin: 6% 2.5%;
+  }
+}
+
 .table-display-message {
   padding: 2% 0;
   text-align: center;
@@ -336,23 +373,8 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: white;
 }
 
-.tables-display {
-  background-color: #e74c3c;
-  margin-top: 30px !important;
-  margin-bottom: 30px !important;
-  border-radius: 25px;
-  height: auto;
-  width: auto;
-}
-
-@media (min-width: 768px) {
-  .tables-display {
-    margin: 6% 2.5%;
-  }
-}
 .table-key {
-  padding-top: 1%;
-  padding-bottom: 4.5%;
+  padding: 1% 0;
   color: white;
 }
 
@@ -360,11 +382,24 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: white;
   font-size: 1.2rem;
   font-family: Roboto, sans-serif;
+  text-align: center;
+  /* Align the text in the center */
+  margin: 0 auto;
+  /* Center the element horizontally */
 }
 
-.table-container {
-  margin: 0 1%;
+.wrong-time {
+  color: white;
+  font-size: 1.2rem;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  /* Align the text in the center */
+  margin: 0 auto;
+  /* Center the element horizontally */
+  padding-top: 5%;
 }
+
+
 
 .table {
   background-color: rgba(245, 246, 250, 0.4);
@@ -380,6 +415,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 .selectable-table:hover {
   cursor: pointer;
 }
+
 .selectable-table:hover-row {
   padding: 5px;
 }
@@ -407,6 +443,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-family: Roboto, sans-serif;
 }
 
+
 .reservation-details-container {
   padding: 0 4%;
   padding-bottom: 5%;
@@ -422,6 +459,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
     margin-bottom: 0;
   }
 }
+
 .reservation-input:focus {
   border-color: black;
   box-shadow: 0 0;
@@ -465,4 +503,55 @@ input[type=date]::-webkit-calendar-picker-indicator {
   }
 }
 
+.reservation-wrapper {
+  margin-top: -10px;
+  /* Adjust the top margin as needed */
+  margin-bottom: -10px;
+  /* Adjust the bottom margin as needed */
+}
 
+.reservation-row {
+  margin-top: -10px;
+  /* Adjust the top margin as needed */
+  margin-bottom: -10px;
+  /* Adjust the bottom margin as needed */
+}
+
+.chart-container {
+  height: 400px; /* Adjust the height as needed */
+  width: 55%;
+  float: left;
+}
+
+.piechart-container {
+  height: 400px; /* Adjust the height as needed */
+  width: 45%;
+  float: left;
+}
+
+
+.motiv-premium {
+  text-align: justify;
+  text-indent: 40px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+
+.discounted-price {
+  color: #e74c3c;
+}
+
+.procent-reducere{
+  color: #e74c3c;
+  font-size: 0.9rem;
+}
+
+.total-comenzi{
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: left;
+  text-indent: 80px;
+}

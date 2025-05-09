@@ -52,7 +52,7 @@ export default function Editdrink({ match }) {
     return (
         <div>
             <div className="text-left shadow-lg p-3 mb-5 bg-white rounded">
-                <h1>Edit Drink</h1>
+                <h1>Editeaza bautura</h1>
                 {loading && <Loading />}
                 {error && <Error error="Ceva nu a mers bine!" />}
                 {editsuccess && <Success success="Bautura editata cu succes!" />}

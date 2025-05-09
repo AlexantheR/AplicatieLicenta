@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser } from "../actions/userActions";
+import { registerUser, checkEmailAvailability } from "../actions/userActions";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from '../components/Success'
+import { toast } from "react-toastify";
 
 export default function Registerscreen() {
     const [name, setname] = useState("");
@@ -13,22 +14,58 @@ export default function Registerscreen() {
     const registerstate = useSelector(state => state.registerUserReducer)
     const { error, loading, success } = registerstate
     const dispatch = useDispatch()
-    
-    async function register() {
 
-        if (password !== cpassword) {
-            alert("parolele nu sunt la fel")
-        }
-        else {
-            const user = {
-                name,
-                email,
-                password
+    async function register() {
+        if (name === '' || email === '' || password === '' || cpassword === '') {
+            toast.error('Toate campurile sunt necesare!', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
+        } else if (!email.includes('@') || !email.includes('.')) {
+            toast.error('Adresa de email invalida!', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
+        } else if (password !== cpassword) {
+            toast.error('Parolele nu sunt la fel.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
+        } else if (password.length < 6) {
+            toast.error('Parola trebuie sa contina minim 6 caractere.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
+        } else if (!/\d/.test(password)) {
+            toast.error('Parola trebuie sa contina minim o cifra.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
+        } else if (!/[a-zA-Z]/.test(password)) {
+            toast.error('Parola trebuie sa contina minim o litera.', {
+                position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+            });
+        } else {
+            try {
+                dispatch({ type: 'CHECK_EMAIL_REQUEST' });
+
+                const unique = await dispatch(checkEmailAvailability(email));
+
+                if (!unique) {
+                    toast.error('Adresa de email exista deja.', {
+                        position: toast.POSITION.BOTTOM_CENTER // Set the toast position to bottom-center
+                    });
+                } else {
+                    const user = {
+                        name,
+                        email,
+                        password,
+                    };
+
+                    console.log(user);
+                    dispatch(registerUser(user));
+                    window.location.href = '/login';
+                }
+            } catch (error) {
+                toast.error('Ceva nu a mers bine.');
+                console.log(error);
             }
-            console.log(user);
-            dispatch(registerUser(user))
         }
-        window.location.href = '/login'
     }
 
     return (
@@ -62,10 +99,11 @@ export default function Registerscreen() {
                             required
                             onChange={(e) => { setcpassword(e.target.value) }}
                         />
-                        <button onClick={register} className="btnRegister mt-3 mb-3">INREGISTRARE</button>
-                        <br />
-                        <p>Ai deja un cont? </p>
-                        <a href="/login">Apasa aici pentru autentificare</a>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <button onClick={register} className="book-table-btn mt-3 mb-3">INREGISTRARE</button>
+                        </div>
+                        <p>Ai deja un cont? <a href="/login">Apasa aici pentru autentificare</a></p>
+
                     </div>
                 </div>
             </div>

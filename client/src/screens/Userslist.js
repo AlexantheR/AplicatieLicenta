@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrders } from "../actions/orderActions";
 import Error from "../components/Error";
-import Filter from "../components/Filter";
 import Loading from "../components/Loading";
 import { deleteUser, getAllUsers, makeUserPremium, loseUserPremium } from '../actions/userActions';
 
@@ -15,17 +13,13 @@ export default function Userslist() {
         dispatch(getAllUsers());
     }, []);
 
-    const handlePremium = (userId, isPremium) => {
+    const handlePremium = (email, isPremium) => {
         if (isPremium) {
-            dispatch(loseUserPremium(userId));
-            window.location.reload()
+            dispatch(loseUserPremium(email));            
         } else {
-            dispatch(makeUserPremium(userId));
-            window.location.reload()
+            dispatch(makeUserPremium(email));            
         }
     };
-
-
 
     return (
         <div>
@@ -49,8 +43,8 @@ export default function Userslist() {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td><i className='fa fa-trash' onClick={() => { dispatch(deleteUser(user._id)) }}></i></td>
-                            {user.isPremium ? <td><button onClick={() => handlePremium(user._id, user.isPremium)}>Inceteaza premium</button></td>
-                                : <td><button onClick={() => handlePremium(user._id, user.isPremium)}>Promoveaza utilizator</button></td>}
+                            {user.isPremium ? <td><button className="book-table-btn" onClick={() => handlePremium(user.email, user.isPremium)}>Inceteaza premium</button></td>
+                                : <td><button className="book-table-btn" onClick={() => handlePremium(user.email, user.isPremium)}>Promoveaza utilizator</button></td>}
                         </tr>
                     ))}
                 </tbody>

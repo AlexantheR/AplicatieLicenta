@@ -14,7 +14,6 @@ import {
 
 import Table from "./Table";
 
-
 export default props => {
   const [totalTables, setTotalTables] = useState([]);
 
@@ -48,12 +47,12 @@ export default props => {
     "2PM",
     "3PM",
     "4PM",
-    "5PM"
+    "5PM",
   ]);
   // Basic reservation "validation"
   const [reservationError, setReservationError] = useState(false);
 
-  const getDate = _ => {
+  const getDate = () => {
     const months = [
       "January",
       "February",
@@ -81,7 +80,7 @@ export default props => {
     return datetime;
   };
 
-  const getEmptyTables = _ => {
+  const getEmptyTables = () => {
     let tables = totalTables.filter(table => table.isAvailable);
     return tables.length;
   };
@@ -89,7 +88,7 @@ export default props => {
   useEffect(() => {
     // Check availability of tables from DB when a date and time is selected
     if (selection.time && selection.date) {
-      (async _ => {
+      (async () => {
         let datetime = getDate();
         let res = await fetch("http://localhost:5000/availability", {
           method: "POST",
@@ -115,7 +114,7 @@ export default props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selection.time, selection.date, selection.size, selection.location]);
 
-  // Make the reservation if all details are filled out
+  // Make the reservation if all details are filled out and the time is valid
   const reserve = async _ => {
     if (
       (booking.name.length === 0) |
@@ -155,7 +154,7 @@ export default props => {
   };
 
   // Generate party size dropdown
-  const getSizes = _ => {
+  const getSizes = () => {
     let newSizes = [];
 
     for (let i = 1; i < 8; i++) {
@@ -163,7 +162,7 @@ export default props => {
         <DropdownItem
           key={i}
           className="booking-dropdown-item"
-          onClick={e => {
+          onClick={() => {
             let newSel = {
               ...selection,
               table: {
@@ -182,14 +181,14 @@ export default props => {
   };
 
   // Generate locations dropdown
-  const getLocations = _ => {
+  const getLocations = () => {
     let newLocations = [];
     locations.forEach(loc => {
       newLocations.push(
         <DropdownItem
           key={loc}
           className="booking-dropdown-item"
-          onClick={_ => {
+          onClick={() => {
             let newSel = {
               ...selection,
               table: {
@@ -208,14 +207,14 @@ export default props => {
   };
 
   // Generate locations dropdown
-  const getTimes = _ => {
+  const getTimes = () => {
     let newTimes = [];
     times.forEach(time => {
       newTimes.push(
         <DropdownItem
           key={time}
           className="booking-dropdown-item"
-          onClick={_ => {
+          onClick={() => {
             let newSel = {
               ...selection,
               table: {
@@ -236,7 +235,7 @@ export default props => {
   // Generating tables from available tables state
   const getTables = _ => {
     console.log("Preluare mese");
-    if (getEmptyTables() > 0) {
+    if (getEmptyTables() > 0 && getDate() >= new Date()) { // Add condition to check if the selected datetime is in the future
       let tables = [];
       totalTables.forEach(table => {
         if (table.isAvailable) {
@@ -264,10 +263,43 @@ export default props => {
       });
       return tables;
     }
+    return <p className="wrong-time">Ati introdus o data invalida</p>; // If the condition is not met, return null
   };
 
+
+  const handleNameChange = (e) => {
+    const input = e.target.value;
+    const onlyLettersAndSpaces = /^[A-Za-z\s]+$/;
+
+    if (onlyLettersAndSpaces.test(input) || input === '') {
+      setBooking({ ...booking, name: input });
+    }
+  };
+
+
+  const handlePhoneChange = (e) => {
+    const input = e.target.value;
+    const onlyNumbers = /^[0-9]*$/; // Modify the regular expression to allow an empty input or only numbers
+
+    if (onlyNumbers.test(input) && input.length <= 10) {
+      setBooking({ ...booking, phone: input });
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const input = e.target.value;
+
+    // Email validation regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailRegex.test(input) || input === "") {
+      setBooking({ ...booking, email: input });
+    }
+  };
+
+
   return (
-    <div>
+    <div className="reservation-wrapper">
       <Row noGutters className="text-center align-items-center pizza-cta">
         <Col>
           <p className="looking-for-pizza">
@@ -360,33 +392,37 @@ export default props => {
               </UncontrolledDropdown>
             </Col>
           </Row>
-          <Row noGutters className="tables-display">
-            <Col>
-              {getEmptyTables() > 0 ? (
-                <p className="available-tables">{getEmptyTables()} mese libere</p>
-              ) : null}
+          <center>
+            <Row noGutters className="tables-display justify-content-center">
+              <Col>
+                {getEmptyTables() > 0 ? (
+                  <p className="available-tables">{getEmptyTables()} mese libere</p>
+                ) : null}
 
-              {selection.date && selection.time ? (
-                getEmptyTables() > 0 ? (
-                  <div>
-                    <div className="table-key">
-                      <span className="empty-table"></span> &nbsp; Liber
-                      &nbsp;&nbsp;
-                      <span className="full-table"></span> &nbsp; Ocupat
-                      &nbsp;&nbsp;
+                {selection.date && selection.time ? (
+                  getEmptyTables() > 0 ? (
+                    <div>
+                      <div className="table-key">
+                        <span className="empty-table"></span> &nbsp; Liber
+                        &nbsp;&nbsp;
+                        <span className="full-table"></span> &nbsp; Ocupat
+                        &nbsp;&nbsp;
+                      </div>
+                      <Row noGutters>{getTables()}</Row>
                     </div>
-                    <Row noGutters>{getTables()}</Row>
-                  </div>
+                  ) : (
+                    <p className="table-display-message">Nicio masa libera</p>
+                  )
                 ) : (
-                  <p className="table-display-message">Nicio masa libera</p>
-                )
-              ) : (
-                <p className="table-display-message">
-                  Va rugam sa selectati data si ora rezervarii.
-                </p>
-              )}
-            </Col>
-          </Row>
+                  <p className="table-display-message">
+                    Va rugam sa selectati data si ora rezervarii.
+                  </p>
+                )}
+              </Col>
+            </Row>
+          </center>
+
+
         </div>
       ) : (
         <div id="confirm-reservation-stuff">
@@ -401,12 +437,7 @@ export default props => {
                 placeholder="Nume"
                 className="reservation-input"
                 value={booking.name}
-                onChange={e => {
-                  setBooking({
-                    ...booking,
-                    name: e.target.value
-                  });
-                }}
+                onChange={handleNameChange}
               />
             </Col>
             <Col xs="12" sm="3" className="reservation-details">
@@ -416,12 +447,7 @@ export default props => {
                 placeholder="Numar de telefon"
                 className="reservation-input"
                 value={booking.phone}
-                onChange={e => {
-                  setBooking({
-                    ...booking,
-                    phone: e.target.value
-                  });
-                }}
+                onChange={handlePhoneChange}
               />
             </Col>
             <Col xs="12" sm="3" className="reservation-details">
@@ -444,7 +470,9 @@ export default props => {
             <Col>
               <button
                 className="book-table-btn"
-                onClick={() => { reserve() }}
+                onClick={() => {
+                  reserve();
+                }}
               >
                 Rezervare masa
               </button>
