@@ -59,7 +59,7 @@ export default function Checkout({ subtotal }) {
         amount={subtotal * 100}
         shippingAddress
         token={tokenHandler}
-        stripeKey='pk_test_51MxrSbBLFgjsWwKCRKsXXygticOx7Q961jmSeGXuSGJyM7SlZ3XClkSWn0idUqskONrUw7IqEOC0uz9vs1rCWeCu00152iWCYs'
+        stripeKey='pk_test_51MxrSbBLFgjsWwKCbsXG1ISF3luoqebwtbEnUqI4r7t10fFSRmtGKgiTmAhqeBGfP2H7yTrACseB7bimLCTFQ9Fr00ezwARnpD'
         currency='RON'
       >
         <button className='btnPayNow'>

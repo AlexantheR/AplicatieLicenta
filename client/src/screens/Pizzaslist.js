@@ -14,7 +14,7 @@ export default function Pizzaslist() {
         dispatch(getAllPizzas());
     }, []);
     return <div>
-        <h2>Pizzas List</h2>
+        <h2>Lista pizza</h2>
         {loading && (<Loading />)}
         {error && (<Error error='Ceva nu a mers bine!' />)}
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "reactstrap";
 
 export default function FirstPage() {
 
@@ -6,13 +7,13 @@ export default function FirstPage() {
         <div>
             <div className='m-1 w-100'>
                 <a href="/pizzamenu" title="Meniu Pizza">
-                   <img src='/pizza_menu2png.png' className="responsiveImg"></img> 
+                    <img src='/pizza_menu2png.png' className="responsiveImg"></img>
                 </a>
 
                 <a href="/drinks" title="Meniu bauturi">
-                   <img src='/drinks.png' className="responsiveImg"></img> 
+                    <img src='/drinks.png' className="responsiveImg"></img>
                 </a>
-                
+
             </div>
         </div>
     );
