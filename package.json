@@ -14,6 +14,7 @@
     "@craco/craco": "^7.1.0",
     "bcrypt": "^5.1.0",
     "browserify-zlib": "^0.2.0",
+    "chart.js": "^4.4.9",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.18.2",
